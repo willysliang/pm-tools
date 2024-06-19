@@ -1,0 +1,17 @@
+# 旧的不需打包的样式库
+*.min.css
+
+# 其他类型文件
+*.js
+*.ts
+*.tsx
+*.json
+*.jpg
+*.png
+*.eot
+*.ttf
+*.woff
+
+# 测试和打包目录
+/test/
+/dist/
