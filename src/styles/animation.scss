@@ -1,0 +1,17 @@
+@media (prefers-reduced-motion: no-preference) {
+  /* 旋转动画 */
+  .animation__spin {
+    animation: ani-spin-frames infinite 20s linear;
+  }
+}
+
+/* 旋转动画 */
+@keyframes ani-spin-frames {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}

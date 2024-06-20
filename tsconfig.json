@@ -18,8 +18,21 @@
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+
+    /* 别名 */
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"],
+      "@assets/*": ["src/assets/*"],
+      "@comp/*": ["src/components/*"],
+      "@pages/*": ["src/pages/*"],
+      "@utils/*": ["src/utils"]
+    },
+    "types": ["**/*.d.ts", "types/*.d.ts"]
   },
-  "include": ["src"],
+  "include": ["**/*.js", "**/*.jsx", "**/*.ts", "**/*.tsx", "**/*.vue", "src/**/*.d.ts"],
+  "exclude": ["node_modules"],
+  "types": ["**/*.d.ts", "types/*.d.ts"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

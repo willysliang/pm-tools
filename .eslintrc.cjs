@@ -1,6 +1,10 @@
 module.exports = {
   root: true,
-  env: { browser: true, es2020: true },
+  env: {
+    node: true, // 确保 ESLint 识别 Node.js 环境
+    browser: true, // 如果你也在浏览器环境中运行代码
+    es6: true,
+  },
   extends: [
     'eslint:recommended',
     'plugin:@typescript-eslint/recommended',

@@ -1,0 +1,17 @@
+body {
+  box-sizing: border-box;
+  font-family: 'Helvetica Neue', Helvetica, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei',
+    '微软雅黑', Arial, sans-serif;
+  font-size: 62.5%;
+  height: 100vh;
+  margin: 0;
+  min-width: 600px;
+}
+
+#root {
+  box-sizing: border-box;
+  height: 100%;
+  margin: 0 auto;
+  padding: 0;
+  width: 100%;
+}

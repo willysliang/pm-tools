@@ -1,8 +1,9 @@
 module.exports = {
   extends: ['stylelint-config-standard', 'stylelint-config-prettier'],
-  plugins: ['stylelint-order'],
+  plugins: ['stylelint-order', 'stylelint-scss'],
   custonSyntax: 'postcss-scss',
   rules: {
+    'at-rule-no-unknown': null,
     'scss/at-function-pattern': null, // 函数名不限制短横线命名，可以驼峰命名
     'scss/percent-placeholder-pattern': null, // 占位选择器不限制短横线命名，可以驼峰命名
     'scss/at-mixin-pattern': null, // mxin不限制短横线命名，可以驼峰命名
