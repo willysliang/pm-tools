@@ -2,25 +2,25 @@
  * @ Author: willy
  * @ CreateTime: 2024-06-20 14:28:22
  * @ Modifier: willy
- * @ ModifierTime: 2024-06-20 17:19:50
+ * @ ModifierTime: 2024-06-21 15:17:22
  * @ Description: App 的全局数据
  */
 
-import { MENU_CONFIG, type IMenuConfigItem } from '@/constants/app';
 import { create } from 'zustand';
+import { APP_ROUTE_CONFIGS, type IRouteConfig } from '@/router/routes/appRoutes';
 
 interface IAppStoreState {
-  menuList: IMenuConfigItem[];
-  activeMenu: IMenuConfigItem;
+  menuList: IRouteConfig[];
+  activeMenu: IRouteConfig;
 
-  setMenu: (menu: IMenuConfigItem) => void;
+  setMenu: (menu: IRouteConfig) => void;
 }
 
 /** 初始化 store 的数据 */
 const initAppStoreConfig = () => {
   const initConfig = {
-    menuList: Object.values(MENU_CONFIG),
-    activeMenu: Object.values(MENU_CONFIG)[0],
+    menuList: Object.values(APP_ROUTE_CONFIGS),
+    activeMenu: Object.values(APP_ROUTE_CONFIGS)[0],
   };
 
   document.title = initConfig.activeMenu.label;
@@ -32,7 +32,7 @@ const initAppStoreConfig = () => {
 export const useAppStore = create<IAppStoreState>((set) => ({
   ...initAppStoreConfig(),
 
-  setMenu: (menu: IMenuConfigItem) => {
+  setMenu: (menu: IRouteConfig) => {
     document.title = menu.label;
     set({ activeMenu: menu });
   },
