@@ -18,6 +18,6 @@ module.exports = {
     'react/jsx-uses-react': 'off',
     'react/react-in-jsx-scope': 'off',
     '@typescript-eslint/no-explicit-any': 'warn',
-    'react-refresh/only-export-components': 'warn',
+    'react-refresh/only-export-components': 'off',
   },
 };

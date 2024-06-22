@@ -40,9 +40,8 @@
   "stylelint.validate": ["css", "less", "postcss", "scss", "vue", "sass"],
   "prettier.requireConfig": true,
   "editor.codeActionsOnSave": {
-    // "source.fixAll": true, // 加这句会造成多次格式化，造成style误删
-    "source.fixAll.eslint": true,
-    "source.fixAll.stylelint": true // 开启stylelint自动修复
+    "source.fixAll.eslint": "explicit",
+    "source.fixAll.stylelint": "explicit"
   },
   "eslint.options": {
     "extensions": [".js", ".vue", ".ts", ".tsx"]

@@ -1,8 +1,8 @@
 /**
  * @ Author: willy
  * @ CreateTime: 2024-06-19 20:59:50
- * @ Modifier: willy
- * @ ModifierTime: 2024-06-21 18:48:39
+ * @ Modifier: willysliang
+ * @ ModifierTime: 2024-06-22 16:03:52
  * @ Description: 页面大框
  */
 
@@ -12,6 +12,7 @@ import { LayoutMenu } from './LayoutMenu';
 import { LayoutHeader } from './LayoutHeader';
 import { routes } from '@/router/routes';
 import transformRoutes from '@/router';
+import { useAppInit, useMenuInit } from './hooks/useAppInit';
 import './layout.scss';
 
 export const RenderRoute: React.FC = () => {
@@ -40,10 +41,14 @@ export const RenderRoute: React.FC = () => {
 };
 
 export const RenderRoute2: React.FC = () => {
+  useMenuInit();
+
   return <Suspense fallback={<div>Loading...</div>}>{useRoutes(transformRoutes as any)}</Suspense>;
 };
 
 function App() {
+  useAppInit();
+
   return (
     <Router>
       <div className='layout'>

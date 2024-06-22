@@ -1,9 +1,9 @@
 /**
  * @ Author: willy
  * @ CreateTime: 2024-06-20 14:30:55
- * @ Modifier: willy
- * @ ModifierTime: 2024-06-21 18:58:25
- * @ Description: App 的路由
+ * @ Modifier: willysliang
+ * @ ModifierTime: 2024-06-22 20:33:15
+ * @ Description: App 路由
  */
 
 import { lazy } from 'react';
@@ -20,15 +20,20 @@ import {
   Tag,
   TwoEllipses,
 } from '@icon-park/react';
-import { AppDefaultRouteType, AppSystemRouteType, AppRouteLevelType, IRouteConfig } from './types';
+import {
+  AppDefaultRouteType,
+  AppSystemRouteType,
+  AppRouteLevelType,
+  IRouteConfigMap,
+} from './types';
 
-import NotFound from '@/pages/System/NotFound';
+import NotFound from '@/pages/System/NotFound/index';
 
 /** 将 type 中的所有声明同步导出 */
 export * from './types';
 
 /** APP 系统路由 */
-export const APP_SYSTEM_ROUTE_CONFIGS: Record<AppSystemRouteType, IRouteConfig> = {
+export const APP_SYSTEM_ROUTE_CONFIGS: IRouteConfigMap<AppSystemRouteType> = {
   [AppSystemRouteType.LOGIN]: {
     label: '登录',
     path: `/${AppSystemRouteType.LOGIN}`,
@@ -49,7 +54,7 @@ export const APP_SYSTEM_ROUTE_CONFIGS: Record<AppSystemRouteType, IRouteConfig> 
 const Dashboard = lazy(() => import('@/pages/Dashboard'));
 
 /** APP 菜单路由  */
-export const APP_ROUTE_CONFIGS: Record<AppRouteLevelType, IRouteConfig> = {
+export const APP_ROUTE_CONFIGS: IRouteConfigMap<AppRouteLevelType> = {
   [AppRouteLevelType.DASHBOARD]: {
     label: '仪表板',
     path: `/${AppRouteLevelType.DASHBOARD}`,
@@ -142,7 +147,7 @@ export const APP_ROUTE_CONFIGS: Record<AppRouteLevelType, IRouteConfig> = {
 };
 
 /** APP 默认路由 */
-export const APP_DEFAULT_ROUTE_CONFGS: Record<AppDefaultRouteType, IRouteConfig> = {
+export const APP_DEFAULT_ROUTE_CONFGS: IRouteConfigMap<AppDefaultRouteType> = {
   [AppDefaultRouteType.DEFAULT]: {
     ...APP_ROUTE_CONFIGS.DASHBOARD,
     path: '/',

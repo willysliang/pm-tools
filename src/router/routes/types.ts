@@ -1,8 +1,8 @@
 /**
  * @ Author: willy
  * @ CreateTime: 2024-06-21 15:15:51
- * @ Modifier: willy
- * @ ModifierTime: 2024-06-21 18:58:13
+ * @ Modifier: willysliang
+ * @ ModifierTime: 2024-06-23 01:23:53
  * @ Description: 路由相关的声明
  */
 
@@ -58,6 +58,7 @@ export type IRouteElement =
   | React.LazyExoticComponent<React.ComponentType<any>>
   | React.ComponentType<any>;
 
+/** 定义每个路由所应当拥有的类型 */
 export interface IRouteConfig {
   /** 标题 */
   label: string;
@@ -79,4 +80,11 @@ export interface IRouteConfig {
     unLazy?: boolean;
   };
   children?: IRouteConfig[];
+  /** 扩展的参数 */
+  extra?: {
+    color?: string;
+  };
 }
+
+/** 每种路由类型集合的类型约束 */
+export type IRouteConfigMap<T extends string> = Record<T, IRouteConfig>;

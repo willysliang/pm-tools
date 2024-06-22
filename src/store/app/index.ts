@@ -1,8 +1,8 @@
 /**
  * @ Author: willy
  * @ CreateTime: 2024-06-20 14:28:22
- * @ Modifier: willy
- * @ ModifierTime: 2024-06-21 15:17:22
+ * @ Modifier: willysliang
+ * @ ModifierTime: 2024-06-22 15:37:10
  * @ Description: App 的全局数据
  */
 
@@ -16,24 +16,13 @@ interface IAppStoreState {
   setMenu: (menu: IRouteConfig) => void;
 }
 
-/** 初始化 store 的数据 */
-const initAppStoreConfig = () => {
-  const initConfig = {
-    menuList: Object.values(APP_ROUTE_CONFIGS),
-    activeMenu: Object.values(APP_ROUTE_CONFIGS)[0],
-  };
-
-  document.title = initConfig.activeMenu.label;
-
-  return initConfig;
-};
-
 /** App 的全局数据 */
 export const useAppStore = create<IAppStoreState>((set) => ({
-  ...initAppStoreConfig(),
+  menuList: Object.values(APP_ROUTE_CONFIGS),
+  activeMenu: Object.values(APP_ROUTE_CONFIGS)[0],
 
   setMenu: (menu: IRouteConfig) => {
-    document.title = menu.label;
+    // document.title = menu.label;
     set({ activeMenu: menu });
   },
 }));
