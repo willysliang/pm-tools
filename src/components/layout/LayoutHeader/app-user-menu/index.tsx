@@ -2,19 +2,20 @@
  * @ Author: willysliang
  * @ CreateTime: 2024-06-22 16:24:40
  * @ Modifier: willysliang
- * @ ModifierTime: 2024-06-23 01:39:18
+ * @ ModifierTime: 2024-06-23 11:39:47
  * @ Description: 用户的菜单栏浮层
  */
 
 import { FC, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { AssemblyLine, Info, Logout, SettingConfig } from '@icon-park/react';
 import { IconPark } from '@/components/common/IconPark';
 import { USER_ROUTE_CONFIGS } from '@/router/routes/userRoutes';
+import { IRouteConfig } from '@/router/routes/types';
 import { useUserStore } from '@/store/user/index';
 import { createBEM, cutCNLetter } from '@/utils';
+import cx from 'classnames';
 import s from './index.module.scss';
-import { IRouteConfig } from '@/router/routes/types';
-import { useNavigate } from 'react-router-dom';
 
 export enum SettingTpe {
   USER_ROUTE = 'user-route',
@@ -128,7 +129,9 @@ export const AppUserMenu: FC<{ onClose: () => void }> = ({ onClose }) => {
           {setting.cards.map((card) => (
             <div
               key={`${setting.type}-${card.path}`}
-              className={`${s[createBEM(namespace, 'card', 'item')]} ${activeCard.path === card.path ? s[createBEM(namespace, 'card', 'item-active')] : ''}`}
+              className={cx(s[createBEM(namespace, 'card', 'item')], {
+                [s[createBEM(namespace, 'card', 'item-active')]]: activeCard.path === card.path,
+              })}
               style={{ color: card?.extra?.color ?? '#aaa' }}
               onClick={() => handleClickCard(setting.type, card)}
             >

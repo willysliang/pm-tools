@@ -2,12 +2,12 @@
  * @ Author: willy
  * @ CreateTime: 2024-06-19 20:59:50
  * @ Modifier: willysliang
- * @ ModifierTime: 2024-06-22 16:03:52
+ * @ ModifierTime: 2024-06-23 11:16:30
  * @ Description: 页面大框
  */
 
 import { Suspense } from 'react';
-import { BrowserRouter as Router, Routes, Route, useRoutes } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useRoutes, RouteObject } from 'react-router-dom';
 import { LayoutMenu } from './LayoutMenu';
 import { LayoutHeader } from './LayoutHeader';
 import { routes } from '@/router/routes';
@@ -43,7 +43,11 @@ export const RenderRoute: React.FC = () => {
 export const RenderRoute2: React.FC = () => {
   useMenuInit();
 
-  return <Suspense fallback={<div>Loading...</div>}>{useRoutes(transformRoutes as any)}</Suspense>;
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      {useRoutes(transformRoutes as RouteObject[])}
+    </Suspense>
+  );
 };
 
 function App() {
