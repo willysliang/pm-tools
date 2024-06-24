@@ -1,18 +1,17 @@
 /**
  * @ Author: willysliang
  * @ CreateTime: 2024-06-23 11:02:59
- * @ Modifier: willysliang
- * @ ModifierTime: 2024-06-24 00:24:53
+ * @ Modifier: willy
+ * @ ModifierTime: 2024-06-24 12:12:38
  * @ Description: 用户个人设置
  */
 
 import { FC } from 'react';
-import { Outlet } from 'react-router-dom';
-import LayoutSidebar, { IConfigList } from '@/components/layout/sidebar';
-import { createBEM } from '@/utils';
-import s from './account.module.scss';
+import LayoutContainer from '@comp/layout/LayoutContainer';
+import { IConfigList } from '@/components/layout/LayoutSidebar';
 import { USER_ROUTE_CONFIGS } from '@/router/routes/userRoutes';
 
+/** 侧边栏展示的列表 */
 export const routeList: IConfigList = [
   {
     label: '访问',
@@ -29,16 +28,7 @@ export const routeList: IConfigList = [
 ];
 
 const Account: FC = () => {
-  const namespace = 'account';
-
-  return (
-    <div className={s[createBEM(namespace)]}>
-      <LayoutSidebar configList={routeList}></LayoutSidebar>
-      <div className={s[createBEM(namespace, 'main')]}>
-        <Outlet></Outlet>
-      </div>
-    </div>
-  );
+  return <LayoutContainer routeList={routeList}></LayoutContainer>;
 };
 
 export default Account;

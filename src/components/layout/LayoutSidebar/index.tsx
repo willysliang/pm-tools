@@ -1,30 +1,50 @@
 /**
  * @ Author: willysliang
  * @ CreateTime: 2024-06-23 11:26:48
- * @ Modifier: willysliang
- * @ ModifierTime: 2024-06-24 00:19:59
+ * @ Modifier: willy
+ * @ ModifierTime: 2024-06-24 11:07:57
  * @ Description: 二级路由的侧边栏
  */
 
-import { FC, useState } from 'react';
+import { FC, useState, useEffect } from 'react';
 import { createBEM } from '@/utils';
 import { IRouteConfig } from '@/router/routes/types';
 import cx from 'classnames';
 import s from './index.module.scss';
+import { useLocation, useNavigate } from 'react-router-dom';
 
+/** 配置列表的约束 */
 export type IConfigList = { label: string; list: IRouteConfig[] }[];
 
-export const LayoutSidebar: FC<{ configList?: IConfigList; children?: React.ReactNode }> = ({
-  configList,
-  children,
-}) => {
+export const LayoutSidebar: FC<{
+  configList?: IConfigList;
+  onUpdateActiveRoute?: (card: IRouteConfig) => void;
+  children?: React.ReactNode;
+}> = ({ configList, onUpdateActiveRoute, children }) => {
   const namespace = 'layout-sidebar';
 
-  // TODO
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  /** 配置列表扁平化 */
+  const configListFlat: IRouteConfig[] = [];
+  configList?.forEach((item) => configListFlat.push(...item.list));
+
+  /** 记录活跃的 card */
   const [activeCard, setActiveCard] = useState<IRouteConfig>(configList![0].list[0]);
+
+  /** 根据路由变化来更新活跃的 card */
+  useEffect(() => {
+    const path = location.pathname;
+    const card = configListFlat.find((item) => item.path === path);
+    setActiveCard(card!);
+    typeof onUpdateActiveRoute === 'function' && onUpdateActiveRoute(card!);
+  }, [location]);
+
+  /** 切换 card */
   const handleClickCard = (card: IRouteConfig) => {
-    if (activeCard.key === card.key) return;
-    setActiveCard(card);
+    if (activeCard.path === card.path) return;
+    navigate(card.path);
   };
 
   return (
@@ -41,7 +61,7 @@ export const LayoutSidebar: FC<{ configList?: IConfigList; children?: React.Reac
                     s[createBEM(namespace, 'card', 'item')],
                     {
                       [s[createBEM(namespace, 'card', 'item-active')]]:
-                        activeCard?.key === item.key,
+                        activeCard?.path === item.path,
                     },
                   )}
                   key={`${index}-${item.key}`}

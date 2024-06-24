@@ -1,0 +1,21 @@
+.account-setting {
+  box-sizing: border-box;
+  padding: 0 2rem;
+
+  &__card {
+    border-bottom: 1px solid var(--theme-normal-border-color);
+    margin-bottom: 1rem;
+    width: 100%;
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    &--label {
+      font-size: medium;
+      height: 3rem;
+      line-height: 3rem;
+      margin-bottom: 1rem;
+    }
+  }
+}

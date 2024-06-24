@@ -1,0 +1,27 @@
+.layout-container {
+  display: flex;
+  height: 100%;
+  width: 100%;
+
+  &__main {
+    flex: 1;
+    overflow: hidden;
+
+    &--header {
+      border-bottom: 1px solid var(--theme-active-border-color);
+      flex-shrink: 0;
+      font-size: small;
+      height: 2.5rem;
+      line-height: 2.5rem;
+      padding-left: 1rem;
+    }
+
+    &--content {
+      height: calc(100% - 2.5rem);
+      overflow: hidden auto;
+      position: relative;
+      width: 100%;
+      @include scrollbar;
+    }
+  }
+}
