@@ -1,8 +1,8 @@
 /**
  * @ Author: willysliang
  * @ CreateTime: 2024-06-21 22:06:05
- * @ Modifier: willysliang
- * @ ModifierTime: 2024-06-22 11:24:10
+ * @ Modifier: willy
+ * @ ModifierTime: 2024-06-26 14:33:50
  * @ Description: 404 系统页
  */
 
@@ -11,7 +11,7 @@ import systemNotfound from '@assets/common/system-not-found.png';
 import systemNotfoundCloud from '@assets/common/system-not-found-cloud.png';
 import './NotFound.scss';
 
-const NotFound: React.FC = () => {
+export const NotFound: React.FC = () => {
   return (
     <div className='w-full h-full relative inset not-found'>
       <img

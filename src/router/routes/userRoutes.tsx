@@ -1,8 +1,8 @@
 /**
  * @ Author: willysliang
  * @ CreateTime: 2024-06-22 20:24:21
- * @ Modifier: willysliang
- * @ ModifierTime: 2024-06-23 12:32:37
+ * @ Modifier: willy
+ * @ ModifierTime: 2024-06-26 14:38:34
  * @ Description: 用户路由
  */
 
@@ -10,8 +10,9 @@ import { lazy } from 'react';
 import { Remind, SettingOne, User } from '@icon-park/react';
 import { IRouteConfig, IRouteConfigMap } from './types';
 
-const Account = lazy(() => import('@/pages/account/index'));
+const Account = lazy(() => import('@/pages/account'));
 const AccountSetting = lazy(() => import('@/pages/account/setting'));
+const PersonalInfo = lazy(() => import('@/pages/account/personalInfo'));
 
 /** 用户路由的类型枚举 */
 export enum UserRouteType {
@@ -67,6 +68,7 @@ export const USER_ROUTE_CONFIGS: IRouteConfigMap<UserRouteType> = {
     path: `${USER_ROUTE_BASE.path}/${UserRouteType.PERSONAL}`,
     icon: SettingOne,
     key: 'personal',
+    element: <PersonalInfo />,
     meta: {},
   },
   [UserRouteType.LOGIN_LOG]: {
