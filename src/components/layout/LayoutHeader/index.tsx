@@ -1,8 +1,8 @@
 /**
  * @ Author: willy
  * @ CreateTime: 2024-06-20 17:29:53
- * @ Modifier: willysliang
- * @ ModifierTime: 2024-06-22 19:17:30
+ * @ Modifier: willy
+ * @ ModifierTime: 2024-06-26 10:30:11
  * @ Description: 头部
  */
 
@@ -12,6 +12,7 @@ import { useAppStore } from '@/store/app/index';
 import { useUserStore } from '@/store/user/index';
 import { AppUserMenu } from './app-user-menu';
 import { cutCNLetter } from '@/utils';
+import { CreateModal } from '@/hooks/index';
 
 export const LayoutHeader = (): ReactElement => {
   const { activeMenu } = useAppStore();
@@ -45,7 +46,11 @@ export const LayoutHeader = (): ReactElement => {
         </div>
       </div>
 
-      {showAppUserMenu && <AppUserMenu onClose={() => handleToggleShowAppUserMenu(false)} />}
+      {showAppUserMenu && (
+        <CreateModal>
+          <AppUserMenu onClose={() => handleToggleShowAppUserMenu(false)} />
+        </CreateModal>
+      )}
     </div>
   );
 };
