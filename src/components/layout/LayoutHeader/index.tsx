@@ -1,8 +1,8 @@
 /**
  * @ Author: willy
  * @ CreateTime: 2024-06-20 17:29:53
- * @ Modifier: willy
- * @ ModifierTime: 2024-06-26 10:30:11
+ * @ Modifier: willysliang
+ * @ ModifierTime: 2024-06-28 23:19:40
  * @ Description: 头部
  */
 
@@ -46,11 +46,9 @@ export const LayoutHeader = (): ReactElement => {
         </div>
       </div>
 
-      {showAppUserMenu && (
-        <CreateModal>
-          <AppUserMenu onClose={() => handleToggleShowAppUserMenu(false)} />
-        </CreateModal>
-      )}
+      <CreateModal show={showAppUserMenu}>
+        <AppUserMenu onClose={() => handleToggleShowAppUserMenu(false)} />
+      </CreateModal>
     </div>
   );
 };
