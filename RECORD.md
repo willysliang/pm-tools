@@ -1,3 +1,54 @@
+# 提交规范
+
+通过 commitlint + husky 在工作流中进行校验约束，属于通用的规范。通常提交遵循以下模式，提交包含三个部分：Header（第一行），Body 和 Footer。
+
+```txt
+// optional 表示可选的意思
+
+<type>(optional scope): <description>
+
+[optional body]
+
+[optional footer(s)]
+
+// 这是一个简单示例
+
+fix: prevent racing of requests
+
+
+// 这是一个完整示例，包含多段body，和footer
+
+fix(utils: prevent racing of requests
+
+Introduce a request id and a reference to latest request. Dismiss
+incoming responses other than from latest request.
+
+Remove timeouts which were used to mitigate the racing issue but are
+obsolete now.
+
+Reviewed-by: Z
+Refs: #123
+```
+
+其中，Header (第一行) 是必需的，Body 和 Footer 可以省略
+
+● type 类型：
+○ feat：新增功能
+○ fix：bug 修复
+○ docs：只更新文档
+○ style：不影响代码含义的更改，例如空格，格式化等
+○ refactor：既没有修复bug也没有添加功能的代码更改
+○ perf：改进性能的代码更改
+○ test：添加缺失的测试或者更改现有的测试
+○ build：影响构建系统或外部依赖关系的更改，例如 vite，npm 配置的更改
+○ ci：Ci 配置文件和脚本的更改，例如 Travis 配置的更改
+○ chore：其他不修改 src 或测试文件的更改
+○ revert：还原之前的提交
+● scope 范围：变更的影响范围，不同项目会有区别，例如 component，page，utils，build
+● description 描述：简短的变更描述
+● body 描述：更长更完整的变更描述，可以分成多行
+● footer 页脚注释：用来详细描述不兼容改动或者关闭issure
+
 # 问题
 
 ## 2024年6月22日
@@ -11,6 +62,10 @@
   2/ 在父组件的按钮点击事件中使用 event.stopProgation() 来阻止冒泡事件的触发
 
 # 记录
+
+## 2024年7月11日
+
+- chore: 增加提交规范
 
 ## 2024年6月28日
 
