@@ -1,12 +1,12 @@
 /**
  * @ Author: willy
  * @ CreateTime: 2024-06-24 20:53:58
- * @ Modifier: willy
- * @ ModifierTime: 2024-06-24 21:09:05
+ * @ Modifier: willysliang
+ * @ ModifierTime: 2024-07-11 18:35:15
  * @ Description: 更新密码表单
  */
 
-import { Button, Form, Input, message } from 'antd';
+import { Button, Form, Input, message, Space } from 'antd';
 import type { Rule, FormProps } from 'antd/es/form';
 import { useUserStore } from '@/store/user';
 
@@ -112,9 +112,19 @@ export const UpdatePasswordForm = () => {
             readOnly
           />
         </Form.Item>
-        {accountInfoFormConfig.map(({ placeholder, autoComplete, ...formProps }, index) => (
-          <Form.Item key={index} {...formProps}>
-            <Input.Password placeholder={placeholder} autoComplete={autoComplete} />
+        {accountInfoFormConfig.map(({ placeholder, autoComplete, label, ...formProps }, index) => (
+          <Form.Item key={index} label={label}>
+            <Space className='block'>
+              <div className='flex justify-between w-full'>
+                <Form.Item key={index} noStyle {...formProps}>
+                  <Input.Password
+                    placeholder={placeholder}
+                    className='max-w-sm'
+                    autoComplete={autoComplete}
+                  />
+                </Form.Item>
+              </div>
+            </Space>
           </Form.Item>
         ))}
         <Form.Item wrapperCol={{ offset: 8, span: 16 }}>

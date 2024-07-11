@@ -1,8 +1,8 @@
 /**
  * @ Author: willy
  * @ CreateTime: 2024-06-24 20:11:42
- * @ Modifier: willy
- * @ ModifierTime: 2024-06-24 20:54:30
+ * @ Modifier: willysliang
+ * @ ModifierTime: 2024-07-11 18:35:19
  * @ Description: 账号信息表单
  */
 
@@ -108,9 +108,9 @@ export const AccountInfoForm: FC = () => {
           <Form.Item key={index} label={item.label}>
             <Space className='block'>
               <div className='block w-full mb-2 h-8 leading-8'>{userInfo[item.name]}</div>
-              <div className='flex justify-between w-full'>
+              <div className='flex w-full'>
                 <Form.Item noStyle name={item.name} rules={item.rules}>
-                  <Input placeholder={item.placeholder} />
+                  <Input placeholder={item.placeholder} className='max-w-sm' />
                 </Form.Item>
                 <Button
                   type='primary'
