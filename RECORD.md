@@ -63,6 +63,11 @@ Refs: #123
 
 # 记录
 
+## 2024年9月6日
+
+- perf(utils): [utils/format] 优化 createBEM 方法
+- test(utils): [__test_createBem] 添加测试/期望 createBEM 的处理逻辑及返回
+
 ## 2024年7月11日
 
 - chore: 增加提交规范

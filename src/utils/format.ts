@@ -2,9 +2,34 @@
  * @ Author: willysliang
  * @ CreateTime: 2024-06-22 16:13:05
  * @ Modifier: willysliang
- * @ ModifierTime: 2024-06-22 16:13:12
+ * @ ModifierTime: 2024-09-06 10:11:17
  * @ Description: 格式化
  */
+
+/**
+ * @method createBEM - 创建 BEM 类名
+ * @param {string} block - 块
+ * @param {string} [element] - 元素
+ * @param {string | string[]} [modifys] - 修饰符
+ * @returns {string}
+ */
+export const createBEM = (block: string, element: string = '', modifys: string | string[] = '') => {
+  let bemStr = block;
+
+  if (element === '' && modifys === '') return block;
+  if (element !== '') bemStr += `__${element}`;
+  if (modifys === '') return bemStr;
+
+  if (Array.isArray(modifys)) {
+    if (!modifys.length) return bemStr;
+    const bemStrs: string[] = [bemStr];
+    modifys.forEach((modify) => {
+      bemStrs.push(`${bemStr}--${modify}`);
+    });
+    return bemStrs.join(' ');
+  }
+  return `${bemStr} ${bemStr}--${modifys}`;
+};
 
 /**
  * @description 中文裁字
