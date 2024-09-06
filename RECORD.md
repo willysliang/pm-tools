@@ -68,6 +68,7 @@ Refs: #123
 - perf(utils): [utils/format] 优化 createBEM 方法
 - test(utils): [__test_createBem] 添加测试/期望 createBEM 的处理逻辑及返回
 - feat(comp): [Dialog、DialogPrompt] 新增 通用弹窗组件Dialog、业务通用提示弹窗组件DialogPrompt
+- perf(layout): 优化页面显示
 
 ## 2024年7月11日
 

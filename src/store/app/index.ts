@@ -2,7 +2,7 @@
  * @ Author: willy
  * @ CreateTime: 2024-06-20 14:28:22
  * @ Modifier: willysliang
- * @ ModifierTime: 2024-09-06 11:20:37
+ * @ ModifierTime: 2024-09-06 11:46:13
  * @ Description: App 的全局数据
  */
 
@@ -55,7 +55,7 @@ export const useAppStore = create<IAppStoreState>((set) => ({
   },
 
   dialogPromptConfig: {
-    show: true,
+    show: Math.random() > 0.5,
     info: {
       title: '新版本功能',
       tags: ['v5.129.0', 'New'],

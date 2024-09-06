@@ -145,8 +145,15 @@
     &__content {
       background-color: var(--layout-main-content-bg);
       border: 1px solid var(--theme-active-border-color);
+      box-shadow:
+        -6px -6px 8px -4px rgb(235 235 231 / 75%),
+        6px -6px 8px -4px rgb(223 215 205 / 75%),
+        6px 6px 8px -4px rgb(222 222 213 / 75%),
+        6px 6px 8px -4px rgb(0 0 255 / 275%);
+      box-sizing: border-box;
       height: 100%;
       left: 0;
+      padding: p2r(5);
       position: absolute;
       top: 0;
       width: 100%;
