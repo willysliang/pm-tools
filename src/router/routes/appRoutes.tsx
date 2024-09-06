@@ -2,13 +2,14 @@
  * @ Author: willy
  * @ CreateTime: 2024-06-20 14:30:55
  * @ Modifier: willysliang
- * @ ModifierTime: 2024-06-22 20:33:15
+ * @ ModifierTime: 2024-09-06 11:39:26
  * @ Description: App 路由
  */
 
 import { lazy } from 'react';
 import {
   Bat,
+  Bug,
   CalendarThree,
   CircularConnection,
   DashboardCar,
@@ -52,6 +53,7 @@ export const APP_SYSTEM_ROUTE_CONFIGS: IRouteConfigMap<AppSystemRouteType> = {
 };
 
 const Dashboard = lazy(() => import('@/pages/Dashboard'));
+const DemoTest = lazy(() => import('@/pages/Test'));
 
 /** APP 菜单路由  */
 export const APP_ROUTE_CONFIGS: IRouteConfigMap<AppRouteLevelType> = {
@@ -141,6 +143,15 @@ export const APP_ROUTE_CONFIGS: IRouteConfigMap<AppRouteLevelType> = {
     path: `/${AppRouteLevelType.INTEGRATION_AND_EXTENSION}`,
     icon: CircularConnection,
     key: 'integration',
+    meta: {},
+    children: [],
+  },
+  [AppRouteLevelType.DEMO_TEST]: {
+    label: '示例测试',
+    path: `/${AppRouteLevelType.DEMO_TEST}`,
+    icon: Bug,
+    key: 'bug',
+    element: <DemoTest />,
     meta: {},
     children: [],
   },

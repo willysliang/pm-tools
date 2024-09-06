@@ -2,7 +2,7 @@
  * @ Author: willy
  * @ CreateTime: 2024-06-21 15:15:51
  * @ Modifier: willysliang
- * @ ModifierTime: 2024-06-23 01:23:53
+ * @ ModifierTime: 2024-09-06 11:39:15
  * @ Description: 路由相关的声明
  */
 
@@ -49,6 +49,8 @@ export enum AppRouteLevelType {
   REPORT_ANALYSIS = 'REPORT_ANALYSIS',
   /** 集成扩展 */
   INTEGRATION_AND_EXTENSION = 'INTEGRATION_AND_EXTENSION',
+  /** 测试 */
+  DEMO_TEST = 'DEMO_TEST',
 }
 
 /** 路由的页面内容 */

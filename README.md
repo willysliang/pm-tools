@@ -29,6 +29,20 @@ export default {
 - Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
 - Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
 
+# 代码注释
+
+一般的 types 的文件里面包含：
+
+- 枚举 - XXX
+- 常量 - XXX
+- 类型 - XXX
+
+一般的 tsx 文件包含：
+
+- 通用组件 - XXX
+- 示例组件 - XXX
+- 业务通用组件 - XXX
+
 # Project Management Tool
 
 项目管理工具（Project Management Tool）
