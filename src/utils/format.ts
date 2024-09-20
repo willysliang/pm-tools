@@ -28,7 +28,8 @@ export const createBEM = (block: string, element: string = '', modifys: string |
     });
     return bemStrs.join(' ');
   }
-  return `${bemStr} ${bemStr}--${modifys}`;
+  // return `${bemStr} ${bemStr}--${modifys}`;
+  return `${bemStr}--${modifys}`;
 };
 
 /**

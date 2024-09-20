@@ -66,6 +66,7 @@ Refs: #123
 ## 2024年9月20日
 
 - feat(comp): [DragSort] 新增 拖拽排序组件
+- perf(layout): 优化页面显示
 
 ## 2024年9月6日
 

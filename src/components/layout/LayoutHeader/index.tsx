@@ -2,7 +2,7 @@
  * @ Author: willy
  * @ CreateTime: 2024-06-20 17:29:53
  * @ Modifier: willysliang
- * @ ModifierTime: 2024-06-28 23:19:40
+ * @ ModifierTime: 2024-09-18 10:38:51
  * @ Description: 头部
  */
 
@@ -27,7 +27,13 @@ export const LayoutHeader = (): ReactElement => {
   return (
     <div className='layout-header'>
       <div className='layout-header__left'>
-        <IconPark icon={activeMenu.icon} size={18} theme='filled' fill='#ffb77d' className='mr-2' />
+        <IconPark
+          icon={activeMenu.icon}
+          size={18}
+          theme='filled'
+          fill='#ffb77d'
+          className='mr-2 animation__breath'
+        />
         <div className='layout-header__left--menu-name'>{activeMenu.label}</div>
       </div>
       <div className='layout-header__right'>

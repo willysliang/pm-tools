@@ -2,7 +2,7 @@
  * @ Author: willy
  * @ CreateTime: 2024-06-20 14:30:55
  * @ Modifier: willysliang
- * @ ModifierTime: 2024-09-06 11:39:26
+ * @ ModifierTime: 2024-09-18 10:31:13
  * @ Description: App 路由
  */
 
@@ -53,6 +53,7 @@ export const APP_SYSTEM_ROUTE_CONFIGS: IRouteConfigMap<AppSystemRouteType> = {
 };
 
 const Dashboard = lazy(() => import('@/pages/Dashboard'));
+const WorkingHours = lazy(() => import('@/pages/working-hours'));
 const DemoTest = lazy(() => import('@/pages/Test'));
 
 /** APP 菜单路由  */
@@ -79,6 +80,7 @@ export const APP_ROUTE_CONFIGS: IRouteConfigMap<AppRouteLevelType> = {
     path: `/${AppRouteLevelType.TIME_MANAGEMENT}`,
     icon: HourglassFull,
     key: 'time',
+    element: <WorkingHours />,
     meta: {},
     children: [],
   },
