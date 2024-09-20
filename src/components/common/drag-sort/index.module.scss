@@ -1,0 +1,17 @@
+/* 拖拽时，留在原地的元素 */
+.drag__background {
+  background: linear-gradient(
+    45deg,
+    rgb(0 0 0 / 30%) 0,
+    rgb(0 0 0 / 30%) 25%,
+    transparent 25%,
+    transparent 50%,
+    rgb(0 0 0 / 30%) 50%,
+    rgb(0 0 0 / 30%) 75%,
+    transparent 75%,
+    transparent
+  );
+  background-size: 20px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}

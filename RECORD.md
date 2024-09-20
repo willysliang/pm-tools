@@ -63,6 +63,10 @@ Refs: #123
 
 # 记录
 
+## 2024年9月20日
+
+- feat(comp): [DragSort] 新增 拖拽排序组件
+
 ## 2024年9月6日
 
 - perf(utils): [utils/format] 优化 createBEM 方法
