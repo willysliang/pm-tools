@@ -1,8 +1,8 @@
 /**
  * @ Author: willy
  * @ CreateTime: 2024-06-24 12:05:50
- * @ Modifier: willy
- * @ ModifierTime: 2024-06-24 14:26:31
+ * @ Modifier: willysliang
+ * @ ModifierTime: 2024-09-23 17:08:15
  * @ Description: 页面的主题（嵌套路由的容器实现）
  */
 
@@ -24,9 +24,9 @@ const Account: FC<{ routeList: IConfigList }> = ({ routeList }) => {
         configList={routeList}
         onUpdateActiveRoute={(route) => setActiveRoute(route)}
       ></LayoutSidebar>
-      <div className={s[createBEM(namespace, 'main')]}>
-        <div className={s[createBEM(namespace, 'main', 'header')]}>{activeRoute?.label}</div>
-        <div className={s[createBEM(namespace, 'main', 'content')]}>
+      <div className={s[createBEM(`${namespace}-main`)]}>
+        <div className={s[createBEM(`${namespace}-main`, 'header')]}>{activeRoute?.label}</div>
+        <div className={s[createBEM(`${namespace}-main`, 'content')]}>
           <Outlet></Outlet>
         </div>
       </div>

@@ -1,8 +1,8 @@
 /**
  * @ Author: willysliang
  * @ CreateTime: 2024-06-23 11:26:48
- * @ Modifier: willy
- * @ ModifierTime: 2024-06-24 11:07:57
+ * @ Modifier: willysliang
+ * @ ModifierTime: 2024-09-23 17:35:33
  * @ Description: 二级路由的侧边栏
  */
 
@@ -52,17 +52,16 @@ export const LayoutSidebar: FC<{
       {children
         ? children
         : configList!.map((config, index) => (
-            <div className={s[createBEM(namespace, 'card')]} key={index}>
-              <div className={s[createBEM(namespace, 'card', 'label')]}>{config.label}</div>
+            <div className={s[createBEM(`${namespace}-card`)]} key={index}>
+              <div className={s[createBEM(`${namespace}-card`, 'label')]}>{config.label}</div>
               {config.list.map((item) => (
                 <div
                   className={cx(
-                    s[createBEM(namespace, 'card', 'label')],
-                    s[createBEM(namespace, 'card', 'item')],
-                    {
-                      [s[createBEM(namespace, 'card', 'item-active')]]:
-                        activeCard?.path === item.path,
-                    },
+                    s[createBEM(`${namespace}-card`, 'label')],
+                    s[createBEM(`${namespace}-card`, 'item')],
+                    activeCard?.path === item.path
+                      ? createBEM(`${namespace}-card`, 'item', 'active', s)
+                      : '',
                   )}
                   key={`${index}-${item.key}`}
                   onClick={() => handleClickCard(item)}

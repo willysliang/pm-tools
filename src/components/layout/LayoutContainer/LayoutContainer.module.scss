@@ -3,11 +3,11 @@
   height: 100%;
   width: 100%;
 
-  &__main {
+  &-main {
     flex: 1;
     overflow: hidden;
 
-    &--header {
+    &__header {
       border-bottom: 1px solid var(--theme-active-border-color);
       flex-shrink: 0;
       font-size: small;
@@ -16,7 +16,7 @@
       padding-left: 1rem;
     }
 
-    &--content {
+    &__content {
       height: calc(100% - 2.5rem);
       overflow: hidden auto;
       position: relative;

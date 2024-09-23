@@ -9,11 +9,11 @@
   padding: 1.6rem 0.6rem;
   width: 15rem;
 
-  &__card {
+  &-card {
     border-bottom: 1px solid var(--theme-active-border-color);
     font-size: x-small;
 
-    &--label {
+    &__label {
       align-items: center;
       border-radius: 0.4rem;
       box-sizing: border-box;
@@ -25,7 +25,7 @@
       padding: 0 0.8rem;
     }
 
-    &--item {
+    &__item {
       color: var(--theme-font-color);
       cursor: pointer;
 
@@ -34,7 +34,7 @@
       }
     }
 
-    &--item-active {
+    &__item--active {
       background-color: var(--theme-active-bg-color);
       color: #66a3fe;
 

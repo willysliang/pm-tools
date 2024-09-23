@@ -2,7 +2,7 @@
  * @ Author: willysliang
  * @ CreateTime: 2024-06-22 16:24:40
  * @ Modifier: willysliang
- * @ ModifierTime: 2024-06-23 11:39:47
+ * @ ModifierTime: 2024-09-23 17:35:16
  * @ Description: 用户的菜单栏浮层
  */
 
@@ -108,30 +108,33 @@ export const AppUserMenu: FC<{ onClose: () => void }> = ({ onClose }) => {
 
   return (
     <div className={s[namespace]} onClick={(event) => event.stopPropagation()}>
-      <div className={s[createBEM(namespace, 'userinfo')]}>
-        <div className={s[createBEM(namespace, 'userinfo', 'avatar')]}>
+      <div className={s[createBEM(`${namespace}-userinfo`)]}>
+        <div className={s[createBEM(`${namespace}-userinfo`, 'avatar')]}>
           {userInfo?.avatar ? (
             <img src={userInfo.avatar} alt='用户头像' />
           ) : (
             cutCNLetter(userInfo.username, 1, '')
           )}
         </div>
-        <div className={s[createBEM(namespace, 'userinfo', 'username')]}>{userInfo.username}</div>
+        <div className={s[createBEM(`${namespace}-userinfo`, 'username')]}>{userInfo.username}</div>
         {userInfo.description && (
-          <div className={s[createBEM(namespace, 'userinfo', 'description')]}>
+          <div className={s[createBEM(`${namespace}-userinfo`, 'description')]}>
             {userInfo.description}
           </div>
         )}
       </div>
 
       {settingList.map((setting, index) => (
-        <div className={s[createBEM(namespace, 'card')]} key={`${index}-${setting.type}`}>
+        <div className={s[createBEM(`${namespace}-card`)]} key={`${index}-${setting.type}`}>
           {setting.cards.map((card) => (
             <div
               key={`${setting.type}-${card.path}`}
-              className={cx(s[createBEM(namespace, 'card', 'item')], {
-                [s[createBEM(namespace, 'card', 'item-active')]]: activeCard.path === card.path,
-              })}
+              className={cx(
+                s[createBEM(`${namespace}-card`, 'item')],
+                activeCard.path === card.path
+                  ? createBEM(`${namespace}-card`, 'item', 'active', s)
+                  : '',
+              )}
               style={{ color: card?.extra?.color ?? '#aaa' }}
               onClick={() => handleClickCard(setting.type, card)}
             >

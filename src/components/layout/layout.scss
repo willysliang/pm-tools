@@ -157,7 +157,7 @@
       position: absolute;
       top: 0;
       width: 100%;
-      @include scrollbar;
+      @include scrollbar(#979696);
     }
   }
 }

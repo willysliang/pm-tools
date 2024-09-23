@@ -1,14 +1,14 @@
 /**
  * @ Author: willy
  * @ CreateTime: 2024-06-26 10:40:33
- * @ Modifier: willy
- * @ ModifierTime: 2024-06-26 16:51:55
+ * @ Modifier: willysliang
+ * @ ModifierTime: 2024-09-20 15:04:38
  * @ Description: 个人资料
  */
 
 import { FC } from 'react';
-import s from './PersonalInfo.module.scss';
 import { createBEM } from '@/utils';
+import s from './PersonalInfo.module.scss';
 
 export const PersonalInfo: FC = () => {
   const namespace = 'personal-info';
