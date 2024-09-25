@@ -63,6 +63,10 @@ Refs: #123
 
 # 记录
 
+## 2024年9月25日
+
+- feat(views): [working-hours] 添加工时模块
+
 ## 2024年9月23日
 
 - fix(utils): [utils/format] 修复 createBEM 方法在传入 Modify 并使用 CSS module 时样式无法有效使用问题
