@@ -2,12 +2,14 @@
  * @ Author: willysliang
  * @ CreateTime: 2024-09-05 15:44:06
  * @ Modifier: willysliang
- * @ ModifierTime: 2024-09-06 11:25:27
+ * @ ModifierTime: 2024-09-26 14:30:24
  * @ Description: 业务通用组件 - 提示弹窗
  */
 
 import { FC } from 'react';
-import Dialog, { DIALOG_POSITION_ENUM, IDialogProps } from '@comp/dialog';
+import { Close } from '@icon-park/react';
+import Dialog, { DIALOG_POSITION_ENUM, IDialogProps } from '@comp/common/dialog';
+import IconPark from '@comp/common/IconPark';
 import { useAppStore } from '@/store/app/index';
 import { createBEM } from '@/utils';
 import s from './index.module.scss';
@@ -44,9 +46,14 @@ export const DialogPrompt: FC = () => {
       {show && (
         <Dialog show={show} {...dialogOption}>
           <div className={s[createBEM(namespace)]}>
-            <div className={s[createBEM(namespace, 'close')]} onClick={handleClose}>
-              x
-            </div>
+            <IconPark
+              icon={Close}
+              className={s[createBEM(namespace, 'close')]}
+              onClick={handleClose}
+              size={14}
+              fill='#f4f8ff'
+            />
+
             <div className={s[createBEM(namespace, 'title')]}>
               <span>{info.title}</span>
             </div>

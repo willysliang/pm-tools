@@ -7,7 +7,7 @@
  */
 
 import { FC, useState } from 'react';
-import Dialog, { DIALOG_POSITION_ENUM, IDialogProps } from '@comp/dialog';
+import Dialog, { DIALOG_POSITION_ENUM, IDialogProps } from '@/components/common/dialog';
 
 /** 示例组件 - 弹窗示例 */
 export const DialogDemo: FC = () => {

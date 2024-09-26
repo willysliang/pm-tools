@@ -7,7 +7,7 @@
  */
 
 import { FC } from 'react';
-import { DialogDemo } from '@comp/dialog/demo';
+import { DialogDemo } from '@/components/common/dialog/demo';
 import { DragSortDemo } from '@comp/common/drag-sort/demo';
 
 const Test: FC = () => {

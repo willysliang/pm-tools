@@ -63,6 +63,10 @@ Refs: #123
 
 # 记录
 
+## 2024年9月26日
+
+- perf(comp): [DialogPrompt] 优化提示弹窗组件的样式
+
 ## 2024年9月25日
 
 - feat(views): [working-hours] 添加工时模块
