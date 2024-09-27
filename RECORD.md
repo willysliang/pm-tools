@@ -69,6 +69,7 @@ Refs: #123
 - build: 更改页面 base 路径，及使用 hash 路由模式来适配 base 地址的变更
 - fix: 修复构建时校验错误问题
 - build: 更新 GitHub CI/CD 构建流程
+- feat(views): [large-screen] 添加大屏看板模块入口
 
 ## 2024年9月26日
 

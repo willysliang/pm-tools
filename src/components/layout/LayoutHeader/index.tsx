@@ -2,19 +2,23 @@
  * @ Author: willy
  * @ CreateTime: 2024-06-20 17:29:53
  * @ Modifier: willysliang
- * @ ModifierTime: 2024-09-18 10:38:51
+ * @ ModifierTime: 2024-09-27 15:14:20
  * @ Description: 头部
  */
 
-import { ReactElement, useState } from 'react';
+import { FC, ReactElement, useState } from 'react';
 import { IconPark } from '@/components/common/IconPark';
-import { useAppStore } from '@/store/app/index';
-import { useUserStore } from '@/store/user/index';
+import { useAppStore } from '@/store/app';
+import { useUserStore } from '@/store/user';
 import { AppUserMenu } from './app-user-menu';
-import { cutCNLetter } from '@/utils';
-import { CreateModal } from '@/hooks/index';
+import { DashboardMenu } from './dashboard-menu';
+import { CreateModal } from '@/hooks';
+import { createBEM, cutCNLetter } from '@/utils';
 
-export const LayoutHeader = (): ReactElement => {
+/** 页面大框 - 头部 */
+export const LayoutHeader: FC = (): ReactElement => {
+  const NAMESPACE = 'layout-header';
+
   const { activeMenu } = useAppStore();
   const { userInfo } = useUserStore();
 
@@ -25,8 +29,9 @@ export const LayoutHeader = (): ReactElement => {
   };
 
   return (
-    <div className='layout-header'>
-      <div className='layout-header__left'>
+    <div className={NAMESPACE}>
+      {/* 左侧 - 当前路由页面信息 */}
+      <div className={createBEM(`${NAMESPACE}-left`)}>
         <IconPark
           icon={activeMenu.icon}
           size={18}
@@ -34,11 +39,17 @@ export const LayoutHeader = (): ReactElement => {
           fill='#ffb77d'
           className='mr-2 animation__breath'
         />
-        <div className='layout-header__left--menu-name'>{activeMenu.label}</div>
+        <div className={createBEM(`${NAMESPACE}-left`, 'menu-name')}>{activeMenu.label}</div>
       </div>
-      <div className='layout-header__right'>
+
+      {/* 右侧 */}
+      <div className={createBEM(`${NAMESPACE}-right`)}>
+        {/* 大屏菜单 */}
+        <DashboardMenu />
+
+        {/* 头像 */}
         <div
-          className='layout-header__right--avatar'
+          className={createBEM(`${NAMESPACE}-right`, 'avatar')}
           onClick={(event) => {
             event.stopPropagation();
             handleToggleShowAppUserMenu(true);
@@ -52,6 +63,7 @@ export const LayoutHeader = (): ReactElement => {
         </div>
       </div>
 
+      {/* 用户菜单弹窗 */}
       <CreateModal show={showAppUserMenu}>
         <AppUserMenu onClose={() => handleToggleShowAppUserMenu(false)} />
       </CreateModal>
