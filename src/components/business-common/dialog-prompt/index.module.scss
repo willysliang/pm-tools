@@ -1,0 +1,81 @@
+@import '@/styles/funs';
+
+.dialog-prompt {
+  background-color: #fff;
+  background-image: url('@/assets/business/common/dialog-prompt-bg.svg');
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  box-sizing: border-box;
+  min-height: p2r(450);
+  padding: p2r(210) p2r(12) p2r(50);
+  position: relative;
+  user-select: none;
+  width: p2r(300);
+
+  &__close {
+    border-radius: 50%;
+    position: absolute;
+    right: p2r(10);
+    top: p2r(10);
+    @include btn;
+  }
+
+  &__title {
+    color: #fff;
+    font-size: var(#{getVarName('font-size', 'md')}, x-large);
+    font-weight: bold;
+    left: 50%;
+    letter-spacing: p2r(6);
+    position: absolute;
+    top: p2r(36);
+    transform: translateX(-50%);
+  }
+
+  &__tags {
+    align-items: center;
+    display: inline-flex;
+    left: 50%;
+    position: absolute;
+    top: p2r(74);
+    transform: translateX(-50%);
+
+    span {
+      background-color: #6698ff;
+      border-radius: p2r(16);
+      box-sizing: border-box;
+      color: #c7d9ff;
+      font-size: var(#{getVarName('font-size', 'sm')}, small);
+      margin: 0 p2r(4);
+      padding: p2r(2) p2r(10);
+    }
+  }
+
+  &__second-title {
+    color: #333;
+    font-size: var(#{getVarName('font-size', '')}, large);
+    margin-bottom: p2r(10);
+    @include text-ell;
+  }
+
+  &__desc {
+    color: #7f7f7f;
+    font-size: var(#{getVarName('font-size', 'sm')}, small);
+    margin-bottom: p2r(4);
+  }
+
+  &__more-btn {
+    background-color: #6698ff;
+    border-radius: p2r(4);
+    bottom: p2r(16);
+    color: #f8fbff;
+    font-size: var(#{getVarName('font-size', 'sm')}, small);
+    height: p2r(30);
+    left: 50%;
+    position: absolute;
+    transform: translateX(-50%);
+    width: 90%;
+    @include btn;
+    @extend %flex;
+  }
+}

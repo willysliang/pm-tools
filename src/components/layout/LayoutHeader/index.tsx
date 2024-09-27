@@ -1,42 +1,60 @@
 /**
  * @ Author: willy
  * @ CreateTime: 2024-06-20 17:29:53
- * @ Modifier: willy
- * @ ModifierTime: 2024-06-20 18:16:12
+ * @ Modifier: willysliang
+ * @ ModifierTime: 2024-09-18 10:38:51
  * @ Description: 头部
  */
 
-import { ReactElement } from 'react';
-import { MoreOne } from '@icon-park/react';
+import { ReactElement, useState } from 'react';
 import { IconPark } from '@/components/common/IconPark';
 import { useAppStore } from '@/store/app/index';
 import { useUserStore } from '@/store/user/index';
+import { AppUserMenu } from './app-user-menu';
+import { cutCNLetter } from '@/utils';
+import { CreateModal } from '@/hooks/index';
 
 export const LayoutHeader = (): ReactElement => {
   const { activeMenu } = useAppStore();
   const { userInfo } = useUserStore();
 
-  const handleShowMore = () => {
-    console.log('111');
+  /** 是否展示用户信息菜单栏 */
+  const [showAppUserMenu, setShowAppUserMenu] = useState<boolean>(false);
+  const handleToggleShowAppUserMenu = (status: boolean) => {
+    setShowAppUserMenu(status);
   };
 
   return (
     <div className='layout-header'>
       <div className='layout-header__left'>
+        <IconPark
+          icon={activeMenu.icon}
+          size={18}
+          theme='filled'
+          fill='#ffb77d'
+          className='mr-2 animation__breath'
+        />
         <div className='layout-header__left--menu-name'>{activeMenu.label}</div>
       </div>
       <div className='layout-header__right'>
-        <div className='layout-header__right--avatar' title={`用户: ${userInfo.username}`}>
-          <img src={userInfo?.avatar || ''} alt='用户头像' />
+        <div
+          className='layout-header__right--avatar'
+          onClick={(event) => {
+            event.stopPropagation();
+            handleToggleShowAppUserMenu(true);
+          }}
+        >
+          {userInfo?.avatar ? (
+            <img src={userInfo.avatar} alt='用户头像' />
+          ) : (
+            cutCNLetter(userInfo.username, 1, '')
+          )}
         </div>
-        <IconPark
-          icon={MoreOne}
-          size={24}
-          theme='filled'
-          className='layout-header__right--more'
-          onClick={() => handleShowMore()}
-        />
       </div>
+
+      <CreateModal show={showAppUserMenu}>
+        <AppUserMenu onClose={() => handleToggleShowAppUserMenu(false)} />
+      </CreateModal>
     </div>
   );
 };

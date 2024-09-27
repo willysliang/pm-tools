@@ -1,0 +1,27 @@
+@import '@/styles/funs';
+
+.dialog {
+  position: fixed;
+
+  &.dialog--full {
+    inset: 0;
+    z-index: var(#{getVarName('z-index', 'popup')});
+  }
+
+  &__mask {
+    background-color: var(#{getVarName('mask-color', 'extra-dark')}, rgb(0 0 0 / 30%));
+    height: 100%;
+    width: 100%;
+  }
+
+  &__container {
+    background-color: #fff;
+    border: 1px solid #eee;
+    border-radius: 0.25rem;
+    box-shadow: 0 0 16px #00000014;
+    box-sizing: border-box;
+    padding: 0.1rem 0.2rem;
+    position: fixed;
+    z-index: var(#{getVarName('z-index', 'popup')});
+  }
+}

@@ -1,15 +1,27 @@
 :root {
+  --theme-font-color: #333;
   --theme-normal-color: #b3b3b3;
   --theme-active-color: #02d3fa;
+  --theme-active-bg-color: #6698ff1a;
   --theme-normal-border-color: #e8e8e8;
   --theme-active-border-color: #e5e6e7;
-}
+  --theme-hover-bg-color: #f5f5f5;
 
-.layout {
+  /*
+    layout
+  */
+
+  /* 总体布局 */
   --layout-bg: #fcfcfc;
   --layout-color: rgb(51 65 85);
   --layout-menu-bg: #353a5a;
+  --layout-header-height: 3.5rem;
   --layout-header-color: #fff;
   --layout-main-bg: #f0f5f4;
-  --layout-main-content-bg: #fafcfd;
+  --layout-main-content-bg: #fff;
+
+  /* 布局内置的头像 */
+  --layout-avatar-bg-color: #73d897;
+  --layout-avatar-active-bg-color: var(--theme-active-color);
+  --layout-avatar-color: #fff;
 }

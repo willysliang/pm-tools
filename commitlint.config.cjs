@@ -13,9 +13,12 @@ module.exports = {
         'docs', // 文档（documentation）
         'style', // 格式（不影响代码运行的变动）
         'refactor', // 重构（即不是新增功能，也不是修改bug的代码变动）
-        'test', // 增加测试
+        'test', // 添加缺失的测试或者更改现有的测试
         'chore', // 构建过程或辅助工具的变动
         'revert', // feat(pencil): add ‘graphiteWidth’ option (撤销之前的commit)
+        'perf', // 改进性能的代码更改
+        'build', // 影响构建系统或外部依赖关系的更改，例如 vite，npm 配置的更改
+        'ci', // Ci 配置文件和脚本的更改，例如 Travis 配置的更改
       ],
     ],
   },

@@ -1,39 +1,72 @@
 /**
  * @ Author: willy
  * @ CreateTime: 2024-06-20 14:28:22
- * @ Modifier: willy
- * @ ModifierTime: 2024-06-20 17:19:50
+ * @ Modifier: willysliang
+ * @ ModifierTime: 2024-09-18 17:55:49
  * @ Description: App 的全局数据
  */
 
-import { MENU_CONFIG, type IMenuConfigItem } from '@/constants/app';
 import { create } from 'zustand';
+import { APP_ROUTE_CONFIGS, type IRouteConfig } from '@/router/routes/appRoutes';
 
 interface IAppStoreState {
-  menuList: IMenuConfigItem[];
-  activeMenu: IMenuConfigItem;
+  /**
+   * 菜单相关
+   */
+  /** 菜单列表 */
+  menuList: IRouteConfig[];
+  /** 活跃的菜单 */
+  activeMenu: IRouteConfig;
+  /** 设置菜单 */
+  setMenu: (menu: IRouteConfig) => void;
 
-  setMenu: (menu: IMenuConfigItem) => void;
-}
-
-/** 初始化 store 的数据 */
-const initAppStoreConfig = () => {
-  const initConfig = {
-    menuList: Object.values(MENU_CONFIG),
-    activeMenu: Object.values(MENU_CONFIG)[0],
+  /**
+   * 全局弹窗
+   */
+  /** 提示弹窗 */
+  dialogPromptConfig: {
+    show: boolean;
+    info?: {
+      /** 标题 */
+      title: string;
+      /** 标签 */
+      tags: Array<string>;
+      /** 二级弹窗 */
+      secondTitle: string;
+      /** 描述（对数组进行拼接，使用数组是因为每一行都有一个 margin-bottom 样式） */
+      descList: string[];
+    };
   };
-
-  document.title = initConfig.activeMenu.label;
-
-  return initConfig;
-};
+  /** 设置提示弹窗的配置信息 */
+  setDialogPrompt: (
+    show: IAppStoreState['dialogPromptConfig']['show'],
+    info?: IAppStoreState['dialogPromptConfig']['info'],
+  ) => void;
+}
 
 /** App 的全局数据 */
 export const useAppStore = create<IAppStoreState>((set) => ({
-  ...initAppStoreConfig(),
+  menuList: Object.values(APP_ROUTE_CONFIGS),
+  activeMenu: Object.values(APP_ROUTE_CONFIGS)[0],
 
-  setMenu: (menu: IMenuConfigItem) => {
-    document.title = menu.label;
+  setMenu: (menu: IRouteConfig) => {
+    // document.title = menu.label;
     set({ activeMenu: menu });
+  },
+
+  dialogPromptConfig: {
+    show: Math.random() > 0.9,
+    info: {
+      title: '新版本功能',
+      tags: ['v5.129.0', 'New'],
+      secondTitle: '新增需求跟踪矩阵',
+      descList: [
+        '主要更新内容：',
+        '1. 新增需求跟踪矩阵<br/>2. 关联空间组件升级<br/>3. 产品细节优化',
+      ],
+    },
+  },
+  setDialogPrompt: (show, info) => {
+    set({ dialogPromptConfig: { show, info } });
   },
 }));
