@@ -28,8 +28,7 @@
       "@comp/*": ["src/components/*"],
       "@pages/*": ["src/pages/*"],
       "@utils/*": ["src/utils"]
-    },
-    "types": ["**/*.d.ts", "types/*.d.ts"]
+    }
   },
   "include": ["**/*.js", "**/*.jsx", "**/*.ts", "**/*.tsx", "**/*.vue", "src/**/*.d.ts"],
   "exclude": ["node_modules"],

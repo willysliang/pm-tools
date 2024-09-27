@@ -3,8 +3,8 @@
 /**
  * @ Author: willy
  * @ CreateTime: 2024-03-04 20:35:48
- * @ Modifier: willy
- * @ ModifierTime: 2024-03-05 21:17:36
+ * @ Modifier: willysliang
+ * @ ModifierTime: 2024-09-27 10:57:39
  * @ Description: IndexedDB 数据库操作帮手
  */
 
@@ -123,7 +123,7 @@ export class IndexedDBHelper {
   }
 
   /** 去除 proxy（主要针对 vue3 中响应式数据内置的 proxy 对象） */
-  private removeProxy(data) {
+  private removeProxy(data: unknown) {
     return JSON.parse(JSON.stringify(data));
   }
 
