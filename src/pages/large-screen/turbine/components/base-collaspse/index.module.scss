@@ -1,0 +1,28 @@
+.base-collapse {
+  border: unset;
+  border-radius: 0;
+  min-width: 140px;
+  padding-left: 13px;
+  padding-right: 34px;
+  user-select: none;
+
+  &__header {
+    align-items: center;
+    background: linear-gradient(to right, #03101d, #0236);
+    border: unset;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    display: flex;
+    font-size: 14px;
+    justify-content: space-between;
+    line-height: 24px;
+    padding: 8px 6px;
+  }
+
+  &__content {
+    background-color: #0236;
+    cursor: default;
+    padding: 5px 10px;
+  }
+}

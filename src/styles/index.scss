@@ -16,3 +16,21 @@
 @include set-map-css-var($map: $disabled, $name: 'disabled');
 @include set-map-css-var($map: $overlay-color, $name: 'overlay-color');
 @include set-map-css-var($map: $mask-color, $name: 'mask-color');
+
+/** 设置特殊字体 */
+@font-face {
+  font-family: ding-talk-sans;
+  src: url('../assets/fonts/DingTalkJinBuTi.woff2');
+}
+
+.font-family-dingtalk {
+  font-family:
+    'ding-talk-sans' 'Helvetica Neue',
+    Helvetica,
+    'PingFang SC',
+    'Hiragino Sans GB',
+    'Microsoft YaHei',
+    '微软雅黑',
+    Arial,
+    sans-serif;
+}

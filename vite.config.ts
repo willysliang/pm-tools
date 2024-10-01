@@ -7,6 +7,7 @@ import tailwindcss from 'tailwindcss';
 // https://vitejs.dev/config/
 export default defineConfig({
   base: '/pm-tools/',
+  publicDir: './public',
   plugins: [react()],
   resolve: {
     alias: {

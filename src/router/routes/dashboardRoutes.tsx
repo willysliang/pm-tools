@@ -2,7 +2,7 @@
  * @ Author: willysliang
  * @ CreateTime: 2024-09-27 11:32:11
  * @ Modifier: willysliang
- * @ ModifierTime: 2024-09-27 15:44:25
+ * @ ModifierTime: 2024-09-30 16:09:17
  * @ Description: dashboardRoutes - 大屏看板路由
  */
 
@@ -17,7 +17,7 @@ export enum DashboardLevelType {
 }
 
 const LargeScreen = lazy(() => import('@/pages/large-screen/index'));
-const DashboardWindmill = lazy(() => import('@/pages/large-screen/windmill'));
+const DashboardTurbine = lazy(() => import('@/pages/large-screen/turbine'));
 
 /** 大屏看板路由根 path */
 export const DASHBOARD_ROUTE_BASE: IRouteConfig = {
@@ -35,8 +35,8 @@ export const DASHBOARD_ROUTE_CONFIGS: IRouteConfigMap<DashboardLevelType> = {
     label: '风力发电机',
     path: `${DASHBOARD_ROUTE_BASE.path}/${DashboardLevelType.DASHBOARD_WINDMILL}`,
     icon: Windmill,
-    key: 'dashboard_windmill',
-    element: <DashboardWindmill />,
+    key: 'dashboard_turbine',
+    element: <DashboardTurbine />,
     meta: {},
     children: [],
   },

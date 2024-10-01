@@ -63,6 +63,10 @@ Refs: #123
 
 # 记录
 
+## 2024年10月1日
+
+- feat(views): [large-screen/turbine] 漩涡-大风车模块3D
+
 ## 2024年9月27日
 
 - chore: 更新icon及格式化忽略事项

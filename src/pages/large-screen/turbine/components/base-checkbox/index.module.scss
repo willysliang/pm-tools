@@ -1,0 +1,30 @@
+.base-checkbox {
+  align-items: center;
+  color: #fff;
+  display: flex;
+  height: 30px;
+  user-select: none;
+
+  &__trigger {
+    border: 1px solid #0bfbff;
+    box-sizing: border-box;
+    cursor: pointer;
+    height: 15px;
+    padding: 2px;
+    width: 15px;
+
+    &--inner {
+      background-color: transparent;
+      height: 100%;
+      width: 100%;
+    }
+
+    &--inner-active {
+      background-color: #0bfbff;
+    }
+  }
+
+  &__label {
+    margin-left: 5px;
+  }
+}
