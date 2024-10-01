@@ -1,0 +1,51 @@
+.base-table {
+  height: 100%;
+  overflow: hidden;
+  width: 100%;
+
+  &-header {
+    background: rgb(96 182 255 / 15%);
+    display: flex;
+    margin: 0;
+    padding: 0;
+
+    li {
+      background-color: rgb(11 101 140 / 45.1%);
+      box-sizing: border-box;
+      color: #fff;
+      font-size: 14px;
+      height: 40px;
+      line-height: 40px;
+      list-style: none;
+      padding: 0 10px;
+    }
+  }
+
+  &-body {
+    height: calc(100% - 40px);
+    margin: 0;
+    overflow: auto;
+    padding: 0;
+    @include notScrollbar;
+
+    &__row {
+      display: flex;
+      margin: 0;
+      padding: 0;
+
+      &:nth-child(even) {
+        background-color: #0b658c26;
+      }
+
+      &-column {
+        box-sizing: border-box;
+        color: #fff;
+        font-size: 14px;
+        height: 40px;
+        line-height: 40px;
+        list-style: none;
+        padding: 0 10px;
+      }
+    }
+  }
+}

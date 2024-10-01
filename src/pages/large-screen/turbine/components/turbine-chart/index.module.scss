@@ -8,27 +8,27 @@
   transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
   z-index: 999;
 
-  &.turbine-chart-left {
-    left: 10px;
-  }
-
   &.turbine-chart-right {
     right: 10px;
   }
+}
 
-  .map-panels {
+.turbine-chart-left {
+  left: 10px;
+
+  &__map-panels {
     display: grid;
     grid-gap: 10px;
     grid-template-rows: repeat(3, 1fr);
     height: 100%;
     overflow: hidden;
   }
-}
 
-.map-controls {
-  display: flex;
-  flex-direction: column;
-  grid-gap: 10px;
+  &__map-controls {
+    display: flex;
+    flex-direction: column;
+    grid-gap: 10px;
+  }
 }
 
 .loading {

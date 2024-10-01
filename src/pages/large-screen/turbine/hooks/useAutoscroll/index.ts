@@ -2,7 +2,7 @@
  * @ Author: willysliang
  * @ CreateTime: 2024-09-30 17:10:04
  * @ Modifier: willysliang
- * @ ModifierTime: 2024-09-30 22:04:26
+ * @ ModifierTime: 2024-10-01 11:45:29
  * @ Description: 自动滚动
  */
 
@@ -43,9 +43,11 @@ export class AutoScroll {
   }
 }
 
-export const useAutoscroll = (el: HTMLElement, value: number) => {
+/** 自动滚动 */
+export const useAutoscroll = (value: number) => {
   const step = 1000 / value;
-  const elementRef = useRef(el);
+
+  const elementRef = useRef<HTMLElement>();
 
   useEffect(() => {
     const element = elementRef.current;
@@ -66,5 +68,9 @@ export const useAutoscroll = (el: HTMLElement, value: number) => {
       element.removeEventListener('mouseleave', mouseleave);
       clearScroll();
     };
-  }, [el, value]);
+  }, [elementRef, value]);
+
+  return {
+    elementRef,
+  };
 };

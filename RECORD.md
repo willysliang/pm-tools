@@ -66,6 +66,7 @@ Refs: #123
 ## 2024年10月1日
 
 - feat(views): [large-screen/turbine] 漩涡-大风车模块3D
+- feat(views): [large-screen/turbine] 添加活动检测表格
 
 ## 2024年9月27日
 

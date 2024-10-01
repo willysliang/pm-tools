@@ -1,0 +1,40 @@
+$beam-color: #99fffe;
+$dashborad-panel-bg: rgb(0 34 51 / 50%);
+
+.widget-panel {
+  backdrop-filter: blur(1px);
+  background:
+    linear-gradient($beam-color, $beam-color) left -3px top 0,
+    linear-gradient($beam-color, $beam-color) left -3px top -3px,
+    linear-gradient($beam-color, $beam-color) right -3px top 0,
+    linear-gradient($beam-color, $beam-color) right -3px top -3px,
+    linear-gradient($beam-color, $beam-color) left -3px bottom 0,
+    linear-gradient($beam-color, $beam-color) left -3px bottom -3px,
+    linear-gradient($beam-color, $beam-color) right -3px bottom 0,
+    linear-gradient($beam-color, $beam-color) right -3px bottom -3px;
+  background-color: $dashborad-panel-bg;
+  background-repeat: no-repeat;
+  background-size:
+    3px 16px,
+    16px 3px;
+  border: 1px solid transparent;
+  box-sizing: border-box;
+  height: 100%;
+  overflow: auto;
+  padding: 10px 15px;
+  position: relative;
+  width: 370px;
+
+  &__title {
+    color: #fff;
+    font-size: 18px;
+    font-weight: bold;
+    height: 30px;
+    margin-bottom: 5px;
+  }
+
+  &__main {
+    height: calc(100% - 35px);
+    overflow: auto;
+  }
+}
