@@ -2,14 +2,15 @@
  * @ Author: willysliang
  * @ CreateTime: 2024-10-01 11:19:31
  * @ Modifier: willysliang
- * @ ModifierTime: 2024-10-01 11:37:33
+ * @ ModifierTime: 2024-10-08 10:17:13
  * @ Description: 活动检测
  */
 
+import { FC, memo } from 'react';
 import { WidgetPanel } from '../widget-panel';
 import { BaseTable } from '../base-table';
 
-export const MonitorActive = () => {
+export const MonitorActive: FC = memo(() => {
   const columns = [
     {
       title: '部件名称',
@@ -95,4 +96,6 @@ export const MonitorActive = () => {
       <BaseTable columns={columns} data={dataSource} />
     </WidgetPanel>
   );
-};
+});
+
+export default MonitorActive;

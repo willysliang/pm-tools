@@ -7,10 +7,6 @@
   top: 70px;
   transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
   z-index: 999;
-
-  &.turbine-chart-right {
-    right: 10px;
-  }
 }
 
 .turbine-chart-left {
@@ -28,6 +24,18 @@
     display: flex;
     flex-direction: column;
     grid-gap: 10px;
+  }
+}
+
+.turbine-chart-right {
+  right: 10px;
+
+  &__map-panels {
+    display: grid;
+    grid-gap: 10px;
+    grid-template-rows: repeat(3, 1fr);
+    height: 100%;
+    overflow: hidden;
   }
 }
 

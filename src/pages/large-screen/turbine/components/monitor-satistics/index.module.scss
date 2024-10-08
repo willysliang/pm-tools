@@ -1,0 +1,56 @@
+.monitor-satistics-rain {
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+  padding: 0;
+  width: 100%;
+
+  &-item {
+    align-items: center;
+    background: linear-gradient(40deg, rgb(11 101 140 / 45.1%), rgb(0 34 48 / 33.5%));
+    box-sizing: border-box;
+    color: #fff;
+    display: flex;
+    font-size: 14px;
+    list-style: none;
+    padding: 0 8px;
+    position: relative;
+
+    &__label {
+      flex: 1;
+    }
+
+    &__value {
+      font-size: 16px;
+      font-weight: bold;
+    }
+
+    &__value--normal {
+      color: #fff;
+    }
+
+    &__unit {
+      margin-left: 4px;
+    }
+
+    &__unit--normal {
+      color: #aebfe9;
+    }
+
+    &__icon {
+      height: 40px;
+      left: 10px;
+      position: absolute;
+      top: 4px;
+      width: 40px;
+    }
+  }
+
+  &-item--warning {
+    color: #fac73e;
+  }
+}

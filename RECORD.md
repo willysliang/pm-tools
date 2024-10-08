@@ -63,6 +63,10 @@ Refs: #123
 
 # 记录
 
+## 2024年10月8日
+
+- feat(views): [large-screen/turbine] 大屏看板-大风车模块小面板图表
+
 ## 2024年10月1日
 
 - feat(views): [large-screen/turbine] 漩涡-大风车模块3D
