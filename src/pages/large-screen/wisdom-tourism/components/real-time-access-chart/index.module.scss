@@ -1,0 +1,29 @@
+.actual-total {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  user-select: none;
+  width: 100%;
+
+  &__item {
+    background-image: url('@/assets/large-screen/wisdom-tourism/total-bg.png');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    color: #6ff;
+    font-size: 32px;
+    height: 50px;
+    margin-right: 1px;
+    width: 52px;
+    @extend %flex;
+
+    &:last-child {
+      font-size: 22px;
+      margin-right: 0;
+    }
+  }
+}
+
+.actual-echarts {
+  flex: 1;
+  width: 100%;
+}

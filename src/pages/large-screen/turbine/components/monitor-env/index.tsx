@@ -2,7 +2,7 @@
  * @ Author: willysliang
  * @ CreateTime: 2024-10-08 09:27:46
  * @ Modifier: willysliang
- * @ ModifierTime: 2024-10-08 10:16:32
+ * @ ModifierTime: 2024-10-09 15:03:29
  * @ Description: 环境监测
  */
 
@@ -13,7 +13,7 @@ import highcharts3d from 'highcharts/highcharts-3d';
 
 /** 环境监测 */
 export const MonitorEnv: FC = memo(() => {
-  const containerRef = useRef<HTMLElement>();
+  const containerRef = useRef<HTMLDivElement>(null);
   const options: highcharts.Options = {
     credits: { enabled: false },
     chart: {

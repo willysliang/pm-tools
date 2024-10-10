@@ -2,7 +2,7 @@
  * @ Author: willysliang
  * @ CreateTime: 2024-10-08 09:46:50
  * @ Modifier: willysliang
- * @ ModifierTime: 2024-10-08 10:18:27
+ * @ ModifierTime: 2024-10-09 15:03:17
  * @ Description: 发电监测
  */
 
@@ -90,7 +90,7 @@ export const MonitorEnergy: FC = memo(() => {
    * 渲染图表
    */
   highcharts3d(highcharts);
-  const containerRef = useRef<HTMLElement>();
+  const containerRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
     highcharts.chart(containerRef.current, options);
   }, []);

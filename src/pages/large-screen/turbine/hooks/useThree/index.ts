@@ -2,7 +2,7 @@
  * @ Author: willysliang
  * @ CreateTime: 2024-09-28 12:54:52
  * @ Modifier: willysliang
- * @ ModifierTime: 2024-09-30 09:52:19
+ * @ ModifierTime: 2024-10-09 15:01:25
  * @ Description: three.js 的封装
  */
 
@@ -18,7 +18,7 @@ import { useLoading } from '../common/useLoading';
 
 /** three.js 的封装 */
 export function useThree() {
-  const container = useRef<HTMLElement>();
+  const container = useRef<HTMLDivElement>(null);
   const { loading, openLoading, closeLoading } = useLoading(true, 500);
   const scene = useRef<THREE.Scene>();
   const camera = useRef<THREE.Camera>();
@@ -31,7 +31,7 @@ export function useThree() {
   const renderMixins = new Map();
 
   useEffect(() => {
-    const el = container.current as HTMLElement;
+    const el = container.current as HTMLDivElement;
 
     scene.current = ThreeBase.initScene();
     camera.current = ThreeBase.initCamera(el);

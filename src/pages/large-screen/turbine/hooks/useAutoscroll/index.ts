@@ -2,7 +2,7 @@
  * @ Author: willysliang
  * @ CreateTime: 2024-09-30 17:10:04
  * @ Modifier: willysliang
- * @ ModifierTime: 2024-10-01 11:45:29
+ * @ ModifierTime: 2024-10-09 15:02:21
  * @ Description: 自动滚动
  */
 
@@ -47,7 +47,7 @@ export class AutoScroll {
 export const useAutoscroll = (value: number) => {
   const step = 1000 / value;
 
-  const elementRef = useRef<HTMLElement>();
+  const elementRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const element = elementRef.current;

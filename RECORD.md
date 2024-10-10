@@ -51,6 +51,11 @@ Refs: #123
 
 # 问题
 
+## 2024年10月8日
+
+问题：在大屏看板-大风车模块中，点击小面板的图表时，如果在左右两边的面板中渲染（即是显示3~4个小面板）时，左右两边都会触发一个重新渲染
+解决方案：使用组件缓存？
+
 ## 2024年6月22日
 
 问题：在弹窗组件里使用 useEffect 设置 document.addEventListener 的 click 事件初始化会被出发
@@ -62,6 +67,12 @@ Refs: #123
   2/ 在父组件的按钮点击事件中使用 event.stopProgation() 来阻止冒泡事件的触发
 
 # 记录
+
+## 2024年10月9日-2024年10月10日
+
+- feat(layout): [layout-header] 添加全屏功能、优化样式布局
+- perf(views): [large-screen/turbine] 优化大屏看板-大风车模块的ref声明
+- feat(views): [large-screen/wisdom-tourism] 添加大屏看板-智慧旅游模块
 
 ## 2024年10月8日
 

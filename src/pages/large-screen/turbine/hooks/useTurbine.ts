@@ -2,7 +2,7 @@
  * @ Author: willysliang
  * @ CreateTime: 2024-09-27 20:19:12
  * @ Modifier: willysliang
- * @ ModifierTime: 2024-10-01 09:29:03
+ * @ ModifierTime: 2024-10-09 15:01:11
  * @ Description: 涡轮机
  */
 
@@ -208,7 +208,7 @@ export const useTurbine = () => {
   let equipmentList: THREE.Mesh[] = [];
 
   const handler = (event: MouseEvent) => {
-    const el = container.current as HTMLElement;
+    const el = container.current as HTMLDivElement;
     const mouse = new THREE.Vector2(
       (event.clientX / el.offsetWidth) * 2 - 1,
       -(event.clientY / el.offsetHeight) * 2 + 1,
