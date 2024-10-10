@@ -2,7 +2,7 @@
  * @ Author: willysliang
  * @ CreateTime: 2024-09-27 15:11:32
  * @ Modifier: willysliang
- * @ ModifierTime: 2024-09-27 15:16:08
+ * @ ModifierTime: 2024-10-09 22:13:38
  * @ Description: 大屏的路由菜单入口
  */
 
@@ -17,9 +17,14 @@ import { DASHBOARD_ROUTE_CONFIGS } from '@/router/routes/dashboardRoutes';
 export const DashboardMenu: FC = memo(() => {
   /** 菜单列表 */
   const items: MenuProps['items'] = Object.values(DASHBOARD_ROUTE_CONFIGS).map(
-    ({ path, label }) => ({
+    ({ path, label, icon }) => ({
       key: path,
-      label: <span>{label}</span>,
+      label: (
+        <div className='inline-flex items-center cursor-pointer text-[#334155] hover:text-[#6e97e8]'>
+          <IconPark icon={icon} size={22} className='inline-block mr-2' />
+          {label}
+        </div>
+      ),
     }),
   );
 
@@ -36,7 +41,8 @@ export const DashboardMenu: FC = memo(() => {
       <IconPark
         icon={DataSheet}
         size={22}
-        className='mr-2 cursor-pointer text-[#999999] hover:text-[#8bb1ff]'
+        className='mr-4 cursor-pointer text-[#334155] hover:text-[#6e97e8]'
+        title='大屏菜单'
       />
     </Dropdown>
   );

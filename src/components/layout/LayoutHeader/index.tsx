@@ -2,11 +2,12 @@
  * @ Author: willy
  * @ CreateTime: 2024-06-20 17:29:53
  * @ Modifier: willysliang
- * @ ModifierTime: 2024-09-27 15:14:20
+ * @ ModifierTime: 2024-10-09 22:14:14
  * @ Description: 头部
  */
 
-import { FC, ReactElement, useState } from 'react';
+import { FC, memo, ReactElement, useState } from 'react';
+import { FullScreenOne, OffScreenOne } from '@icon-park/react';
 import { IconPark } from '@/components/common/IconPark';
 import { useAppStore } from '@/store/app';
 import { useUserStore } from '@/store/user';
@@ -14,9 +15,10 @@ import { AppUserMenu } from './app-user-menu';
 import { DashboardMenu } from './dashboard-menu';
 import { CreateModal } from '@/hooks';
 import { createBEM, cutCNLetter } from '@/utils';
+import { useFullScreen } from '../hooks/useFullScreen';
 
 /** 页面大框 - 头部 */
-export const LayoutHeader: FC = (): ReactElement => {
+export const LayoutHeader: FC = memo((): ReactElement => {
   const NAMESPACE = 'layout-header';
 
   const { activeMenu } = useAppStore();
@@ -27,6 +29,9 @@ export const LayoutHeader: FC = (): ReactElement => {
   const handleToggleShowAppUserMenu = (status: boolean) => {
     setShowAppUserMenu(status);
   };
+
+  /** 全屏功能 */
+  const { isFullScreen, toggleFullScreen } = useFullScreen();
 
   return (
     <div className={NAMESPACE}>
@@ -47,9 +52,19 @@ export const LayoutHeader: FC = (): ReactElement => {
         {/* 大屏菜单 */}
         <DashboardMenu />
 
+        <IconPark
+          icon={isFullScreen ? OffScreenOne : FullScreenOne}
+          size={18}
+          theme='filled'
+          className='mr-4 cursor-pointer text-[#334155] hover:text-[#6e97e8]'
+          onClick={() => toggleFullScreen()}
+          title={isFullScreen ? '退出全屏' : '全屏'}
+        />
+
         {/* 头像 */}
         <div
           className={createBEM(`${NAMESPACE}-right`, 'avatar')}
+          title={userInfo?.username || '未登录'}
           onClick={(event) => {
             event.stopPropagation();
             handleToggleShowAppUserMenu(true);
@@ -69,4 +84,4 @@ export const LayoutHeader: FC = (): ReactElement => {
       </CreateModal>
     </div>
   );
-};
+});
