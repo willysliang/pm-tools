@@ -71,6 +71,7 @@ Refs: #123
 ## 2024年10月14日
 
 - feat(views): [large-screen/wisdom-tourism] 大屏看板/智慧旅游模块 - 添加图表显示
+- fix(build): 修复 CI/CD 构建失败错误问题
 
 ## 2024年10月9日-2024年10月10日
 

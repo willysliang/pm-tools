@@ -27,7 +27,13 @@
       "@utils/*": ["src/utils"]
     }
   },
-  "include": ["**/*.js", "**/*.jsx", "**/*.ts", "**/*.tsx", "./src/**/*.ts"],
+  "include": [
+    "./src/**/*.js",
+    "./src/**/*.jsx",
+    "./types/**/*.ts",
+    "./src/**/*.tsx",
+    "./src/**/*.ts"
+  ],
   "exclude": ["node_modules", "dist"],
   "types": ["vite/client", "./types/*.d.ts", "**/*.d.ts"],
   "references": [
