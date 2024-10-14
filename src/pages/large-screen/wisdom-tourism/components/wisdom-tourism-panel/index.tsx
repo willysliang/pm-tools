@@ -2,7 +2,7 @@
  * @ Author: willysliang
  * @ CreateTime: 2024-10-10 10:36:00
  * @ Modifier: willysliang
- * @ ModifierTime: 2024-10-14 11:08:20
+ * @ ModifierTime: 2024-10-14 14:09:43
  * @ Description: wisdom-tourism-panel - 小面板
  */
 import { FC, HTMLAttributes, memo, useEffect, useRef, useState } from 'react';
@@ -60,6 +60,8 @@ export const WisdomTourismPanel: FC<IWisdomTourismPanelProps> = memo(
         {...extraProps}
         style={{
           ...(extraProps.style || {}),
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          // @ts-expect-error
           '--wisdom-tourism-panel-clip-path': clipPath,
         }}
       >
