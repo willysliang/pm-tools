@@ -2,7 +2,7 @@
  * @ Author: willy
  * @ CreateTime: 2024-06-21 17:39:57
  * @ Modifier: willysliang
- * @ ModifierTime: 2024-06-28 23:32:52
+ * @ ModifierTime: 2024-10-14 14:12:34
  * @ Description: 通用函数 hooks
  */
 
@@ -38,5 +38,5 @@ export const CreateModal: FC<ICreateModal> = ({
 }) => {
   if (!show) return <></>;
 
-  return createPortal(children, to);
+  return createPortal(children, to as Element);
 };

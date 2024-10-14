@@ -72,6 +72,8 @@ Refs: #123
 
 - feat(views): [large-screen/wisdom-tourism] 大屏看板/智慧旅游模块 - 添加图表显示
 - fix(build): 修复 CI/CD 构建失败错误问题
+- chore(ci/cd): 更改ci/cd运行的分支
+- fix(eslint): 修复 ci/cd 构建时触发 eslint 校验错误问题
 
 ## 2024年10月9日-2024年10月10日
 
