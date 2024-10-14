@@ -68,6 +68,10 @@ Refs: #123
 
 # 记录
 
+## 2024年10月14日
+
+- feat(views): [large-screen/wisdom-tourism] 大屏看板/智慧旅游模块 - 添加图表显示
+
 ## 2024年10月9日-2024年10月10日
 
 - feat(layout): [layout-header] 添加全屏功能、优化样式布局

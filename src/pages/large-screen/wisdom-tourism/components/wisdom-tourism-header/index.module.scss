@@ -1,0 +1,90 @@
+.wisdom-tourism-header {
+  align-items: flex-start;
+  display: flex;
+  height: p2r(100);
+  left: 0;
+  position: absolute;
+  width: 100%;
+
+  &__left,
+  &__right {
+    background-image: url('@/assets/large-screen/wisdom-tourism/header-left-bg.png');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    height: 38px;
+    position: relative;
+    width: 564px;
+
+    &-btn {
+      background: url('@/assets/large-screen/wisdom-tourism/header-btn-bg-l.png') no-repeat;
+      background-size: 100% 100%;
+      box-sizing: border-box;
+      color: #29fcff;
+      font-size: 18px;
+      font-weight: 400;
+      height: 42px;
+      line-height: 42px;
+      position: absolute;
+      text-align: center;
+      top: 0;
+      width: 136px;
+      z-index: 9;
+    }
+  }
+
+  &__left {
+    &-btn {
+      background: url('@/assets/large-screen/wisdom-tourism/header-btn-bg-l.png') no-repeat;
+      right: 0;
+    }
+  }
+
+  &__right {
+    align-items: flex-start;
+    box-sizing: border-box;
+    color: #05e8fe;
+    display: flex;
+    font-size: 17px;
+    font-weight: 400;
+    justify-content: flex-end;
+    line-height: 38px;
+    padding-right: 20px;
+
+    &-btn {
+      background: url('@/assets/large-screen/wisdom-tourism/header-btn-bg-r.png') no-repeat;
+      left: 0;
+    }
+  }
+
+  &__center {
+    background-image: url('@/assets/large-screen/wisdom-tourism/header-center-bg.png');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    box-sizing: border-box;
+    color: #05e8fe;
+    flex: 1;
+    font-size: 32px;
+    height: 82px;
+    letter-spacing: 4px;
+    padding-bottom: 10px;
+    position: relative;
+    width: 100%;
+    @extend %flex;
+
+    &-warning {
+      background: url('@/assets/large-screen/wisdom-tourism/header-warn-bg.png') no-repeat;
+      background-size: 100% 100%;
+      bottom: -42px;
+      color: #fff;
+      font-size: 14px;
+      height: 44px;
+      left: 50%;
+      letter-spacing: 1px;
+      line-height: 44px;
+      position: absolute;
+      text-align: center;
+      transform: translateX(-50%);
+      width: 622px;
+    }
+  }
+}
