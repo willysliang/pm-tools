@@ -2,7 +2,7 @@
  * @ Author: willysliang
  * @ CreateTime: 2024-10-09 16:22:25
  * @ Modifier: willysliang
- * @ ModifierTime: 2024-10-10 23:48:16
+ * @ ModifierTime: 2024-10-14 18:10:24
  * @ Description: 智慧旅游 - 头部
  */
 
@@ -57,7 +57,7 @@ const WisdomTourismHeader: FC = memo(() => {
         >
           统计报告
         </div>
-        <div className=''>当前时间: {today}</div>
+        <div className='font-family-dingtalk'>当前时间: {today}</div>
       </div>
     </div>
   );

@@ -36,6 +36,8 @@
     &-btn {
       background: url('@/assets/large-screen/wisdom-tourism/header-btn-bg-l.png') no-repeat;
       right: 0;
+      user-select: none;
+      @include btn;
     }
   }
 
@@ -53,6 +55,8 @@
     &-btn {
       background: url('@/assets/large-screen/wisdom-tourism/header-btn-bg-r.png') no-repeat;
       left: 0;
+      user-select: none;
+      @include btn;
     }
   }
 
