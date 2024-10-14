@@ -1,3 +1,10 @@
+.real-time-access-chart {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
+
 .actual-total {
   align-items: center;
   display: flex;
@@ -25,5 +32,6 @@
 
 .actual-echarts {
   flex: 1;
+  margin-top: 10px;
   width: 100%;
 }

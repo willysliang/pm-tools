@@ -1,0 +1,36 @@
+.hot-plate-chart {
+  height: 100%;
+  width: 100%;
+
+  &-header {
+    background: url('@assets/large-screen/wisdom-tourism/rankingChart-bg.png') no-repeat;
+    background-size: 100% 100%;
+    box-sizing: border-box;
+    display: flex;
+    height: 36px;
+    line-height: 36px;
+
+    span {
+      color: #fdbc52;
+      font-size: 14px;
+      font-weight: bold;
+      margin-left: 4px;
+      text-align: center;
+      width: 18%;
+
+      &:nth-child(2) {
+        margin-left: 4px;
+      }
+
+      &:last-child {
+        margin-left: 60px;
+        width: 20%;
+      }
+    }
+  }
+
+  &-body {
+    height: calc(100% - 56px);
+    width: 100%;
+  }
+}

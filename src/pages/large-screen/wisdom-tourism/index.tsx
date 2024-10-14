@@ -2,7 +2,7 @@
  * @ Author: willysliang
  * @ CreateTime: 2024-10-09 10:53:10
  * @ Modifier: willysliang
- * @ ModifierTime: 2024-10-10 16:33:52
+ * @ ModifierTime: 2024-10-12 21:27:22
  * @ Description: wisdom-tourism - 智慧旅游
  */
 
@@ -20,13 +20,12 @@ const WisdomTourism: FC<{ scale: string | number }> = memo(({ scale = `1 1` }) =
   const NAMESPACE = 'wisdom-tourism';
 
   return (
-    <div className={s[createBEM(NAMESPACE)]} style={{ transform: `scale(${scale})` }}>
+    <div
+      className={s[createBEM(NAMESPACE)]}
+      style={{ transform: `translateX(-50%) scale(${scale})` }}
+    >
       <WisdomTourismHeader />
-      <div className={s[createBEM(`${NAMESPACE}-main`)]}>
-        <div className={s[createBEM(`${NAMESPACE}-main`, 'left')]}>
-          <WisdomTourismMain />
-        </div>
-      </div>
+      <WisdomTourismMain />
     </div>
   );
 });
@@ -63,8 +62,8 @@ const WisdomTourismExpose: FC = memo(() => {
   }, []);
 
   return (
-    <div className='w-full h-full bg-[#00063c]' ref={containerRef}>
-      <WisdomTourism scale={scale[0]} />
+    <div className='w-full h-full relative bg-[#00063c]' ref={containerRef}>
+      <WisdomTourism scale={Math.min(...scale)} />
     </div>
   );
 });

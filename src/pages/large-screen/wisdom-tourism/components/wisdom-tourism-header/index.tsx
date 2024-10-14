@@ -2,14 +2,14 @@
  * @ Author: willysliang
  * @ CreateTime: 2024-10-09 16:22:25
  * @ Modifier: willysliang
- * @ ModifierTime: 2024-10-09 17:29:23
+ * @ ModifierTime: 2024-10-10 23:48:16
  * @ Description: 智慧旅游 - 头部
  */
 
 import { FC, memo, useEffect, useState } from 'react';
 import { createBEM, formatDate } from '@/utils';
 import cx from 'classnames';
-import s from '../../index.module.scss';
+import s from './index.module.scss';
 
 /**
  * @description 智慧旅游 - 头部
