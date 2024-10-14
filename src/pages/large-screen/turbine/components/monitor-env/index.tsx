@@ -2,7 +2,7 @@
  * @ Author: willysliang
  * @ CreateTime: 2024-10-08 09:27:46
  * @ Modifier: willysliang
- * @ ModifierTime: 2024-10-09 15:03:29
+ * @ ModifierTime: 2024-10-14 14:27:03
  * @ Description: 环境监测
  */
 
@@ -34,6 +34,8 @@ export const MonitorEnv: FC = memo(() => {
         fontFamily: 'ding-talk-sans',
       },
     },
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-expect-error
     title: false,
     plotOptions: {
       pie: {
@@ -57,7 +59,7 @@ export const MonitorEnv: FC = memo(() => {
           ['保养维护', 3],
         ],
       },
-    ],
+    ] as any,
   };
 
   /**
@@ -65,6 +67,8 @@ export const MonitorEnv: FC = memo(() => {
    */
   highcharts3d(highcharts);
   useEffect(() => {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-expect-error
     highcharts.chart(containerRef.current, options);
   }, []);
 

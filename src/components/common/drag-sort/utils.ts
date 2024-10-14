@@ -2,7 +2,7 @@
  * @ Author: willysliang
  * @ CreateTime: 2024-09-20 09:18:04
  * @ Modifier: willysliang
- * @ ModifierTime: 2024-09-20 09:24:40
+ * @ ModifierTime: 2024-10-14 14:12:03
  * @ Description: 拖拽组件使用的工具方法
  */
 
@@ -14,7 +14,7 @@
 export const findParent = (node: Element, target: (nowNode: Element) => boolean) => {
   while (node && !target(node)) {
     if (node.parentElement) {
-      node = node.parentElement;
+      node = node.parentElement as Element;
     } else {
       return null;
     }

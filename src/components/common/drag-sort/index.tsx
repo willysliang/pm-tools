@@ -2,7 +2,7 @@
  * @ Author: willysliang
  * @ CreateTime: 2024-09-18 14:49:59
  * @ Modifier: willysliang
- * @ ModifierTime: 2024-09-20 09:31:10
+ * @ ModifierTime: 2024-10-14 14:11:31
  * @ Description: 拖拽组件
  */
 
@@ -76,7 +76,7 @@ export function DragSort<T>({
     }, 0);
 
     // 记录元素的位置，用于Flip动画
-    createNewFlipList(target);
+    createNewFlipList(target as Element);
 
     // 记录当前拖拽的元素
     nowDragItem.current = target;
@@ -106,7 +106,7 @@ export function DragSort<T>({
 
     // 拿到两个元素的索引，用来判断这俩元素应该怎么移动
     /** 被拖拽元素在孩子数组中的索引（当是光标聚焦子文本并进行拖拽时会为-1） */
-    const nowDragtItemIndex = children.indexOf(nowDragItem.current);
+    const nowDragtItemIndex = children.indexOf(nowDragItem.current as Element);
     /** 被进入元素在孩子数组中的索引 */
     const enterItemIndex = children.indexOf(realTarget);
 
