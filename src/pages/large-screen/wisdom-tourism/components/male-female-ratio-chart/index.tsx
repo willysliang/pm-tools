@@ -2,16 +2,16 @@
  * @ Author: willysliang
  * @ CreateTime: 2024-10-12 17:52:08
  * @ Modifier: willysliang
- * @ ModifierTime: 2024-10-15 09:04:43
+ * @ ModifierTime: 2024-10-15 09:34:51
  * @ Description: MaleFemaleRatioChart - 男女比例
  */
 
-import { FC, memo, useEffect, useMemo, useRef } from 'react';
+import { FC, memo, useMemo } from 'react';
 import WisdomTourismPanel from '../wisdom-tourism-panel';
 import iconMan from '@/assets/large-screen/wisdom-tourism/icon-man.png';
 import iconWoman from '@/assets/large-screen/wisdom-tourism/icon-woman.png';
-import { init } from 'echarts';
-import type { ECharts, EChartsOption } from 'echarts';
+import type { EChartsOption } from 'echarts';
+import { useInitEchart } from '../../hooks/useInitEchart';
 import { createBEM } from '@/utils';
 import s from './index.module.scss';
 
@@ -26,6 +26,9 @@ interface IMaleFemaleRatioChartProps {
 export const MaleFemaleRatioChart: FC<IMaleFemaleRatioChartProps> = memo(({ man, woman }) => {
   const NAMESPACE = 'male-female-ratio-chart';
 
+  /**
+   * echart 图表配置
+   */
   const option = useMemo<EChartsOption>(
     () => ({
       xAxis: {
@@ -130,16 +133,7 @@ export const MaleFemaleRatioChart: FC<IMaleFemaleRatioChartProps> = memo(({ man,
     }),
     [man, woman],
   );
-
-  const maleFemaleRatioRef = useRef<HTMLDivElement>(null);
-  useEffect(() => {
-    const charEch: ECharts = init(maleFemaleRatioRef.current);
-    charEch.setOption(option);
-
-    return () => {
-      charEch.dispose();
-    };
-  }, [option]);
+  const { chartRef } = useInitEchart(option);
 
   return (
     <WisdomTourismPanel
@@ -161,7 +155,7 @@ export const MaleFemaleRatioChart: FC<IMaleFemaleRatioChartProps> = memo(({ man,
             <img src={iconWoman} alt='' />
           </div>
         </div>
-        <div className={s[createBEM(`${NAMESPACE}-content`)]} ref={maleFemaleRatioRef}></div>
+        <div className={s[createBEM(`${NAMESPACE}-content`)]} ref={chartRef}></div>
       </div>
     </WisdomTourismPanel>
   );

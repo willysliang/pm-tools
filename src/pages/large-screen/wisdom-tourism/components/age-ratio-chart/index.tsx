@@ -2,14 +2,14 @@
  * @ Author: willysliang
  * @ CreateTime: 2024-10-12 17:42:03
  * @ Modifier: willysliang
- * @ ModifierTime: 2024-10-15 09:02:52
+ * @ ModifierTime: 2024-10-15 09:29:14
  * @ Description: AgeRatioChart - 年龄比例图表
  */
 
-import { FC, memo, useEffect, useMemo, useRef } from 'react';
+import { FC, memo, useMemo } from 'react';
 import WisdomTourismPanel from '../wisdom-tourism-panel';
-import { init } from 'echarts';
-import type { ECharts, EChartsOption } from 'echarts';
+import type { EChartsOption } from 'echarts';
+import { useInitEchart } from '../../hooks/useInitEchart';
 
 export interface IAgeRatioChartDataProps {
   value: number;
@@ -23,6 +23,9 @@ const COLORS = ['#F6C95C', '#EF7D33', '#1F9393', '#184EA1', '#81C8EF', '#9270CA'
  * @description 年龄比例图表
  */
 export const AgeRatioChart: FC<{ data: IAgeRatioChartDataProps[] }> = memo(({ data }) => {
+  /**
+   * echart 图表配置
+   */
   const option = useMemo<EChartsOption>(
     () => ({
       color: COLORS,
@@ -120,16 +123,7 @@ export const AgeRatioChart: FC<{ data: IAgeRatioChartDataProps[] }> = memo(({ da
     }),
     [data],
   );
-
-  const chartRef = useRef<HTMLDivElement>(null);
-  useEffect(() => {
-    const charEch: ECharts = init(chartRef.current);
-    charEch.setOption(option);
-
-    return () => {
-      charEch.dispose();
-    };
-  }, [option]);
+  const { chartRef } = useInitEchart(option);
 
   return (
     <WisdomTourismPanel

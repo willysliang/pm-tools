@@ -2,14 +2,14 @@
  * @ Author: willysliang
  * @ CreateTime: 2024-10-12 17:52:53
  * @ Modifier: willysliang
- * @ ModifierTime: 2024-10-15 09:04:51
+ * @ ModifierTime: 2024-10-15 09:36:22
  * @ Description: PlatformSourceChart - 预约渠道数据统计
  */
 
-import { FC, memo, useEffect, useMemo, useRef } from 'react';
+import { FC, memo, useMemo } from 'react';
 import WisdomTourismPanel from '../wisdom-tourism-panel';
-import { init } from 'echarts';
-import type { ECharts, EChartsOption } from 'echarts';
+import type { EChartsOption } from 'echarts';
+import { useInitEchart } from '../../hooks/useInitEchart';
 
 export interface IPlatformSourceChartDataProps {
   value: number;
@@ -22,6 +22,9 @@ export interface IPlatformSourceChartDataProps {
  */
 export const PlatformSourceChart: FC<{ data: IPlatformSourceChartDataProps[] }> = memo(
   ({ data }) => {
+    /**
+     * echart 图表配置
+     */
     const option = useMemo<EChartsOption>(
       () => ({
         grid: {
@@ -336,16 +339,7 @@ export const PlatformSourceChart: FC<{ data: IPlatformSourceChartDataProps[] }> 
       }),
       [data],
     );
-
-    const platformSourceChartRef = useRef<HTMLDivElement>(null);
-    useEffect(() => {
-      const charEch: ECharts = init(platformSourceChartRef.current);
-      charEch.setOption(option);
-
-      return () => {
-        charEch.dispose();
-      };
-    }, [option]);
+    const { chartRef } = useInitEchart(option);
 
     return (
       <WisdomTourismPanel
@@ -354,7 +348,7 @@ export const PlatformSourceChart: FC<{ data: IPlatformSourceChartDataProps[] }> 
           height: '320px',
         }}
       >
-        <div className='w-full h-full' ref={platformSourceChartRef}></div>
+        <div className='w-full h-full' ref={chartRef}></div>
       </WisdomTourismPanel>
     );
   },

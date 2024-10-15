@@ -2,14 +2,14 @@
  * @ Author: willysliang
  * @ CreateTime: 2024-10-12 17:51:21
  * @ Modifier: willysliang
- * @ ModifierTime: 2024-10-15 09:04:17
+ * @ ModifierTime: 2024-10-15 09:29:38
  * @ Description: AnnualUseChart - 年度游客量对比
  */
 
-import { FC, memo, useEffect, useMemo, useRef } from 'react';
+import { FC, memo, useMemo } from 'react';
 import WisdomTourismPanel from '../wisdom-tourism-panel';
-import { init } from 'echarts';
-import type { ECharts, EChartsOption } from 'echarts';
+import type { EChartsOption } from 'echarts';
+import { useInitEchart } from '../../hooks/useInitEchart';
 import s from '../../index.module.scss';
 
 export interface IAnnualUseChartDataProps {
@@ -31,6 +31,9 @@ const gradientColors = [
  * @description 年度游客量对比
  */
 export const AnnualUseChart: FC<{ data: IAnnualUseChartDataProps[] }> = memo(({ data }) => {
+  /**
+   * echart 图表配置
+   */
   const option = useMemo<EChartsOption>(
     () => ({
       tooltip: {
@@ -200,16 +203,7 @@ export const AnnualUseChart: FC<{ data: IAnnualUseChartDataProps[] }> = memo(({ 
     }),
     [data],
   );
-
-  const chartRef = useRef<HTMLDivElement>(null);
-  useEffect(() => {
-    const charEch: ECharts = init(chartRef.current);
-    charEch.setOption(option);
-
-    return () => {
-      charEch.dispose();
-    };
-  }, [option]);
+  const { chartRef } = useInitEchart(option);
 
   return (
     <WisdomTourismPanel

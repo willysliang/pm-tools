@@ -71,6 +71,7 @@ Refs: #123
 ## 2024年10月15日
 
 - feat(views): [large-screen/wisdom-tourism] 大屏看板/智慧旅游模块 - 拆分子模块 & 切换子模块时注销echart实例
+- fix(views): [large-screen/wisdom-tourism] 封装挂载更新echart图表 hooks，仅在配置项更新时更新 setOption 内容，防止图表重新渲染
 
 ## 2024年10月14日
 

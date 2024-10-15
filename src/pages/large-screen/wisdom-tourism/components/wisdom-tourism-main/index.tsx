@@ -2,7 +2,7 @@
  * @ Author: willysliang
  * @ CreateTime: 2024-10-09 17:33:26
  * @ Modifier: willysliang
- * @ ModifierTime: 2024-10-14 23:19:40
+ * @ ModifierTime: 2024-10-15 09:15:38
  * @ Description: 智慧旅游 - 主体
  */
 
@@ -63,7 +63,7 @@ export const WisdomTourismMain: FC = () => {
       const timer = setTimeout(() => {
         setActualTotal((state) => Math.floor(Math.random() * 100) + state);
         loopTimer();
-      }, 1000 * 10);
+      }, 1000 * 5);
 
       return timer;
     };
