@@ -2,7 +2,7 @@
  * @ Author: willysliang
  * @ CreateTime: 2024-10-09 17:33:26
  * @ Modifier: willysliang
- * @ ModifierTime: 2024-10-14 10:51:33
+ * @ ModifierTime: 2024-10-14 23:19:40
  * @ Description: 智慧旅游 - 主体
  */
 
@@ -30,7 +30,7 @@ import cx from 'classnames';
  * @description 智慧旅游 - 主体
  */
 export const WisdomTourismMain: FC = () => {
-  const NAMESPACE = 'wisdom-tourism-main';
+  const NAMESPACE = 'wisdom-tourism-base';
 
   /** 已预约人数 */
   const [actualTotal, setActualTotal] = useState<number>(0);

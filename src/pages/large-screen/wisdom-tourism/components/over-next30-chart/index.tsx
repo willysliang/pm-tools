@@ -2,7 +2,7 @@
  * @ Author: willysliang
  * @ CreateTime: 2024-10-12 11:17:07
  * @ Modifier: willysliang
- * @ ModifierTime: 2024-10-12 17:35:01
+ * @ ModifierTime: 2024-10-15 09:04:46
  * @ Description: OverNext30Chart - 未来30天游客量趋势图
  */
 
@@ -199,6 +199,10 @@ export const OverNext30Chart: FC = memo(() => {
   useEffect(() => {
     const charEch: ECharts = init(OverNext30ChartRef.current);
     charEch.setOption(option);
+
+    return () => {
+      charEch.dispose();
+    };
   }, [option]);
 
   return (

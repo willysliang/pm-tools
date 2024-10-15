@@ -2,7 +2,7 @@
  * @ Author: willysliang
  * @ CreateTime: 2024-10-11 17:46:52
  * @ Modifier: willysliang
- * @ ModifierTime: 2024-10-12 10:01:21
+ * @ ModifierTime: 2024-10-15 09:04:29
  * @ Description: chinaMapChart - 中国地图
  */
 
@@ -179,6 +179,10 @@ export const ChinaMapChart: FC<IChinaMapChartProps> = memo(({ data, ...extraProp
   useEffect(() => {
     const charEch: ECharts = init(mapChartRef.current);
     charEch.setOption(option);
+
+    return () => {
+      charEch.dispose();
+    };
   }, [option]);
 
   return <div className='h-full w-full map-chart' ref={mapChartRef} {...extraProps}></div>;

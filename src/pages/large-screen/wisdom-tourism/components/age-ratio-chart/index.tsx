@@ -2,7 +2,7 @@
  * @ Author: willysliang
  * @ CreateTime: 2024-10-12 17:42:03
  * @ Modifier: willysliang
- * @ ModifierTime: 2024-10-14 10:35:29
+ * @ ModifierTime: 2024-10-15 09:02:52
  * @ Description: AgeRatioChart - 年龄比例图表
  */
 
@@ -125,6 +125,10 @@ export const AgeRatioChart: FC<{ data: IAgeRatioChartDataProps[] }> = memo(({ da
   useEffect(() => {
     const charEch: ECharts = init(chartRef.current);
     charEch.setOption(option);
+
+    return () => {
+      charEch.dispose();
+    };
   }, [option]);
 
   return (

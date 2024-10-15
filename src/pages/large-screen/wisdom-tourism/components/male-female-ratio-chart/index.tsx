@@ -2,7 +2,7 @@
  * @ Author: willysliang
  * @ CreateTime: 2024-10-12 17:52:08
  * @ Modifier: willysliang
- * @ ModifierTime: 2024-10-14 10:36:02
+ * @ ModifierTime: 2024-10-15 09:04:43
  * @ Description: MaleFemaleRatioChart - 男女比例
  */
 
@@ -135,6 +135,10 @@ export const MaleFemaleRatioChart: FC<IMaleFemaleRatioChartProps> = memo(({ man,
   useEffect(() => {
     const charEch: ECharts = init(maleFemaleRatioRef.current);
     charEch.setOption(option);
+
+    return () => {
+      charEch.dispose();
+    };
   }, [option]);
 
   return (

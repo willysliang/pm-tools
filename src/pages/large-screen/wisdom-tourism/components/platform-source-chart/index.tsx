@@ -2,7 +2,7 @@
  * @ Author: willysliang
  * @ CreateTime: 2024-10-12 17:52:53
  * @ Modifier: willysliang
- * @ ModifierTime: 2024-10-12 23:15:13
+ * @ ModifierTime: 2024-10-15 09:04:51
  * @ Description: PlatformSourceChart - 预约渠道数据统计
  */
 
@@ -341,6 +341,10 @@ export const PlatformSourceChart: FC<{ data: IPlatformSourceChartDataProps[] }> 
     useEffect(() => {
       const charEch: ECharts = init(platformSourceChartRef.current);
       charEch.setOption(option);
+
+      return () => {
+        charEch.dispose();
+      };
     }, [option]);
 
     return (

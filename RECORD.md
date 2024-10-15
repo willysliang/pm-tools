@@ -68,6 +68,10 @@ Refs: #123
 
 # 记录
 
+## 2024年10月15日
+
+- feat(views): [large-screen/wisdom-tourism] 大屏看板/智慧旅游模块 - 拆分子模块 & 切换子模块时注销echart实例
+
 ## 2024年10月14日
 
 - feat(views): [large-screen/wisdom-tourism] 大屏看板/智慧旅游模块 - 添加图表显示

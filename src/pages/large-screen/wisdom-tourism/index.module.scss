@@ -9,6 +9,13 @@
   transform-origin: center top;
   transition: all 0.3s;
   width: 1920px;
+
+  &__main {
+    box-sizing: border-box;
+    height: 100%;
+    padding: 50px 42px 10px;
+    width: 100%;
+  }
 }
 
 .chart-tooptip {

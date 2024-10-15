@@ -2,11 +2,16 @@
  * @ Author: willysliang
  * @ CreateTime: 2024-10-09 16:22:25
  * @ Modifier: willysliang
- * @ ModifierTime: 2024-10-14 18:10:24
+ * @ ModifierTime: 2024-10-15 08:39:30
  * @ Description: 智慧旅游 - 头部
  */
 
 import { FC, memo, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import {
+  EnumSmartTourismSubMenu,
+  SMART_TOURISM_ROUTE_CONFIGS,
+} from '@/router/routes/dashboardRoutes';
 import { createBEM, formatDate } from '@/utils';
 import cx from 'classnames';
 import s from './index.module.scss';
@@ -31,11 +36,32 @@ const WisdomTourismHeader: FC = memo(() => {
     };
   }, []);
 
+  /**
+   * 路由跳转
+   */
+  const navigate = useNavigate();
+  const handleRouteJump = (type: EnumSmartTourismSubMenu) => {
+    navigate(SMART_TOURISM_ROUTE_CONFIGS[type].path);
+  };
+
   return (
     <div className={s[createBEM(`${NAMESPACE}-header`)]}>
       <div className={s[createBEM(`${NAMESPACE}-header`, 'left')]}>
         <div
           className={cx(s[createBEM(`${NAMESPACE}-header`, 'left-btn')], 'font-family-dingtalk')}
+          onClick={() => handleRouteJump(EnumSmartTourismSubMenu.TOURIST_ANALYSIS)}
+        >
+          游客量分析
+        </div>
+        <div
+          className={cx(s[createBEM(`${NAMESPACE}-header`, 'left-btn')], 'font-family-dingtalk')}
+          onClick={() => handleRouteJump(EnumSmartTourismSubMenu.CROWD_ANALYSIS)}
+        >
+          人群分析
+        </div>
+        <div
+          className={cx(s[createBEM(`${NAMESPACE}-header`, 'left-btn')], 'font-family-dingtalk')}
+          onClick={() => handleRouteJump(EnumSmartTourismSubMenu.BASE)}
         >
           首页
         </div>
@@ -54,6 +80,7 @@ const WisdomTourismHeader: FC = memo(() => {
       <div className={s[createBEM(`${NAMESPACE}-header`, 'right')]}>
         <div
           className={cx(s[createBEM(`${NAMESPACE}-header`, 'right-btn')], 'font-family-dingtalk')}
+          onClick={() => handleRouteJump(EnumSmartTourismSubMenu.STATISTICS_REPORT)}
         >
           统计报告
         </div>

@@ -2,7 +2,7 @@
  * @ Author: willysliang
  * @ CreateTime: 2024-10-10 23:33:25
  * @ Modifier: willysliang
- * @ ModifierTime: 2024-10-14 10:54:59
+ * @ ModifierTime: 2024-10-15 09:04:35
  * @ Description: HotPlateChart - 热门景区排行
  */
 
@@ -203,6 +203,10 @@ export const HotPlateChart: FC<{ data: IHotChartDataProps[] }> = memo(({ data })
   useEffect(() => {
     const charEch: ECharts = init(hotPlateChartRef.current);
     charEch.setOption(option);
+
+    return () => {
+      charEch.dispose();
+    };
   }, [option]);
 
   return (

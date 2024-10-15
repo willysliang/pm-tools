@@ -2,7 +2,7 @@
  * @ Author: willysliang
  * @ CreateTime: 2024-10-10 11:11:12
  * @ Modifier: willysliang
- * @ ModifierTime: 2024-10-14 10:50:07
+ * @ ModifierTime: 2024-10-15 09:04:57
  * @ Description: RealTimeAccessChart - 实时游客访问量
  */
 
@@ -218,6 +218,10 @@ export const RealTimeAccessChart: FC<IRealTimeAccessChartProps> = memo(({ actual
   useEffect(() => {
     const charEch: ECharts = init(actualEchartsRef.current);
     charEch.setOption(option);
+
+    return () => {
+      charEch.dispose();
+    };
   }, [option]);
 
   return (

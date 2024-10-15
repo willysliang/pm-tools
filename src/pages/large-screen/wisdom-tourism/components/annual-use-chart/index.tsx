@@ -2,7 +2,7 @@
  * @ Author: willysliang
  * @ CreateTime: 2024-10-12 17:51:21
  * @ Modifier: willysliang
- * @ ModifierTime: 2024-10-14 10:56:27
+ * @ ModifierTime: 2024-10-15 09:04:17
  * @ Description: AnnualUseChart - 年度游客量对比
  */
 
@@ -205,6 +205,10 @@ export const AnnualUseChart: FC<{ data: IAnnualUseChartDataProps[] }> = memo(({ 
   useEffect(() => {
     const charEch: ECharts = init(chartRef.current);
     charEch.setOption(option);
+
+    return () => {
+      charEch.dispose();
+    };
   }, [option]);
 
   return (
