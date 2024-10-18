@@ -1,0 +1,57 @@
+.smart-tourism-card {
+  background-color: #03044a;
+  border: 2px solid #384677;
+  position: relative;
+
+  &__horn {
+    background-color: transparent;
+    height: 20px;
+    position: absolute;
+    width: 20px;
+  }
+
+  &__horn--left-top {
+    border-left: 2px solid #1c5ab3;
+    border-top: 2px solid #1c5ab3;
+    left: 0;
+    top: 0;
+  }
+
+  &__horn--left-bottom {
+    border-bottom: 2px solid #1c5ab3;
+    border-left: 2px solid #1c5ab3;
+    bottom: 0;
+    left: 0;
+  }
+
+  &__horn--right-top {
+    border-right: 2px solid #1c5ab3;
+    border-top: 2px solid #1c5ab3;
+    right: 0;
+    top: 0;
+  }
+
+  &__horn--right-bottom {
+    border-bottom: 2px solid #1c5ab3;
+    border-right: 2px solid #1c5ab3;
+    bottom: 0;
+    right: 0;
+  }
+
+  &__title {
+    background: #14418e;
+    color: #6eddf1;
+    display: inline-block;
+    font-size: 15px;
+    left: 50%;
+    position: absolute;
+    top: 0;
+    transform: translate(-50%, -50%);
+
+    span {
+      background: radial-gradient(55% 55% ellipse, rgb(7 9 34 / 80%) 60%, rgb(21 67 145));
+      display: inline-block;
+      padding: 5px 14px;
+    }
+  }
+}

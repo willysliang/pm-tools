@@ -51,6 +51,15 @@ Refs: #123
 
 # 问题
 
+## 2024年10月18日
+
+- 问题目录：src\pages\large-screen\wisdom-tourism\pages\statistics-report\behavior-analysis.tsx
+- 问题陈述：
+  - 如果我有一个变量，在模板中作条件判断渲染需要用到，但是我在调用某个方法的时候，它需要触发多次变量的变更。此时用 useState 定义变量还是用 useRef 好？
+    - 用 useRef 不会触发模板的内容更新
+    - 用 useState 不会让中间的变量变化触发到
+- 解决方案：使用 useRef 和 useState 结合使用，在 useEffect 中使用 useRef 来保存变量，在模板中使用 useState 来控制渲染
+
 ## 2024年10月8日
 
 问题：在大屏看板-大风车模块中，点击小面板的图表时，如果在左右两边的面板中渲染（即是显示3~4个小面板）时，左右两边都会触发一个重新渲染
@@ -67,6 +76,10 @@ Refs: #123
   2/ 在父组件的按钮点击事件中使用 event.stopProgation() 来阻止冒泡事件的触发
 
 # 记录
+
+## 2024年10月18日
+
+- feat(views): [large-screen/wisdom-tourism] 大屏看板-智慧旅游模块 - 统计报表模块
 
 ## 2024年10月15日
 

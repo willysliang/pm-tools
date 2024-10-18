@@ -2,14 +2,14 @@
  * @ Author: willysliang
  * @ CreateTime: 2024-10-11 17:46:52
  * @ Modifier: willysliang
- * @ ModifierTime: 2024-10-15 09:30:57
+ * @ ModifierTime: 2024-10-16 10:43:33
  * @ Description: chinaMapChart - 中国地图
  */
 
 import { FC, HTMLAttributes, memo, useMemo } from 'react';
 import type { EChartsOption } from 'echarts';
-import echarts from './config/useEcharts';
 import mapJson from './config/china.json';
+import echarts from '../../hooks/useEcharts';
 import { useInitEchart } from '../../hooks/useInitEchart';
 
 export interface IChinaMapChartDataProps {

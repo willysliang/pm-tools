@@ -2,7 +2,7 @@
  * @ Author: willysliang
  * @ CreateTime: 2024-09-27 11:32:11
  * @ Modifier: willysliang
- * @ ModifierTime: 2024-10-15 09:03:46
+ * @ ModifierTime: 2024-10-17 09:20:47
  * @ Description: dashboardRoutes - 大屏看板路由
  */
 
@@ -96,7 +96,7 @@ const SmartTourismStatisticsReport = lazy(
 /** 智慧旅游子模块 - 三级路由 */
 export const SMART_TOURISM_ROUTE_CONFIGS: IRouteConfigMap<EnumSmartTourismSubMenu> = {
   [EnumSmartTourismSubMenu.BASE]: {
-    label: '智慧旅游-首页',
+    label: '智慧旅游',
     path: `${SmartTourismSubBasePath}/${EnumSmartTourismSubMenu.BASE}`,
     icon: Windmill,
     key: 'dashboard_wisdom-tourism_base',
