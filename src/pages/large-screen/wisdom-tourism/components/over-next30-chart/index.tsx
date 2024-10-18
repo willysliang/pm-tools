@@ -2,14 +2,14 @@
  * @ Author: willysliang
  * @ CreateTime: 2024-10-12 11:17:07
  * @ Modifier: willysliang
- * @ ModifierTime: 2024-10-12 17:35:01
+ * @ ModifierTime: 2024-10-15 09:35:40
  * @ Description: OverNext30Chart - 未来30天游客量趋势图
  */
 
-import { FC, memo, useEffect, useMemo, useRef } from 'react';
+import { FC, memo, useMemo } from 'react';
 import WisdomTourismPanel from '../wisdom-tourism-panel';
-import { init } from 'echarts';
-import type { ECharts, EChartsOption } from 'echarts';
+import type { EChartsOption } from 'echarts';
+import { useInitEchart } from '../../hooks/useInitEchart';
 import s from '../../index.module.scss';
 
 /**
@@ -39,6 +39,9 @@ export const OverNext30Chart: FC = memo(() => {
     return Math.floor(Math.random() * (min - max) + max);
   });
 
+  /**
+   * echart 图表配置
+   */
   const option = useMemo<EChartsOption>(
     () => ({
       tooltip: {
@@ -194,12 +197,7 @@ export const OverNext30Chart: FC = memo(() => {
     }),
     [data],
   );
-
-  const OverNext30ChartRef = useRef<HTMLDivElement>(null);
-  useEffect(() => {
-    const charEch: ECharts = init(OverNext30ChartRef.current);
-    charEch.setOption(option);
-  }, [option]);
+  const { chartRef } = useInitEchart(option);
 
   return (
     <WisdomTourismPanel
@@ -209,7 +207,7 @@ export const OverNext30Chart: FC = memo(() => {
         width: '100%',
       }}
     >
-      <div className='w-full h-full' ref={OverNext30ChartRef}></div>
+      <div className='w-full h-full' ref={chartRef}></div>
     </WisdomTourismPanel>
   );
 });

@@ -51,6 +51,15 @@ Refs: #123
 
 # 问题
 
+## 2024年10月18日
+
+- 问题目录：src\pages\large-screen\wisdom-tourism\pages\statistics-report\behavior-analysis.tsx
+- 问题陈述：
+  - 如果我有一个变量，在模板中作条件判断渲染需要用到，但是我在调用某个方法的时候，它需要触发多次变量的变更。此时用 useState 定义变量还是用 useRef 好？
+    - 用 useRef 不会触发模板的内容更新
+    - 用 useState 不会让中间的变量变化触发到
+- 解决方案：使用 useRef 和 useState 结合使用，在 useEffect 中使用 useRef 来保存变量，在模板中使用 useState 来控制渲染
+
 ## 2024年10月8日
 
 问题：在大屏看板-大风车模块中，点击小面板的图表时，如果在左右两边的面板中渲染（即是显示3~4个小面板）时，左右两边都会触发一个重新渲染
@@ -68,12 +77,22 @@ Refs: #123
 
 # 记录
 
+## 2024年10月18日
+
+- feat(views): [large-screen/wisdom-tourism] 大屏看板-智慧旅游模块 - 统计报表模块
+
+## 2024年10月15日
+
+- feat(views): [large-screen/wisdom-tourism] 大屏看板/智慧旅游模块 - 拆分子模块 & 切换子模块时注销echart实例
+- fix(views): [large-screen/wisdom-tourism] 封装挂载更新echart图表 hooks，仅在配置项更新时更新 setOption 内容，防止图表重新渲染
+
 ## 2024年10月14日
 
 - feat(views): [large-screen/wisdom-tourism] 大屏看板/智慧旅游模块 - 添加图表显示
 - fix(build): 修复 CI/CD 构建失败错误问题
 - chore(ci/cd): 更改ci/cd运行的分支
 - fix(eslint): 修复 ci/cd 构建时触发 eslint 校验错误问题
+- perf(views): [large-screen/wisdom-tourism] 优化大屏看板/智慧旅游模块 - 增加创建缩放比例的容器的高阶函数、优化按钮样式
 
 ## 2024年10月9日-2024年10月10日
 

@@ -2,15 +2,15 @@
  * @ Author: willysliang
  * @ CreateTime: 2024-10-11 17:46:52
  * @ Modifier: willysliang
- * @ ModifierTime: 2024-10-12 10:01:21
+ * @ ModifierTime: 2024-10-16 10:43:33
  * @ Description: chinaMapChart - 中国地图
  */
 
-import { FC, HTMLAttributes, memo, useEffect, useMemo, useRef } from 'react';
-import { init } from 'echarts';
-import type { ECharts, EChartsOption } from 'echarts';
-import echarts from './config/useEcharts';
+import { FC, HTMLAttributes, memo, useMemo } from 'react';
+import type { EChartsOption } from 'echarts';
 import mapJson from './config/china.json';
+import echarts from '../../hooks/useEcharts';
+import { useInitEchart } from '../../hooks/useInitEchart';
 
 export interface IChinaMapChartDataProps {
   fromName: string;
@@ -174,14 +174,10 @@ export const ChinaMapChart: FC<IChinaMapChartProps> = memo(({ data, ...extraProp
   /**
    * 挂载渲染地图
    */
-  const mapChartRef = useRef<HTMLDivElement>(null);
   echarts.registerMap('china', mapJson as any);
-  useEffect(() => {
-    const charEch: ECharts = init(mapChartRef.current);
-    charEch.setOption(option);
-  }, [option]);
+  const { chartRef } = useInitEchart(option);
 
-  return <div className='h-full w-full map-chart' ref={mapChartRef} {...extraProps}></div>;
+  return <div className='h-full w-full map-chart' ref={chartRef} {...extraProps}></div>;
 });
 
 export default ChinaMapChart;

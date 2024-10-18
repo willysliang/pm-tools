@@ -2,15 +2,15 @@
  * @ Author: willysliang
  * @ CreateTime: 2024-10-10 23:33:25
  * @ Modifier: willysliang
- * @ ModifierTime: 2024-10-14 10:54:59
+ * @ ModifierTime: 2024-10-15 09:34:02
  * @ Description: HotPlateChart - 热门景区排行
  */
 
-import { FC, memo, useEffect, useMemo, useRef } from 'react';
+import { FC, memo, useMemo } from 'react';
 import WisdomTourismPanel from '../wisdom-tourism-panel';
 import { ranking1, ranking2, ranking3, ranking4 } from './config/ranking-icon';
-import { init } from 'echarts';
-import type { ECharts, EChartsOption } from 'echarts';
+import type { EChartsOption } from 'echarts';
+import { useInitEchart } from '../../hooks/useInitEchart';
 import { createBEM } from '@/utils';
 import s from './index.module.scss';
 
@@ -21,13 +21,17 @@ export interface IHotChartDataProps {
   maxValue: number;
 }
 
+const COLORS = ['#1089E7', '#F57474', '#56D0E3', '#F8B448', '#8B78F6'];
+
 /**
  * @description 热门景区排行
  */
 export const HotPlateChart: FC<{ data: IHotChartDataProps[] }> = memo(({ data }) => {
   const NAMESPACE = 'hot-plate-chart';
 
-  const COLORS = ['#1089E7', '#F57474', '#56D0E3', '#F8B448', '#8B78F6'];
+  /**
+   * echart 图表配置
+   */
   const option = useMemo<EChartsOption>(
     () => ({
       grid: {
@@ -198,12 +202,7 @@ export const HotPlateChart: FC<{ data: IHotChartDataProps[] }> = memo(({ data })
     }),
     [data],
   );
-
-  const hotPlateChartRef = useRef<HTMLDivElement>(null);
-  useEffect(() => {
-    const charEch: ECharts = init(hotPlateChartRef.current);
-    charEch.setOption(option);
-  }, [option]);
+  const { chartRef } = useInitEchart(option);
 
   return (
     <WisdomTourismPanel
@@ -218,7 +217,7 @@ export const HotPlateChart: FC<{ data: IHotChartDataProps[] }> = memo(({ data })
           <span>景区</span>
           <span>预约数量</span>
         </div>
-        <div className={s[createBEM(`${NAMESPACE}-body`)]} ref={hotPlateChartRef}></div>
+        <div className={s[createBEM(`${NAMESPACE}-body`)]} ref={chartRef}></div>
       </div>
     </WisdomTourismPanel>
   );

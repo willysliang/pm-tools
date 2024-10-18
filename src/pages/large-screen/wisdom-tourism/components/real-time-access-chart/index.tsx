@@ -2,14 +2,14 @@
  * @ Author: willysliang
  * @ CreateTime: 2024-10-10 11:11:12
  * @ Modifier: willysliang
- * @ ModifierTime: 2024-10-14 10:50:07
+ * @ ModifierTime: 2024-10-15 09:29:04
  * @ Description: RealTimeAccessChart - 实时游客访问量
  */
 
-import { FC, memo, useEffect, useMemo, useRef } from 'react';
+import { FC, memo, useMemo } from 'react';
 import WisdomTourismPanel from '../wisdom-tourism-panel';
-import { init } from 'echarts';
-import type { ECharts } from 'echarts';
+import type { EChartsOption } from 'echarts';
+import { useInitEchart } from '../../hooks/useInitEchart';
 import 'echarts-liquidfill';
 import s from './index.module.scss';
 
@@ -35,7 +35,10 @@ export const RealTimeAccessChart: FC<IRealTimeAccessChartProps> = memo(({ actual
     return actualTotalStr.padStart(6, '0');
   }, [actualTotal]);
 
-  const option = useMemo(
+  /**
+   * echart 图表配置
+   */
+  const option = useMemo<EChartsOption>(
     () => ({
       title: [
         {
@@ -206,19 +209,11 @@ export const RealTimeAccessChart: FC<IRealTimeAccessChartProps> = memo(({ actual
           roundCap: true,
           color: '#31d8d5',
         },
-      ],
+      ] as any,
     }),
     [percentage],
   );
-
-  /**
-   * 渲染图表
-   */
-  const actualEchartsRef = useRef<HTMLDivElement>(null);
-  useEffect(() => {
-    const charEch: ECharts = init(actualEchartsRef.current);
-    charEch.setOption(option);
-  }, [option]);
+  const { chartRef } = useInitEchart(option);
 
   return (
     <WisdomTourismPanel
@@ -254,7 +249,7 @@ export const RealTimeAccessChart: FC<IRealTimeAccessChartProps> = memo(({ actual
           <div className={s['actual-total__item']}>人</div>
         </div>
 
-        <div className={s['actual-echarts']} ref={actualEchartsRef}></div>
+        <div className={s['actual-echarts']} ref={chartRef}></div>
       </div>
     </WisdomTourismPanel>
   );

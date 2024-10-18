@@ -2,7 +2,7 @@
  * @ Author: willysliang
  * @ CreateTime: 2024-10-10 10:36:00
  * @ Modifier: willysliang
- * @ ModifierTime: 2024-10-14 14:09:43
+ * @ ModifierTime: 2024-10-15 08:59:49
  * @ Description: wisdom-tourism-panel - 小面板
  */
 import { FC, HTMLAttributes, memo, useEffect, useRef, useState } from 'react';
@@ -39,7 +39,6 @@ export const WisdomTourismPanel: FC<IWisdomTourismPanelProps> = memo(
       )
     `);
     useEffect(() => {
-      console.log(panelTitleRef.current?.offsetWidth);
       const width = (panelTitleRef.current?.offsetWidth || 154) + 20;
       setClipPath(`
           polygon(

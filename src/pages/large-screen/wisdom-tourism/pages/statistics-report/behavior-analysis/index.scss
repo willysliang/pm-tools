@@ -1,0 +1,34 @@
+.behavior-analysis {
+  .ant-rate {
+    align-items: center;
+    color: #e9e9e9;
+    display: inline-flex;
+    font-size: 11px;
+    justify-content: center;
+    width: 100%;
+
+    .ant-rate-star {
+      margin-inline-end: 1px !important;
+    }
+  }
+
+  .swap1 {
+    stroke-dasharray: 130;
+    stroke-dashoffset: 130;
+  }
+
+  .swap2 {
+    stroke-dasharray: 190;
+    stroke-dashoffset: 190;
+  }
+
+  .swap3 {
+    stroke-dasharray: 240;
+    stroke-dashoffset: 240;
+  }
+
+  .swap4 {
+    stroke-dasharray: 295;
+    stroke-dashoffset: 295;
+  }
+}
