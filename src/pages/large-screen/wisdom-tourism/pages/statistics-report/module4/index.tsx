@@ -2,7 +2,7 @@
  * @ Author: willysliang
  * @ CreateTime: 2024-10-17 09:13:46
  * @ Modifier: willysliang
- * @ ModifierTime: 2024-10-17 11:22:00
+ * @ ModifierTime: 2024-10-18 16:53:05
  * @ Description: 模块4
  */
 
@@ -20,7 +20,7 @@ export const Module4: FC<{ selectRangeDate: string[] }> = memo(({ selectRangeDat
   const areaChartConfigData = {
     title: '【标题】',
     color: '#75deef',
-    name: ['（人）', '（人）'],
+    name: ['（次）', '（人）'],
     data: [
       {
         name: '数据1',
@@ -29,12 +29,12 @@ export const Module4: FC<{ selectRangeDate: string[] }> = memo(({ selectRangeDat
       },
       {
         name: '数据2',
-        color: ['#2871ea', '#0a1b41'],
+        color: ['#48cefd', '#5356f1'],
         data: [20, 102, 101, 134, 190, 150, 120],
       },
       {
         name: '数据3',
-        color: ['#935adf', '#230f3e'],
+        color: ['#9e70ff', '#6e5eff'],
         data: [100, 32, 101, 134, 150, 110, 180],
       },
       {

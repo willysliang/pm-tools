@@ -2,7 +2,7 @@
  * @ Author: willysliang
  * @ CreateTime: 2024-10-15 10:13:21
  * @ Modifier: willysliang
- * @ ModifierTime: 2024-10-16 14:49:02
+ * @ ModifierTime: 2024-10-22 09:33:39
  * @ Description: 面板 - 卡片
  */
 
@@ -25,7 +25,7 @@ export const SmartTourismCard: FC<ISmartTourismCardProps> = memo(
     const NAMESPACE = 'smart-tourism-card';
 
     return (
-      <div className={cx(s[createBEM(NAMESPACE)], className ?? '')} {...extraProps}>
+      <div className={cx(s[createBEM(NAMESPACE)], className ?? 'w-full h-full')} {...extraProps}>
         <div className={createBEM(NAMESPACE, 'horn', 'left-top', s)}></div>
         <div className={createBEM(NAMESPACE, 'horn', 'left-bottom', s)}></div>
         <div className={createBEM(NAMESPACE, 'horn', 'right-top', s)}></div>
