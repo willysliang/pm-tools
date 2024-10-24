@@ -2,7 +2,7 @@
  * @ Author: willysliang
  * @ CreateTime: 2024-09-30 16:13:38
  * @ Modifier: willysliang
- * @ ModifierTime: 2024-10-08 10:41:55
+ * @ ModifierTime: 2024-10-24 16:09:30
  * @ Description: 图表
  */
 
@@ -38,7 +38,7 @@ export const TurbineChart: FC = memo(() => {
    * 小面板模块的显隐并缓存
    */
   const { visibleModules } = useWindmillStore();
-  const showComopnents = useMemo(() => visibleModules(), [visibleModules()]);
+  const showComopnents = useMemo(() => visibleModules(), [visibleModules]);
 
   return (
     <Fragment>

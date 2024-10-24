@@ -1,8 +1,8 @@
 /**
  * @ Author: willy
  * @ CreateTime: 2024-06-20 16:38:37
- * @ Modifier: willy
- * @ ModifierTime: 2024-06-21 19:46:24
+ * @ Modifier: willysliang
+ * @ ModifierTime: 2024-10-24 16:06:28
  * @ Description: 菜单栏
  */
 
@@ -26,15 +26,14 @@ export const LayoutMenu = (): ReactElement => {
 
   return (
     <div className='layout-menu'>
-      <div className='layout-menu-item'>
-        <a
-          href='https://react.dev'
-          target='_blank'
-          onClick={(event) => handleSelectMenu(menuList[0], event)}
-        >
-          <img src={reactLogo} className='logo animation__spin' alt='React logo' />
-        </a>
-      </div>
+      <a
+        className='layout-menu-item'
+        href='https://willysliang.github.io/pm-tools/'
+        target='_blank'
+        title='线上演示地址'
+      >
+        <img src={reactLogo} className='logo animation__spin' alt='React logo' />
+      </a>
 
       {menuList.map((item) => (
         <div
