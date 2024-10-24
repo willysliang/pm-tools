@@ -2,13 +2,15 @@
  * @ Author: willysliang
  * @ CreateTime: 2024-10-09 16:22:25
  * @ Modifier: willysliang
- * @ ModifierTime: 2024-10-15 08:39:30
+ * @ ModifierTime: 2024-10-24 10:47:33
  * @ Description: 智慧旅游 - 头部
  */
 
 import { FC, memo, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
+  DASHBOARD_ROUTE_CONFIGS,
+  DashboardLevelType,
   EnumSmartTourismSubMenu,
   SMART_TOURISM_ROUTE_CONFIGS,
 } from '@/router/routes/dashboardRoutes';
@@ -37,34 +39,41 @@ const WisdomTourismHeader: FC = memo(() => {
   }, []);
 
   /**
-   * 路由跳转
+   * 菜单 & 路由跳转
    */
   const navigate = useNavigate();
-  const handleRouteJump = (type: EnumSmartTourismSubMenu) => {
-    navigate(SMART_TOURISM_ROUTE_CONFIGS[type].path);
-  };
+  const menuList = [
+    {
+      label: '风力发电机',
+      path: DASHBOARD_ROUTE_CONFIGS[DashboardLevelType.DASHBOARD_WINDMILL].path,
+    },
+    {
+      label: '游客量分析',
+      path: SMART_TOURISM_ROUTE_CONFIGS[EnumSmartTourismSubMenu.TOURIST_ANALYSIS].path,
+    },
+    {
+      label: '人群分析',
+      path: SMART_TOURISM_ROUTE_CONFIGS[EnumSmartTourismSubMenu.CROWD_ANALYSIS].path,
+    },
+    { label: '首页', path: SMART_TOURISM_ROUTE_CONFIGS[EnumSmartTourismSubMenu.BASE].path },
+    {
+      label: '统计报告',
+      path: SMART_TOURISM_ROUTE_CONFIGS[EnumSmartTourismSubMenu.STATISTICS_REPORT].path,
+    },
+  ];
 
   return (
     <div className={s[createBEM(`${NAMESPACE}-header`)]}>
       <div className={s[createBEM(`${NAMESPACE}-header`, 'left')]}>
-        <div
-          className={cx(s[createBEM(`${NAMESPACE}-header`, 'left-btn')], 'font-family-dingtalk')}
-          onClick={() => handleRouteJump(EnumSmartTourismSubMenu.TOURIST_ANALYSIS)}
-        >
-          游客量分析
-        </div>
-        <div
-          className={cx(s[createBEM(`${NAMESPACE}-header`, 'left-btn')], 'font-family-dingtalk')}
-          onClick={() => handleRouteJump(EnumSmartTourismSubMenu.CROWD_ANALYSIS)}
-        >
-          人群分析
-        </div>
-        <div
-          className={cx(s[createBEM(`${NAMESPACE}-header`, 'left-btn')], 'font-family-dingtalk')}
-          onClick={() => handleRouteJump(EnumSmartTourismSubMenu.BASE)}
-        >
-          首页
-        </div>
+        {menuList.slice(0, -1).map((menu, index) => (
+          <div
+            className={cx(s[createBEM(`${NAMESPACE}-header`, 'left-btn')], 'font-family-dingtalk')}
+            onClick={() => navigate(menu.path)}
+            key={index}
+          >
+            {menu.label}
+          </div>
+        ))}
       </div>
       <div className={s[createBEM(`${NAMESPACE}-header`, 'center')]}>
         <span className='font-family-dingtalk'>智慧旅游可视化大数据展示平台</span>
@@ -80,9 +89,9 @@ const WisdomTourismHeader: FC = memo(() => {
       <div className={s[createBEM(`${NAMESPACE}-header`, 'right')]}>
         <div
           className={cx(s[createBEM(`${NAMESPACE}-header`, 'right-btn')], 'font-family-dingtalk')}
-          onClick={() => handleRouteJump(EnumSmartTourismSubMenu.STATISTICS_REPORT)}
+          onClick={() => navigate(menuList.at(-1)!.path)}
         >
-          统计报告
+          {menuList.at(-1)!.label}
         </div>
         <div className='font-family-dingtalk'>当前时间: {today}</div>
       </div>
