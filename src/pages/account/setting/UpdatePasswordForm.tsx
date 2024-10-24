@@ -2,7 +2,7 @@
  * @ Author: willy
  * @ CreateTime: 2024-06-24 20:53:58
  * @ Modifier: willysliang
- * @ ModifierTime: 2024-07-11 18:35:15
+ * @ ModifierTime: 2024-10-24 11:01:39
  * @ Description: 更新密码表单
  */
 
@@ -55,9 +55,6 @@ export const UpdatePasswordForm = () => {
     },
   ];
 
-  /** 提示消息 */
-  const [messageApi, contextHolder] = message.useMessage();
-
   /** 提交成功 */
   const onFinish: FormProps['onFinish'] = (values) => {
     const { oldPassword, password, confirmPassword } = values;
@@ -71,10 +68,7 @@ export const UpdatePasswordForm = () => {
     else if (oldPassword === password) code = 2;
     else if (password !== confirmPassword) code = 3;
     if (code) {
-      messageApi.open({
-        type: 'error',
-        content: errorMsg?.[code as keyof typeof errorMsg] ?? '未知错误',
-      });
+      message.error(errorMsg?.[code as keyof typeof errorMsg] ?? '未知错误');
       return;
     }
     setUserInfo({ password });
@@ -83,57 +77,51 @@ export const UpdatePasswordForm = () => {
 
   /** 提交失败 */
   const onFinishFailed: FormProps['onFinishFailed'] = (errorInfo) => {
-    messageApi.open({
-      type: 'error',
-      content: errorInfo.errorFields[0].errors[0],
-    });
+    message.error(errorInfo.errorFields[0].errors[0]);
   };
 
   return (
-    <>
-      {contextHolder}
-      <Form
-        name='updatePassword'
-        labelCol={{ span: 4 }}
-        wrapperCol={{ span: 20 }}
-        style={{ maxWidth: '100%' }}
-        initialValues={initialValues}
-        form={accountInfoForm}
-        onFinish={onFinish}
-        onFinishFailed={onFinishFailed}
-        autoComplete='off'
-      >
-        <Form.Item className='hidden'>
-          <input
-            type='text'
-            name='username'
-            autoComplete='username'
-            value={userInfo.username}
-            readOnly
-          />
+    <Form
+      name='updatePassword'
+      labelCol={{ span: 4 }}
+      wrapperCol={{ span: 20 }}
+      style={{ maxWidth: '100%' }}
+      initialValues={initialValues}
+      form={accountInfoForm}
+      onFinish={onFinish}
+      onFinishFailed={onFinishFailed}
+      autoComplete='off'
+    >
+      <Form.Item className='hidden'>
+        <input
+          type='text'
+          name='username'
+          autoComplete='username'
+          value={userInfo.username}
+          readOnly
+        />
+      </Form.Item>
+      {accountInfoFormConfig.map(({ placeholder, autoComplete, label, ...formProps }, index) => (
+        <Form.Item key={index} label={label}>
+          <Space className='block'>
+            <div className='flex justify-between w-full'>
+              <Form.Item key={index} noStyle {...formProps}>
+                <Input.Password
+                  placeholder={placeholder}
+                  className='max-w-sm'
+                  autoComplete={autoComplete}
+                />
+              </Form.Item>
+            </div>
+          </Space>
         </Form.Item>
-        {accountInfoFormConfig.map(({ placeholder, autoComplete, label, ...formProps }, index) => (
-          <Form.Item key={index} label={label}>
-            <Space className='block'>
-              <div className='flex justify-between w-full'>
-                <Form.Item key={index} noStyle {...formProps}>
-                  <Input.Password
-                    placeholder={placeholder}
-                    className='max-w-sm'
-                    autoComplete={autoComplete}
-                  />
-                </Form.Item>
-              </div>
-            </Space>
-          </Form.Item>
-        ))}
-        <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
-          <Button type='primary' htmlType='submit'>
-            确定
-          </Button>
-        </Form.Item>
-      </Form>
-    </>
+      ))}
+      <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
+        <Button type='primary' htmlType='submit'>
+          确定
+        </Button>
+      </Form.Item>
+    </Form>
   );
 };
 

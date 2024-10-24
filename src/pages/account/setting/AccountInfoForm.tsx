@@ -2,7 +2,7 @@
  * @ Author: willy
  * @ CreateTime: 2024-06-24 20:11:42
  * @ Modifier: willysliang
- * @ ModifierTime: 2024-07-11 18:35:19
+ * @ ModifierTime: 2024-10-24 11:03:05
  * @ Description: 账号信息表单
  */
 
@@ -55,9 +55,6 @@ export const AccountInfoForm: FC = () => {
     },
   ];
 
-  /** 提示消息 */
-  const [messageApi, contextHolder] = message.useMessage();
-
   /** 更新单个信息 */
   const onUpdateField = (field: string) => {
     const getFieldError = accountInfoForm.getFieldError(field);
@@ -66,70 +63,54 @@ export const AccountInfoForm: FC = () => {
       [field]: accountInfoForm.getFieldValue(field),
     });
     accountInfoForm.setFieldValue(field, initialValues[field]);
-    messageApi.open({
-      type: 'success',
-      content: '更新信息成功',
-    });
+    message.success('更新信息成功');
   };
 
   /** 提交成功 */
   const onFinish: FormProps['onFinish'] = (values) => {
     setUserInfo(values);
     accountInfoForm.resetFields();
-    messageApi.open({
-      type: 'success',
-      content: '保存信息成功',
-    });
+    message.success('保存信息成功');
   };
 
   /** 提交失败 */
   const onFinishFailed: FormProps['onFinishFailed'] = (errorInfo) => {
-    messageApi.open({
-      type: 'error',
-      content: errorInfo.errorFields[0].errors[0],
-    });
+    message.error(errorInfo.errorFields[0].errors[0]);
   };
 
   return (
-    <>
-      {contextHolder}
-      <Form
-        name='accountInfo'
-        labelCol={{ span: 4 }}
-        wrapperCol={{ span: 20 }}
-        style={{ maxWidth: '100%' }}
-        initialValues={initialValues}
-        form={accountInfoForm}
-        onFinish={onFinish}
-        onFinishFailed={onFinishFailed}
-        autoComplete='off'
-      >
-        {accountInfoFormConfig.map((item, index) => (
-          <Form.Item key={index} label={item.label}>
-            <Space className='block'>
-              <div className='block w-full mb-2 h-8 leading-8'>{userInfo[item.name]}</div>
-              <div className='flex w-full'>
-                <Form.Item noStyle name={item.name} rules={item.rules}>
-                  <Input placeholder={item.placeholder} className='max-w-sm' />
-                </Form.Item>
-                <Button
-                  type='primary'
-                  className='w-28 ml-4'
-                  onClick={() => onUpdateField(item.name)}
-                >
-                  {item.btnText}
-                </Button>
-              </div>
-            </Space>
-          </Form.Item>
-        ))}
-        <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
-          <Button type='primary' htmlType='submit'>
-            保存
-          </Button>
+    <Form
+      name='accountInfo'
+      labelCol={{ span: 4 }}
+      wrapperCol={{ span: 20 }}
+      style={{ maxWidth: '100%' }}
+      initialValues={initialValues}
+      form={accountInfoForm}
+      onFinish={onFinish}
+      onFinishFailed={onFinishFailed}
+      autoComplete='off'
+    >
+      {accountInfoFormConfig.map((item, index) => (
+        <Form.Item key={index} label={item.label}>
+          <Space className='block'>
+            <div className='block w-full mb-2 h-8 leading-8'>{userInfo[item.name]}</div>
+            <div className='flex w-full'>
+              <Form.Item noStyle name={item.name} rules={item.rules}>
+                <Input placeholder={item.placeholder} className='max-w-sm' />
+              </Form.Item>
+              <Button type='primary' className='w-28 ml-4' onClick={() => onUpdateField(item.name)}>
+                {item.btnText}
+              </Button>
+            </div>
+          </Space>
         </Form.Item>
-      </Form>
-    </>
+      ))}
+      <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
+        <Button type='primary' htmlType='submit'>
+          保存
+        </Button>
+      </Form.Item>
+    </Form>
   );
 };
 

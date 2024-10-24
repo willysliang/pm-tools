@@ -81,6 +81,7 @@ Refs: #123
 
 - feat(views): [large-screen/wisdom-tourism] 大屏看板-智慧旅游模块 - 人群分析
 - perf(views): [large-screen/wisdom-tourism] 大屏看板-智慧旅游模块 - 优化菜单显示
+- perf(layout): 优化布局排版样式、增加页面前进回退
 
 ## 2024年10月22日
 
