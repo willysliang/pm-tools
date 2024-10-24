@@ -2,7 +2,7 @@
  * @ Author: willysliang
  * @ CreateTime: 2024-10-18 22:56:40
  * @ Modifier: willysliang
- * @ ModifierTime: 2024-10-21 11:36:46
+ * @ ModifierTime: 2024-10-24 09:31:42
  * @ Description: 雷达图
  */
 
@@ -12,10 +12,12 @@ import { useInitEchart } from './useInitEchart';
 
 interface IRadarChartProps {
   title: string;
+  position?: string[];
+  center?: string[];
   indicator: { text: string }[];
   data: {
     name: string;
-    value: any;
+    value: number[];
     color: string;
   }[];
 }
@@ -23,7 +25,13 @@ interface IRadarChartProps {
 /**
  * @description 雷达图
  */
-export const useRadarChart = ({ title, indicator, data }: IRadarChartProps) => {
+export const useRadarChart = ({
+  title,
+  indicator,
+  data,
+  position = ['15%', '85%'],
+  center = ['50%', '50%'],
+}: IRadarChartProps) => {
   const option = useMemo<EChartsOption>(() => {
     const seriesData = data.map((item) => ({
       value: item.value,
@@ -55,7 +63,7 @@ export const useRadarChart = ({ title, indicator, data }: IRadarChartProps) => {
       title: {
         text: title,
         top: '15%',
-        left: 'center',
+        left: position[0],
         textStyle: {
           color: '#fff',
           fontSize: 12,
@@ -64,7 +72,7 @@ export const useRadarChart = ({ title, indicator, data }: IRadarChartProps) => {
       legend: {
         data: data.map((item) => ({ name: item.name, icon: 'circle' })),
         left: 'center',
-        top: '85%',
+        top: position[1],
         itemWidth: 7,
         itemHeight: 7,
         textStyle: {
@@ -74,7 +82,7 @@ export const useRadarChart = ({ title, indicator, data }: IRadarChartProps) => {
       },
       radar: {
         indicator,
-        center: ['50%', '50%'],
+        center: center,
         radius: '50%',
         startAngle: 90,
         splitNumber: 4,
@@ -115,7 +123,7 @@ export const useRadarChart = ({ title, indicator, data }: IRadarChartProps) => {
         data: seriesData,
       },
     } as EChartsOption;
-  }, [title, indicator, data]);
+  }, [title, indicator, data, position, center]);
 
   const { chartRef } = useInitEchart(option);
 

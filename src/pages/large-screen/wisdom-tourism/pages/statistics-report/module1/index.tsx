@@ -2,14 +2,14 @@
  * @ Author: willysliang
  * @ CreateTime: 2024-10-15 11:01:01
  * @ Modifier: willysliang
- * @ ModifierTime: 2024-10-16 14:52:42
+ * @ ModifierTime: 2024-10-23 14:43:08
  * @ Description: 智慧旅游-统计报告-模块1
  */
 
 import { FC, memo } from 'react';
 import { useChart1 } from './useChart1';
 import { useChart2 } from './useChart2';
-import { usePieChart } from './usePieChart';
+import { usePieChart } from '../../../hooks/usePieChart';
 
 export const Module1: FC<{ selectRangeDate: string[] }> = memo(({ selectRangeDate }) => {
   /** 图表1 */
@@ -133,24 +133,24 @@ export const Module1: FC<{ selectRangeDate: string[] }> = memo(({ selectRangeDat
       <div className='w-full h-2/5' ref={chartRef}></div>
       <div className='w-full h-[30%] py-[10px] flex'>
         <div className='h-full w-3/5' ref={chart2Ref}></div>
-        <div className='h-full w-2/5'>
-          <div className='h-1/5 w-full text-center text-[12px] text-[#68c6d6]'>
+        <div className='h-full w-2/5 flex flex-col'>
+          <div className='h-[30px] w-full text-center text-[12px] text-[#68c6d6]'>
             <span className='inline-block select-none relative after:content-[""] after:absolute after:right-[-10px] after:top-[6px] after:w-[6px] after:h-[6px] after:rounded-full after:bg-[#BE232A] before:content-[""] before:absolute before:left-[-10px] before:top-[6px] before:w-[6px] before:h-[6px] before:rounded-full before:bg-[#BE232A]'>
               饼图数据1分类占比
             </span>
           </div>
-          <div className='h-4/5 w-full' ref={pieChartRef1}></div>
+          <div className='flex-1 w-full' ref={pieChartRef1}></div>
         </div>
       </div>
       <div className='w-full h-[30%] py-[10px] flex'>
         <div className='h-full w-3/5' ref={chart3Ref}></div>
-        <div className='h-full w-2/5'>
-          <div className='h-1/5 w-full text-center text-[12px] text-[#68c6d6]'>
+        <div className='h-full w-2/5 flex flex-col'>
+          <div className='h-[30px] w-full text-center text-[12px] text-[#68c6d6]'>
             <span className='inline-block select-none relative after:content-[""] after:absolute after:right-[-10px] after:top-[6px] after:w-[6px] after:h-[6px] after:rounded-full after:bg-[#BE232A] before:content-[""] before:absolute before:left-[-10px] before:top-[6px] before:w-[6px] before:h-[6px] before:rounded-full before:bg-[#BE232A]'>
               饼图数据2分类占比
             </span>
           </div>
-          <div className='h-4/5 w-full' ref={pieChartRef2}></div>
+          <div className='flex-1 w-full' ref={pieChartRef2}></div>
         </div>
       </div>
     </div>

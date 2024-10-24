@@ -77,6 +77,10 @@ Refs: #123
 
 # 记录
 
+## 2024年10月24日
+
+- feat(views): [large-screen/wisdom-tourism] 大屏看板-智慧旅游模块 - 人群分析
+
 ## 2024年10月22日
 
 - feat(views): [large-screen/wisdom-tourism] 大屏看板-智慧旅游模块 - 游客量分析

@@ -2,7 +2,7 @@
  * @ Author: willysliang
  * @ CreateTime: 2024-10-16 10:14:36
  * @ Modifier: willysliang
- * @ ModifierTime: 2024-10-16 10:25:47
+ * @ ModifierTime: 2024-10-24 09:43:07
  * @ Description: 世界地图数据
  */
 
@@ -13,8 +13,8 @@ export const BJData = [
   [{ name: '北京' }, { name: '南昌', value: 80 }],
 ];
 
-/** 世界地图数据 */
-export const geoCoordMap: Record<string, [number, number]> = {
+/** 中国地理坐标图 */
+export const chinaGeoCoordMap: Record<string, [number, number]> = {
   海门: [121.15, 31.89],
   鄂尔多斯: [109.781327, 39.608266],
   招远: [120.38, 37.35],
@@ -205,6 +205,11 @@ export const geoCoordMap: Record<string, [number, number]> = {
   合肥: [117.27, 31.86],
   武汉: [114.31, 30.52],
   大庆: [125.03, 46.58],
+};
+
+/** 地理坐标图 */
+export const geoCoordMap: Record<string, [number, number]> = {
+  ...chinaGeoCoordMap,
   阿富汗: [67.709953, 33.93911],
   安哥拉: [17.873887, -11.202692],
   阿尔巴尼亚: [20.168331, 41.153332],
