@@ -2,11 +2,11 @@
  * @ Author: willysliang
  * @ CreateTime: 2024-10-15 08:44:23
  * @ Modifier: willysliang
- * @ ModifierTime: 2024-10-18 08:50:46
+ * @ ModifierTime: 2024-10-20 03:04:04
  * @ Description: 统计报告模块
  */
 
-import { FC, memo } from 'react';
+import { FC, memo, useContext } from 'react';
 import SmartTourismCard from '../components/smart-tourism-card';
 import Module1 from './module1';
 import BehaviorAnalysis from './behavior-analysis';
@@ -16,35 +16,13 @@ import Module3 from './module3';
 import Module4 from './module4';
 import Module5 from './module5';
 import Module6 from './module6';
-import { formatDate } from '@/utils';
+import { WisdomTourismContext } from '../..';
 
 /**
  * @description 统计报告模块
  */
 export const StatisticsReport: FC = memo(() => {
-  /** 获取时间间隔里面的日期 */
-  const getRangeDate = () => {
-    const result = [];
-
-    // 获取今天前后7天日期
-    for (let i = 0; i < 7; i++) {
-      const today = new Date();
-
-      // 今天及之前
-      const daysAgo = new Date().getTime() - 1000 * 60 * 60 * 24 * i;
-      today.setTime(daysAgo);
-      result.unshift(formatDate(today, 'YYYY.MM.DD'));
-
-      // 今天之后
-      const daysLater = new Date().getTime() + 1000 * 60 * 60 * 24 * (i + 1);
-      today.setTime(daysLater);
-      result.push(formatDate(today, 'YYYY.MM.DD'));
-    }
-    return result;
-  };
-
-  /** 选择的时间范围 */
-  const selectRangeDate = getRangeDate();
+  const { selectRangeDate } = useContext(WisdomTourismContext);
 
   return (
     <div className='w-full h-full pt-4'>

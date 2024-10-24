@@ -2,7 +2,7 @@
  * @ Author: willysliang
  * @ CreateTime: 2024-10-15 18:10:46
  * @ Modifier: willysliang
- * @ ModifierTime: 2024-10-16 14:37:26
+ * @ ModifierTime: 2024-10-21 09:03:41
  * @ Description: 图表1
  */
 
@@ -466,7 +466,7 @@ export const useChart1 = (selectRangeDate: string[]) => {
         },
       ],
     }),
-    [selectRangeDate],
+    [selectRangeDate, dataS(), dataN()],
   );
   const { chartRef } = useInitEchart(option);
 

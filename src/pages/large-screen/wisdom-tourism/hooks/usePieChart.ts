@@ -2,13 +2,13 @@
  * @ Author: willysliang
  * @ CreateTime: 2024-10-16 09:16:24
  * @ Modifier: willysliang
- * @ ModifierTime: 2024-10-16 14:37:57
+ * @ ModifierTime: 2024-10-23 15:03:37
  * @ Description: 饼图
  */
 
 import { useMemo } from 'react';
 import type { EChartsOption } from 'echarts';
-import { useInitEchart } from '../../../hooks/useInitEchart';
+import { useInitEchart } from './useInitEchart';
 
 interface IDataProps {
   value: number;
