@@ -80,6 +80,7 @@ Refs: #123
 ## 2024年10月28日
 
 - feat(views): [permission-manage] 权限管理模块入口配置
+- feat(server): 使用 indexedDB 作服务器后台存储数据
 
 ## 2024年10月24日
 

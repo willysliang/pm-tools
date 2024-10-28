@@ -2,7 +2,7 @@
  * @ Author: willysliang
  * @ CreateTime: 2024-10-25 16:30:36
  * @ Modifier: willysliang
- * @ ModifierTime: 2024-10-28 10:19:58
+ * @ ModifierTime: 2024-10-28 17:24:17
  * @ Description: 权限管理 - 相关路由
  */
 
@@ -44,11 +44,11 @@ export enum PermissionRouteEnum {
 const PERMISSION_BASE_PATH = `/${AppRouteLevelType.PERMISSION_MANAGEMENT}`;
 
 /**
- * 懒加载的路由地址
+ * 懒加载的子路由
  */
 const UserPermission = lazy(() => import('@/pages/permission-manage/user-permission'));
-const RolePermission = lazy(() => import('@/pages/permission-manage/user-permission'));
-const MenuPermission = lazy(() => import('@/pages/permission-manage/user-permission'));
+const RolePermission = lazy(() => import('@/pages/permission-manage/role-permission'));
+const MenuPermission = lazy(() => import('@/pages/permission-manage/menu-permission'));
 
 /** 权限路由集合 */
 export const PERMISSION_ROUTE_CONFIGS: IRouteConfigMap<PermissionRouteEnum> = {

@@ -4,7 +4,7 @@
  * @ Author: willy
  * @ CreateTime: 2024-03-04 20:35:48
  * @ Modifier: willysliang
- * @ ModifierTime: 2024-09-27 10:57:39
+ * @ ModifierTime: 2024-10-28 17:17:33
  * @ Description: IndexedDB 数据库操作帮手
  */
 
@@ -25,10 +25,10 @@ export interface IIndexedDBStore {
   /** 索引列表 key：索引名称 value：是否可以重复 */
   indexList: {
     name: string;
-    unique: boolean;
+    unique?: boolean;
   }[];
   /** 版本更新时是否需要删除原来的仓库 */
-  isClear: boolean;
+  isClear?: boolean;
 }
 
 /** IndexedDB 配置参数约束 */
@@ -119,6 +119,7 @@ export class IndexedDBHelper {
   /** 抛出异常错误 */
   private throwError(name: string, content: string = '程序错误', data?: any) {
     if (data) console.error(data);
+    console.error(`IndexedDB 错误异常 --> ${name}: ${content}`);
     throw new Error(`IndexedDB 错误异常 --> ${name}: ${content}`);
   }
 
