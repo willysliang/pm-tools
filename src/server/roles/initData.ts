@@ -2,12 +2,11 @@
  * @ Author: willysliang
  * @ CreateTime: 2024-10-28 17:33:08
  * @ Modifier: willysliang
- * @ ModifierTime: 2024-10-28 17:54:16
+ * @ ModifierTime: 2024-10-28 18:01:12
  * @ Description: 角色表初始化数据
  */
 
-import { baseProps } from '../config/initData';
-import { StoreNameEnum } from '../config/types';
+import { baseProps, StoreNameEnum } from '../config/types';
 import { PermissionCodeEnum, SpacePermissionCodeEnum } from '../permissions/types';
 import { IRolesProps, RoleCodeEnum } from './types';
 

@@ -2,12 +2,11 @@
  * @ Author: willysliang
  * @ CreateTime: 2024-10-28 17:31:46
  * @ Modifier: willysliang
- * @ ModifierTime: 2024-10-28 17:41:32
+ * @ ModifierTime: 2024-10-28 18:01:03
  * @ Description: 权限表初始化数据
  */
 
-import { baseProps } from '../config/initData';
-import { StoreNameEnum } from '../config/types';
+import { baseProps, StoreNameEnum } from '../config/types';
 import { IPermissionsProps, PermissionCodeEnum } from './types';
 
 /** 权限表值唯一的属性 */
