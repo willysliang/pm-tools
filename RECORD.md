@@ -77,6 +77,10 @@ Refs: #123
 
 # 记录
 
+## 2024年10月28日
+
+- feat(views): [permission-manage] 权限管理模块入口配置
+
 ## 2024年10月24日
 
 - feat(views): [large-screen/wisdom-tourism] 大屏看板-智慧旅游模块 - 人群分析

@@ -92,6 +92,7 @@
 
       &__menu-name {
         font-size: medium;
+        user-select: none;
       }
     }
 
@@ -114,6 +115,7 @@
         height: 2.2rem;
         justify-content: center;
         overflow: hidden;
+        user-select: none;
         width: 2.2rem;
 
         img {

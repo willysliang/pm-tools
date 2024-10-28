@@ -2,7 +2,7 @@
  * @ Author: willy
  * @ CreateTime: 2024-06-20 14:30:55
  * @ Modifier: willysliang
- * @ ModifierTime: 2024-09-18 10:31:13
+ * @ ModifierTime: 2024-10-25 17:43:07
  * @ Description: App 路由
  */
 
@@ -28,11 +28,18 @@ import {
   IRouteConfigMap,
 } from './types';
 
+/**
+ * 不缓存的页面
+ */
 import NotFound from '@/pages/System/NotFound/index';
+import { PERMISSION_ROUTE_CONFIGS } from './permissionRoutes';
 
 /** 将 type 中的所有声明同步导出 */
 export * from './types';
 
+/**
+ * 路由配置项相关
+ */
 /** APP 系统路由 */
 export const APP_SYSTEM_ROUTE_CONFIGS: IRouteConfigMap<AppSystemRouteType> = {
   [AppSystemRouteType.LOGIN]: {
@@ -54,6 +61,7 @@ export const APP_SYSTEM_ROUTE_CONFIGS: IRouteConfigMap<AppSystemRouteType> = {
 
 const Dashboard = lazy(() => import('@/pages/Dashboard'));
 const WorkingHours = lazy(() => import('@/pages/working-hours'));
+const Permission = lazy(() => import('@/pages/permission-manage'));
 const DemoTest = lazy(() => import('@/pages/Test'));
 
 /** APP 菜单路由  */
@@ -108,13 +116,14 @@ export const APP_ROUTE_CONFIGS: IRouteConfigMap<AppRouteLevelType> = {
     meta: {},
     children: [],
   },
-  [AppRouteLevelType.PERSON_PERMISSION_MANAGEMENT]: {
-    label: '人员权限管理',
-    path: `/${AppRouteLevelType.PERSON_PERMISSION_MANAGEMENT}`,
+  [AppRouteLevelType.PERMISSION_MANAGEMENT]: {
+    label: '权限管理',
+    path: `/${AppRouteLevelType.PERMISSION_MANAGEMENT}`,
     icon: TwoEllipses,
-    key: 'person',
+    key: 'permission',
+    element: <Permission />,
     meta: {},
-    children: [],
+    children: Object.values(PERMISSION_ROUTE_CONFIGS),
   },
   [AppRouteLevelType.COMMUNICATION_COLLABORATION]: {
     label: '沟通协作',

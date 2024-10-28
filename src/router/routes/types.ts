@@ -2,14 +2,17 @@
  * @ Author: willy
  * @ CreateTime: 2024-06-21 15:15:51
  * @ Modifier: willysliang
- * @ ModifierTime: 2024-09-06 11:39:15
+ * @ ModifierTime: 2024-10-25 17:36:10
  * @ Description: 路由相关的声明
  */
 
 import React from 'react';
 import { Icon } from '@icon-park/react/lib/runtime';
 
-/** APP的系统级路由枚举  */
+/**
+ * 枚举相关
+ */
+/** 枚举 - APP的系统级路由  */
 export enum AppSystemRouteType {
   /** 登录 */
   LOGIN = 'LOGIN',
@@ -17,7 +20,7 @@ export enum AppSystemRouteType {
   NOT_FOUND = 'NOT_FOUND',
 }
 
-/** APP的默认路由枚举 */
+/** 枚举 - APP的默认路由 */
 export enum AppDefaultRouteType {
   /** 默认 */
   DEFAULT = 'DEFAULT',
@@ -25,7 +28,7 @@ export enum AppDefaultRouteType {
   UNKNOW = 'UNKNOW',
 }
 
-/** APP的一级菜单枚举 */
+/** 枚举 - APP的一级菜单 */
 export enum AppRouteLevelType {
   /** 仪表板 */
   DASHBOARD = 'DASHBOARD',
@@ -39,8 +42,8 @@ export enum AppRouteLevelType {
   FILE_MANAGEMENT = 'FILE_MANAGEMENT',
   /** 系统管理 */
   SYSTEM_MANAGEMENT = 'SYSTEM_MANAGEMENT',
-  /** 人员权限管理 */
-  PERSON_PERMISSION_MANAGEMENT = 'PERSON_PERMISSION_MANAGEMENT',
+  /** 权限管理 */
+  PERMISSION_MANAGEMENT = 'PERMISSION_MANAGEMENT',
   /** 沟通协作 */
   COMMUNICATION_COLLABORATION = 'COMMUNICATION_COLLABORATION',
   /** 进程规划 */
@@ -53,6 +56,9 @@ export enum AppRouteLevelType {
   DEMO_TEST = 'DEMO_TEST',
 }
 
+/**
+ * 类型相关
+ */
 /** 路由的页面内容 */
 export type IRouteElement =
   | React.ReactNode

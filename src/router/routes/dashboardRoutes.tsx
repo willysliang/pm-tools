@@ -2,7 +2,7 @@
  * @ Author: willysliang
  * @ CreateTime: 2024-09-27 11:32:11
  * @ Modifier: willysliang
- * @ ModifierTime: 2024-10-17 09:20:47
+ * @ ModifierTime: 2024-10-25 17:47:32
  * @ Description: dashboardRoutes - 大屏看板路由
  */
 
@@ -36,6 +36,9 @@ export enum DashboardLevelType {
   DASHBOARD_WISDOM_TOURISM = 'DASHBOARD_WISDOM_TOURISM',
 }
 
+/**
+ * 懒加载的路由地址
+ */
 const DashboardTurbine = lazy(() => import('@/pages/large-screen/turbine'));
 const DashboardWisdomTourism = lazy(() => import('@/pages/large-screen/wisdom-tourism'));
 
