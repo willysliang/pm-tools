@@ -2,7 +2,7 @@
  * @ Author: willysliang
  * @ CreateTime: 2024-10-28 16:06:17
  * @ Modifier: willysliang
- * @ ModifierTime: 2024-10-28 18:00:45
+ * @ ModifierTime: 2024-10-29 18:24:07
  * @ Description: 类型声明
  */
 
@@ -13,7 +13,7 @@ export type IsOptional<T, K extends keyof T> = T[K] extends undefined ? K : neve
 export type IsRequired<T, K extends keyof T> = T[K] extends undefined ? never : K;
 
 export interface IBaseProps {
-  // id: number;
+  id: number;
   createTime: Date;
   creater: string;
   modifierTime: Date;

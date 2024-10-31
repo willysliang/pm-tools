@@ -2,7 +2,7 @@
  * @ Author: willysliang
  * @ CreateTime: 2024-10-28 17:31:46
  * @ Modifier: willysliang
- * @ ModifierTime: 2024-10-28 18:01:03
+ * @ ModifierTime: 2024-10-29 17:57:28
  * @ Description: 权限表初始化数据
  */
 
@@ -12,7 +12,7 @@ import { IPermissionsProps, PermissionCodeEnum } from './types';
 /** 权限表值唯一的属性 */
 const permissionUniqueProps: (keyof IPermissionsProps)[] = ['permissionCode', 'permissionName'];
 /** 权限表值不唯一的属性 */
-const permissionNotUniqueProps: (keyof IPermissionsProps)[] = ['permissionType'];
+const permissionNotUniqueProps: (keyof IPermissionsProps)[] = ['status', 'permissionType'];
 
 /** 权限表仓库定义 */
 export const permissionsStore = {
@@ -40,70 +40,98 @@ export const permissionsInitData: IPermissionsProps[] = [
     permissionCode: PermissionCodeEnum.BaseSet,
     permissionName: '基本设置',
     permissionType: '空间',
+    id: 1,
+    status: 1,
   },
   {
     permissionCode: PermissionCodeEnum.Roles,
     permissionName: '成员管理',
     permissionType: '空间',
+    id: 2,
+    status: 1,
   },
   {
     permissionCode: PermissionCodeEnum.Templates,
     permissionName: '模板管理',
     permissionType: '空间',
+    id: 3,
+    status: 1,
   },
   {
     permissionCode: PermissionCodeEnum.Tags,
     permissionName: '标签管理',
     permissionType: '空间',
+    id: 4,
+    status: 1,
   },
   {
     permissionCode: PermissionCodeEnum.PagePermissions,
     permissionName: '页面权限',
     permissionType: '空间',
+    id: 5,
+    status: 1,
   },
   {
     permissionCode: PermissionCodeEnum.Directories,
     permissionName: '目录管理',
     permissionType: '空间',
+    id: 6,
+    status: 1,
   },
   {
     permissionCode: PermissionCodeEnum.GroupNew,
     permissionName: '新建分组',
     permissionType: '页面',
+    id: 7,
+    status: 1,
   },
   {
     permissionCode: PermissionCodeEnum.GroupEdit,
     permissionName: '编辑分组',
     permissionType: '页面',
+    id: 8,
+    status: 1,
   },
   {
     permissionCode: PermissionCodeEnum.GroupDelete,
     permissionName: '删除分组',
     permissionType: '页面',
+    id: 9,
+    status: 1,
   },
   {
     permissionCode: PermissionCodeEnum.GroupCopy,
     permissionName: '复制分组',
     permissionType: '页面',
+    id: 10,
+    status: 1,
   },
   {
     permissionCode: PermissionCodeEnum.GroupExport,
     permissionName: '导出分组',
     permissionType: '页面',
+    id: 11,
+    status: 1,
   },
   {
     permissionCode: PermissionCodeEnum.AttachmentUpload,
     permissionName: '附件上传',
     permissionType: '页面',
+    id: 12,
+    status: 1,
   },
   {
     permissionCode: PermissionCodeEnum.AttachmentDownload,
     permissionName: '附件下载',
     permissionType: '页面',
+    id: 13,
+    status: 1,
   },
   {
     permissionCode: PermissionCodeEnum.AttachmentRename,
     permissionName: '附件重命名',
     permissionType: '页面',
+    id: 14,
+    status: 1,
   },
 ];

@@ -4,7 +4,7 @@
  * @ Author: willy
  * @ CreateTime: 2024-03-04 20:35:48
  * @ Modifier: willysliang
- * @ ModifierTime: 2024-10-28 17:17:33
+ * @ ModifierTime: 2024-10-30 16:26:17
  * @ Description: IndexedDB 数据库操作帮手
  */
 
@@ -136,7 +136,7 @@ export class IndexedDBHelper {
    * @example
    *  const addPrimaryKey = await db.add('userCopy', { name: 1023, a: 1, b: 2312 })
    */
-  public add(storeName: string, data: any): Promise<IDBValidKey> {
+  public add<T = any>(storeName: string, data: T): Promise<IDBValidKey> {
     return new Promise((resolve, reject) => {
       const req = this.beginTransaction(storeName).add(this.removeProxy(data));
 
@@ -162,13 +162,13 @@ export class IndexedDBHelper {
    * @example
    *  const getData = await db.get('userCopy', 1)
    */
-  public get(storeName: string, primaryKey: IDBValidKey | IDBKeyRange): Promise<any> {
+  public get<T = any>(storeName: string, primaryKey: IDBValidKey | IDBKeyRange): Promise<T> {
     return new Promise((resolve, reject) => {
       const transaction = this.beginTransaction(storeName);
       const req = transaction.get(primaryKey);
 
       req.onsuccess = (event: any) => {
-        const result = event.target.result;
+        const result: T = event.target.result;
         console.log(
           this.get.name,
           '数据库信息查找成功',
@@ -194,10 +194,10 @@ export class IndexedDBHelper {
    * @example
    *  const getAll = await db.getAll(storeName)
    */
-  public getAll(storeName: string): Promise<any[]> {
+  public getAll<T = any>(storeName: string): Promise<T[]> {
     return new Promise((resolve, reject) => {
       const req = this.beginTransaction(storeName).openCursor();
-      const res: any[] = [];
+      const res: T[] = [];
       req.onsuccess = (event: any) => {
         console.log(this.getAll.name, '数据库信息获取成功', ...arguments);
 
@@ -231,10 +231,10 @@ export class IndexedDBHelper {
       await db.update(storeName, { id: 11, c: 21 }) // 插入一条没有 name 的数据
       const getAll = await db.getByIndex(storeName, 'name') // 将会查询不到上述插入的数据
    */
-  public getByIndex(storeName: string, indexName: string): Promise<any> {
+  public getByIndex<T = any>(storeName: string, indexName: string): Promise<T[]> {
     return new Promise((resolve, reject) => {
       const req = this.beginTransaction(storeName).index(indexName).openCursor();
-      const res: any[] = [];
+      const res: T[] = [];
       req.onsuccess = (event: any) => {
         console.log(this.getByIndex.name, '数据库信息获取成功', ...arguments);
         const cursor = event.target.result;
@@ -270,7 +270,11 @@ export class IndexedDBHelper {
         c: 21,
       }) // 将会更新 id 为 11 的数据
    */
-  public update(storeName: string, data: any, primaryKey?: IDBValidKey): Promise<IDBValidKey> {
+  public update<T = any>(
+    storeName: string,
+    data: T,
+    primaryKey?: IDBValidKey,
+  ): Promise<IDBValidKey> {
     return new Promise((resolve, reject) => {
       const req = this.beginTransaction(storeName).put(data, primaryKey);
 

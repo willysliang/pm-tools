@@ -2,7 +2,7 @@
  * @ Author: willysliang
  * @ CreateTime: 2024-10-28 16:08:14
  * @ Modifier: willysliang
- * @ ModifierTime: 2024-10-28 18:00:42
+ * @ ModifierTime: 2024-10-29 17:54:58
  * @ Description: 初始化数据
  */
 
@@ -12,7 +12,7 @@ import { rolesInitData, rolesStore } from '../roles/initData';
 import { IBaseProps, StoreNameEnum } from './types';
 
 /** 基础数据的初始化 */
-const initBaseData: IBaseProps = {
+const initBaseData: Omit<IBaseProps, 'id'> = {
   createTime: new Date(),
   creater: 'admin',
   modifierTime: new Date(),
@@ -29,7 +29,7 @@ export const initData = [
   },
   {
     name: StoreNameEnum.Roles,
-    data: rolesInitData.map((item) => ({ ...initBaseData, ...item })),
+    data: rolesInitData.map((item, index) => ({ ...initBaseData, id: index + 1, ...item })),
   },
 ];
 

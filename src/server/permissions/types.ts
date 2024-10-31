@@ -2,16 +2,18 @@
  * @ Author: willysliang
  * @ CreateTime: 2024-10-28 17:36:18
  * @ Modifier: willysliang
- * @ ModifierTime: 2024-10-28 17:37:02
+ * @ ModifierTime: 2024-10-29 18:31:51
  * @ Description: 权限表的类型
  */
 
 import { IBaseProps } from '../config/types';
 
+/** 权限表的类型 */
 export interface IPermissionsProps extends Partial<IBaseProps> {
   permissionCode: string;
   permissionName: string;
   permissionType: string;
+  status: number;
 }
 
 /** 枚举 - 空间权限编号 */
