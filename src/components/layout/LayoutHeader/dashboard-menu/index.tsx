@@ -2,7 +2,7 @@
  * @ Author: willysliang
  * @ CreateTime: 2024-09-27 15:11:32
  * @ Modifier: willysliang
- * @ ModifierTime: 2024-10-09 22:13:38
+ * @ ModifierTime: 2024-10-30 15:17:15
  * @ Description: 大屏的路由菜单入口
  */
 
@@ -38,12 +38,9 @@ export const DashboardMenu: FC = memo(() => {
 
   return (
     <Dropdown menu={{ items, onClick }}>
-      <IconPark
-        icon={DataSheet}
-        size={22}
-        className='mr-4 cursor-pointer text-[#334155] hover:text-[#6e97e8]'
-        title='大屏菜单'
-      />
+      <div className='mr-4 cursor-pointer text-[#334155] hover:text-[#6e97e8]'>
+        <IconPark icon={DataSheet} size={22} title='大屏菜单' />
+      </div>
     </Dropdown>
   );
 });

@@ -2,6 +2,7 @@
 
 .dialog {
   position: fixed;
+  z-index: var(#{getVarName('z-index', 'popup')});
 
   &.dialog--full {
     inset: 0;

@@ -27,3 +27,11 @@
   font-family: ding-talk-sans, 'Helvetica Neue', Helvetica, 'PingFang SC', 'Hiragino Sans GB',
     'Microsoft YaHei', '微软雅黑', Arial, sans-serif;
 }
+
+.btn {
+  @include btn;
+}
+
+.not-scrollbar {
+  @include notScrollbar;
+}
