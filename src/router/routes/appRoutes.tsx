@@ -2,7 +2,7 @@
  * @ Author: willy
  * @ CreateTime: 2024-06-20 14:30:55
  * @ Modifier: willysliang
- * @ ModifierTime: 2024-10-25 17:43:07
+ * @ ModifierTime: 2024-10-29 17:14:41
  * @ Description: App 路由
  */
 
@@ -13,9 +13,9 @@ import {
   CalendarThree,
   CircularConnection,
   DashboardCar,
-  DragonZodiac,
   Excel,
   HourglassFull,
+  Permissions,
   Pigeon,
   Sleaves,
   Tag,
@@ -119,7 +119,7 @@ export const APP_ROUTE_CONFIGS: IRouteConfigMap<AppRouteLevelType> = {
   [AppRouteLevelType.PERMISSION_MANAGEMENT]: {
     label: '权限管理',
     path: `/${AppRouteLevelType.PERMISSION_MANAGEMENT}`,
-    icon: TwoEllipses,
+    icon: Permissions,
     key: 'permission',
     element: <Permission />,
     meta: {},
@@ -128,7 +128,7 @@ export const APP_ROUTE_CONFIGS: IRouteConfigMap<AppRouteLevelType> = {
   [AppRouteLevelType.COMMUNICATION_COLLABORATION]: {
     label: '沟通协作',
     path: `/${AppRouteLevelType.COMMUNICATION_COLLABORATION}`,
-    icon: DragonZodiac,
+    icon: TwoEllipses,
     key: 'communication',
     meta: {},
     children: [],

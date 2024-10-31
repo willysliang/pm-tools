@@ -80,6 +80,8 @@ Refs: #123
 ## 2024年10月31日
 
 - feat(server): 服务后台添加权限、角色表
+- fix(comp): 修复组件警告问题
+- feat(views): [permission-manage/menu-manage] 菜单权限管理模块
 
 ## 2024年10月29日
 
