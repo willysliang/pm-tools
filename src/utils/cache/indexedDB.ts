@@ -4,7 +4,7 @@
  * @ Author: willy
  * @ CreateTime: 2024-03-04 20:35:48
  * @ Modifier: willysliang
- * @ ModifierTime: 2024-10-30 16:26:17
+ * @ ModifierTime: 2024-11-04 17:21:50
  * @ Description: IndexedDB 数据库操作帮手
  */
 
@@ -145,11 +145,11 @@ export class IndexedDBHelper {
         resolve(event.target.result);
       };
       req.onerror = (event: any) => {
+        reject(event.target.error);
         this.throwError(IndexedDBHelper.name, '数据库信息添加失败', {
           arguments,
           event,
         });
-        reject(event.target.error);
       };
     });
   }
@@ -178,11 +178,11 @@ export class IndexedDBHelper {
         resolve(result);
       };
       req.onerror = (event: any) => {
+        reject(event.target.error);
         this.throwError(IndexedDBHelper.name, '数据库信息获取失败', {
           arguments,
           event,
         });
-        reject(event.target.error);
       };
     });
   }
@@ -213,11 +213,11 @@ export class IndexedDBHelper {
         }
       };
       req.onerror = (event: any) => {
+        reject(event.target.error);
         this.throwError(IndexedDBHelper.name, '数据库信息获取失败', {
           arguments,
           event,
         });
-        reject(event.target.error);
       };
     });
   }
@@ -246,11 +246,11 @@ export class IndexedDBHelper {
         }
       };
       req.onerror = (event: any) => {
+        reject(event.target.error);
         this.throwError(IndexedDBHelper.name, '数据库信息获取失败', {
           arguments,
           event,
         });
-        reject(event.target.error);
       };
     });
   }
@@ -279,15 +279,15 @@ export class IndexedDBHelper {
       const req = this.beginTransaction(storeName).put(data, primaryKey);
 
       req.onsuccess = (event: any) => {
-        console.log(this.update.name, '数据库信息设置成功', ...arguments);
+        console.log(this.update.name, '数据库信息更新成功', ...arguments);
         resolve(event.target.result);
       };
       req.onerror = (event: any) => {
-        this.throwError(IndexedDBHelper.name, '数据库信息设置失败', {
+        reject(event.target.error);
+        this.throwError(IndexedDBHelper.name, '数据库信息更新失败', {
           arguments,
           event,
         });
-        reject(event.target.error);
       };
     });
   }
@@ -309,11 +309,11 @@ export class IndexedDBHelper {
         resolve(event.target.result);
       };
       req.onerror = (event: any) => {
+        reject(event.target.error);
         this.throwError(IndexedDBHelper.name, '数据库信息删除失败', {
           arguments,
           event,
         });
-        reject(event.target.error);
       };
     });
   }
@@ -334,11 +334,11 @@ export class IndexedDBHelper {
         resolve(event.target.result);
       };
       req.onerror = (event: any) => {
+        reject(event.target.error);
         this.throwError(IndexedDBHelper.name, '数据库条数获取失败', {
           arguments,
           event,
         });
-        reject(event.target.error);
       };
     });
   }

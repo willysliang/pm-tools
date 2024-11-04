@@ -77,6 +77,10 @@ Refs: #123
 
 # 记录
 
+## 2024年11月4日
+
+- fix(utils): [indexedDB] 修复IndexedDBHelper类throw错误导致无法reject出错误问题
+
 ## 2024年10月31日
 
 - feat(server): 服务后台添加权限、角色表
