@@ -77,6 +77,10 @@ Refs: #123
 
 # 记录
 
+## 2024年11月5日
+
+- feat(views): [permission-manage/menu-manage] 菜单权限管理-增删改查
+
 ## 2024年11月4日
 
 - fix(utils): [indexedDB] 修复IndexedDBHelper类throw错误导致无法reject出错误问题

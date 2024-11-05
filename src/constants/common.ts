@@ -2,7 +2,7 @@
  * @ Author: willysliang
  * @ CreateTime: 2024-10-29 18:19:44
  * @ Modifier: willysliang
- * @ ModifierTime: 2024-10-30 11:06:18
+ * @ ModifierTime: 2024-11-05 09:11:51
  * @ Description: 通用类
  */
 
@@ -28,6 +28,8 @@ export const TagColorList: TagColorEnum[] = Object.values(TagColorEnum);
 
 /** 枚举 - 状态类型 */
 export enum StatusEnum {
+  /** 注销 */
+  Deleted = -1,
   /** 停用 */
   Disable = 0,
   /** 启用 */
@@ -43,6 +45,11 @@ export const StatusMap: Record<
     value: StatusEnum;
   }
 > = {
+  [StatusEnum.Deleted]: {
+    color: TagColorEnum.Red,
+    label: '注销',
+    value: StatusEnum.Deleted,
+  },
   [StatusEnum.Disable]: {
     color: TagColorEnum.Volcano,
     label: '停用',

@@ -2,7 +2,7 @@
  * @ Author: willysliang
  * @ CreateTime: 2024-10-25 17:46:14
  * @ Modifier: willysliang
- * @ ModifierTime: 2024-10-30 17:46:46
+ * @ ModifierTime: 2024-11-05 10:28:19
  * @ Description: 菜单权限管理
  */
 
@@ -10,7 +10,6 @@ import { FC, memo, useEffect, useMemo, useRef, useState } from 'react';
 import {
   Form,
   Input,
-  InputNumber,
   message,
   Pagination,
   Popconfirm,
@@ -22,9 +21,11 @@ import {
 } from 'antd';
 import { Delete, Edit } from '@icon-park/react';
 import IconPark from '@/components/common/IconPark';
-import { getPermissions } from '@/server/permissions';
+import EditableCell from './components/editable-cell';
+import AddPermission from './components/add-permission';
+import { deletePermission, getPermissions, updatePermission } from '@/server/permissions';
 import { IPermissionsProps } from '@/server/permissions/types';
-import { StatusMap } from '@/constants/common';
+import { StatusEnum, StatusMap } from '@/constants/common';
 
 /**
  * 表格配置
@@ -36,7 +37,8 @@ const defaultColumns: TableProps<IPermissionsProps>['columns'] = [
     key: 'id',
     align: 'center',
     fixed: 'left',
-    width: 100,
+    width: 120,
+    render: (id) => String(id).padStart(6, '0'),
   },
   {
     title: '代码编号',
@@ -92,47 +94,6 @@ const defaultColumns: TableProps<IPermissionsProps>['columns'] = [
   },
 ];
 
-interface EditableCellProps extends React.HTMLAttributes<HTMLElement> {
-  editing: boolean;
-  dataIndex: string;
-  title: any;
-  inputType: 'number' | 'text';
-  record: IPermissionsProps;
-  index: number;
-}
-
-const EditableCell: React.FC<React.PropsWithChildren<EditableCellProps>> = ({
-  editing,
-  dataIndex,
-  title,
-  inputType,
-  children,
-  ...restProps
-}) => {
-  const inputNode = inputType === 'number' ? <InputNumber /> : <Input />;
-
-  return (
-    <td {...restProps}>
-      {editing ? (
-        <Form.Item
-          name={dataIndex}
-          style={{ margin: 0 }}
-          rules={[
-            {
-              required: true,
-              message: `Please Input ${title}!`,
-            },
-          ]}
-        >
-          {inputNode}
-        </Form.Item>
-      ) : (
-        children
-      )}
-    </td>
-  );
-};
-
 /**
  * @description 菜单权限管理
  */
@@ -149,7 +110,7 @@ export const MenuPermission: FC = memo(() => {
     setSearchLoading(true);
     const res = await getPermissions(searchValue.current, newPage, newPageSize);
     if (res.code) {
-      message.error(res.error as any);
+      message.error(res.msg as any);
       setSearchLoading(false);
       return;
     }
@@ -164,62 +125,73 @@ export const MenuPermission: FC = memo(() => {
     getList();
   }, []);
 
-  /** 搜索 */
+  /**
+   * 搜索
+   */
   const handleSearch = (val: string) => {
     searchValue.current = val;
     getList(1, pageSize);
   };
 
   /**
-   * 事件触发
+   * 删除
    */
-  /** 编辑 */
-  // const handleEdit = (id: IPermissionsProps['id']) => {
-  //   message.info(`编辑权限 ${id}`);
-  // };
-  /** 删除 */
-  const handleDelete = (id: IPermissionsProps['id']) => {
-    message.info(`删除权限 ${id}`);
+  const handleDelete = async (record: IPermissionsProps, id: IPermissionsProps['id']) => {
+    const { code, msg } = await deletePermission(record, id);
+    if (code) return message.error(msg);
+    message.success(msg);
+    getList(1);
   };
 
   /**
    * 编辑行
    */
+  /** 编辑行的表单数据 */
   const [form] = Form.useForm<IPermissionsProps>();
+  /** 记录编辑的行 */
   const [editingKey, setEditingKey] = useState<number>(-1);
+  /** 判断是否在编辑 */
   const isEditing = (record: IPermissionsProps) => record.id === editingKey;
+
+  /** 触发编辑 */
   const handleEdit = (record: Partial<IPermissionsProps>) => {
     form.setFieldsValue({
       permissionCode: '',
       permissionName: '',
       permissionType: '其他',
+      status: StatusEnum.Enable,
       ...record,
     });
     setEditingKey(record.id!);
   };
 
-  const cancel = () => {
+  /** 取消编辑 */
+  const handleCancelEdit = () => {
     setEditingKey(-1);
   };
 
-  const save = async (id: number) => {
+  /**
+   * @function handleUpdate 更新所选项权限的数据
+   * @param id 权限id
+   */
+  const handleUpdate = async (id: number) => {
     try {
       const row = await form.validateFields();
-
       const newData = [...permissions];
       const index = newData.findIndex((item) => id === item.id);
       if (index > -1) {
-        const item = newData[index];
-        newData.splice(index, 1, {
-          ...item,
+        const updateItem = {
+          ...newData[index],
           ...row,
-        });
+        };
+        const { code, msg } = await updatePermission(updateItem);
+        if (code) return message.error(msg);
+        newData.splice(index, 1, updateItem);
         setPermissions(newData);
         setEditingKey(-1);
+        message.success(msg);
       } else {
-        newData.push(row);
-        setPermissions(newData);
-        setEditingKey(-1);
+        message.error('没有查询到相应行数据');
       }
     } catch (errInfo) {
       console.log('Validate Failed:', errInfo);
@@ -244,12 +216,28 @@ export const MenuPermission: FC = memo(() => {
 
           return editable ? (
             <span>
-              <Typography.Link onClick={() => save(record.id!)} style={{ marginInlineEnd: 8 }}>
-                保存
-              </Typography.Link>
-              <Popconfirm title='Sure to cancel?' onConfirm={cancel}>
-                <a>取消</a>
+              <Popconfirm
+                title='确定保存?'
+                okType='danger'
+                okText='确认'
+                cancelText='取消'
+                cancelButtonProps={{
+                  size: 'small',
+                }}
+                okButtonProps={{
+                  size: 'small',
+                }}
+                onConfirm={() => handleUpdate(record.id!)}
+              >
+                <Typography.Link type='success'>保存</Typography.Link>
               </Popconfirm>
+              <Typography.Link
+                type='secondary'
+                style={{ marginInlineStart: 8 }}
+                onClick={handleCancelEdit}
+              >
+                取消
+              </Typography.Link>
             </span>
           ) : (
             <div className='w-full h-full flex items-center justify-center'>
@@ -261,8 +249,8 @@ export const MenuPermission: FC = memo(() => {
                 onClick={() => handleEdit(record)}
               />
               <Popconfirm
-                title='确认删除'
-                description='确认删除该权限吗？权限删除后不可回复，删除后会从对应页面中删除'
+                title='确认删除该权限?'
+                description='权限删除后不可回复，删除后会从对应页面中删除'
                 okType='danger'
                 okText='确认'
                 cancelText='取消'
@@ -272,8 +260,7 @@ export const MenuPermission: FC = memo(() => {
                 okButtonProps={{
                   size: 'small',
                 }}
-                onConfirm={() => handleDelete(record.id)}
-                onOpenChange={() => console.log('open change')}
+                onConfirm={() => handleDelete(record, record.id)}
               >
                 <div className='text-[orange] btn'>
                   <IconPark icon={Delete} size={16} title='删除' />
@@ -287,14 +274,14 @@ export const MenuPermission: FC = memo(() => {
     [editingKey],
   );
 
+  /** 合并列，增加可编辑行 */
   const mergeColumns = columns.map((col: any) => {
-    if (col.dataIndex === 'action') return col;
+    if (['id', 'action'].includes(col.dataIndex)) return col;
 
     return {
       ...col,
       onCell: (record: IPermissionsProps) => ({
         record,
-        inputType: col.dataIndex === 'status' ? 'number' : 'text',
         dataIndex: col.dataIndex,
         title: col.title,
         editing: isEditing(record),
@@ -304,6 +291,7 @@ export const MenuPermission: FC = memo(() => {
 
   return (
     <div className='w-full h-full flex flex-col'>
+      <AddPermission addSucCallback={getList} />
       <Input.Search
         placeholder='搜索编号和名称'
         loading={searchLoading}
