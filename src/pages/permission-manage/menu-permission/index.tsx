@@ -2,7 +2,7 @@
  * @ Author: willysliang
  * @ CreateTime: 2024-10-25 17:46:14
  * @ Modifier: willysliang
- * @ ModifierTime: 2024-11-05 10:28:19
+ * @ ModifierTime: 2024-11-26 09:33:51
  * @ Description: 菜单权限管理
  */
 
@@ -250,7 +250,7 @@ export const MenuPermission: FC = memo(() => {
               />
               <Popconfirm
                 title='确认删除该权限?'
-                description='权限删除后不可回复，删除后会从对应页面中删除'
+                description='权限删除后不可恢复，删除后会从对应页面中删除'
                 okType='danger'
                 okText='确认'
                 cancelText='取消'

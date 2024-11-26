@@ -2,7 +2,7 @@
  * @ Author: willysliang
  * @ CreateTime: 2024-10-28 17:32:35
  * @ Modifier: willysliang
- * @ ModifierTime: 2024-11-05 10:30:36
+ * @ ModifierTime: 2024-11-26 10:30:24
  * @ Description: 权限表的接口
  */
 
@@ -10,6 +10,43 @@ import { db } from '../index';
 import { StatusEnum } from '@/constants/common';
 import { StoreNameEnum } from '../config/types';
 import { IPermissionsProps } from './types';
+
+/**
+ * @method getAllPermission 获取权限表的所有数据
+ * @returns {Promise}
+ */
+export const getAllPermission = async () => {
+  let code = 0;
+  let msg = undefined;
+  let error = undefined;
+
+  let permissions: IPermissionsProps[] = [];
+
+  try {
+    // 获取所有权限数据
+    const allPermissions = await db.getAll<IPermissionsProps>(StoreNameEnum.Permissions);
+
+    // 过滤掉已删除的数据
+    const notDeletePermissions = allPermissions.filter(
+      ({ status }) => status !== StatusEnum.Deleted,
+    );
+
+    permissions = notDeletePermissions;
+
+    msg = '获取权限数据成功';
+  } catch (err) {
+    code = 500;
+    msg = '获取权限数据失败';
+    error = err;
+  }
+
+  return {
+    code,
+    permissions,
+    msg,
+    error,
+  };
+};
 
 /**
  * @method getPermissions 获取权限表的数据
@@ -37,17 +74,13 @@ export const getPermissions = async (
 
   try {
     // 获取所有权限数据
-    const allPermissions = await db.getAll<IPermissionsProps>(StoreNameEnum.Permissions);
-
-    // 过滤掉已删除的数据
-    const notDeletePermissions = allPermissions.filter(
-      ({ status }) => status !== StatusEnum.Deleted,
-    );
+    const res = await getAllPermission();
+    const allPermissions = res.permissions;
 
     // 根据搜索条件过滤权限数据
-    let searchPermissions = notDeletePermissions;
+    let searchPermissions = allPermissions;
     if (searchValue !== '') {
-      searchPermissions = notDeletePermissions.filter(
+      searchPermissions = allPermissions.filter(
         ({ permissionCode, permissionName }) =>
           permissionCode.includes(searchValue) || permissionName.includes(searchValue),
       );

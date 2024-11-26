@@ -77,6 +77,10 @@ Refs: #123
 
 # 记录
 
+## 2024年11月26日
+
+- feat(views): [permission-manage/role-permission] 角色权限管理-增删改查
+
 ## 2024年11月5日
 
 - feat(views): [permission-manage/menu-manage] 菜单权限管理-增删改查
