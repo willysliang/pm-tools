@@ -2,7 +2,7 @@
  * @ Author: willy
  * @ CreateTime: 2024-06-20 14:30:55
  * @ Modifier: willysliang
- * @ ModifierTime: 2024-10-29 17:14:41
+ * @ ModifierTime: 2025-01-15 17:18:05
  * @ Description: App 路由
  */
 
@@ -33,6 +33,7 @@ import {
  */
 import NotFound from '@/pages/System/NotFound/index';
 import { PERMISSION_ROUTE_CONFIGS } from './permissionRoutes';
+import { REPORT_ANALYSIS_ROUTE_CONFIGS } from './reportAnalysisRoutes';
 
 /** 将 type 中的所有声明同步导出 */
 export * from './types';
@@ -62,6 +63,7 @@ export const APP_SYSTEM_ROUTE_CONFIGS: IRouteConfigMap<AppSystemRouteType> = {
 const Dashboard = lazy(() => import('@/pages/Dashboard'));
 const WorkingHours = lazy(() => import('@/pages/working-hours'));
 const Permission = lazy(() => import('@/pages/permission-manage'));
+const ReportAnalysis = lazy(() => import('@/pages/report-analysis'));
 const DemoTest = lazy(() => import('@/pages/Test'));
 
 /** APP 菜单路由  */
@@ -146,8 +148,9 @@ export const APP_ROUTE_CONFIGS: IRouteConfigMap<AppRouteLevelType> = {
     path: `/${AppRouteLevelType.REPORT_ANALYSIS}`,
     icon: Excel,
     key: 'report',
+    element: <ReportAnalysis />,
     meta: {},
-    children: [],
+    children: Object.values(REPORT_ANALYSIS_ROUTE_CONFIGS),
   },
   [AppRouteLevelType.INTEGRATION_AND_EXTENSION]: {
     label: '集成扩展',

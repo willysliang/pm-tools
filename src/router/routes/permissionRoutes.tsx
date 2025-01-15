@@ -2,14 +2,13 @@
  * @ Author: willysliang
  * @ CreateTime: 2024-10-25 16:30:36
  * @ Modifier: willysliang
- * @ ModifierTime: 2024-10-28 17:24:17
+ * @ ModifierTime: 2025-01-15 16:58:08
  * @ Description: 权限管理 - 相关路由
  */
 
 import { lazy } from 'react';
 import { DocumentFolder, EditName, UserToUserTransmission } from '@icon-park/react';
-import { IRouteConfigMap } from './types';
-import { AppRouteLevelType } from './appRoutes';
+import { IRouteConfigMap, AppRouteLevelType } from './types';
 
 /**
 PM 系统权限管理通常包含以下几个模块：

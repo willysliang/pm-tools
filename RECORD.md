@@ -54,6 +54,7 @@ Refs: #123
 ## 2025年1月15日
 
 - perf(layout): [layout-sidebar] 优化侧边栏菜单显示
+- feat(views): [report-analysis] 增加报表分析模块
 
 # 问题
 
