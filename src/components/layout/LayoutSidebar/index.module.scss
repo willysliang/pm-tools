@@ -13,6 +13,10 @@
     border-bottom: 1px solid var(--theme-active-border-color);
     font-size: x-small;
 
+    &:last-child {
+      border-bottom: none;
+    }
+
     &__label {
       align-items: center;
       border-radius: 0.4rem;

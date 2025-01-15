@@ -2,7 +2,7 @@
  * @ Author: willysliang
  * @ CreateTime: 2024-06-23 11:26:48
  * @ Modifier: willysliang
- * @ ModifierTime: 2024-10-28 10:16:35
+ * @ ModifierTime: 2025-01-15 17:29:34
  * @ Description: 二级路由的侧边栏
  */
 
@@ -70,7 +70,9 @@ export const LayoutSidebar: FC<ILayoutSidebarProps> = ({
       {children ??
         configList!.map((config, index) => (
           <div className={s[createBEM(`${NAMESPACE}-card`)]} key={index}>
-            <div className={s[createBEM(`${NAMESPACE}-card`, 'label')]}>{config.label}</div>
+            {config.label && (
+              <div className={s[createBEM(`${NAMESPACE}-card`, 'label')]}>{config.label}</div>
+            )}
             {config.list.map((item) => (
               <div
                 className={cx(
