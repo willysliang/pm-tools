@@ -1,3 +1,11 @@
+/**
+ * @ Author: willysliang
+ * @ CreateTime: 2024-06-20 22:09:11
+ * @ Modifier: willysliang
+ * @ ModifierTime: 2025-01-16 10:04:38
+ * @ Description: vite 配置文件
+ */
+
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react-swc';
 import path from 'node:path';
@@ -8,6 +16,9 @@ import tailwindcss from 'tailwindcss';
 export default defineConfig({
   base: '/pm-tools/',
   publicDir: './public',
+  build: {
+    target: 'esnext',
+  },
   plugins: [react()],
   resolve: {
     alias: {
